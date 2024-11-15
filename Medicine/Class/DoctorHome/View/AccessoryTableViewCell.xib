@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AccessoryTableViewCellFristId" rowHeight="51" id="cSC-nz-RiY" customClass="AccessoryTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cSC-nz-RiY" id="xzW-4g-1vE">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmJ-Hw-KrQ">
+                        <rect key="frame" x="15" y="22.666666666666668" width="290" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.33725490200000002" green="0.13725490200000001" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Czm-TV-45i">
+                        <rect key="frame" x="160" y="7.6666666666666679" width="110" height="30.000000000000004"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vy7-gg-Eak">
+                                <rect key="frame" x="80" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Vy7-gg-Eak" secondAttribute="height" id="dxu-uJ-IBe"/>
+                                </constraints>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="0.23137254900000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.8862745098" green="0.7843137255" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bjU-tw-aVB">
+                                <rect key="frame" x="30" y="0.0" width="50" height="30"/>
+                                <color key="textColor" red="0.33725490200000002" green="0.13725490200000001" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cSC-nz-RiY" id="T8c-kG-nIo"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcH-u0-RKO">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dcH-u0-RKO" secondAttribute="height" id="HR6-K2-zmS"/>
+                                </constraints>
+                                <state key="normal" title="-">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.8862745098" green="0.7843137255" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bjU-tw-aVB" firstAttribute="top" secondItem="Czm-TV-45i" secondAttribute="top" id="7OF-6d-XTe"/>
+                            <constraint firstItem="dcH-u0-RKO" firstAttribute="top" secondItem="Czm-TV-45i" secondAttribute="top" id="A41-jy-EpT"/>
+                            <constraint firstAttribute="trailing" secondItem="Vy7-gg-Eak" secondAttribute="trailing" id="Dah-Od-IRw"/>
+                            <constraint firstAttribute="height" constant="30" id="GIW-St-APv"/>
+                            <constraint firstItem="dcH-u0-RKO" firstAttribute="leading" secondItem="Czm-TV-45i" secondAttribute="leading" id="Q3b-9d-hAs"/>
+                            <constraint firstAttribute="bottom" secondItem="dcH-u0-RKO" secondAttribute="bottom" id="VMw-ag-2NM"/>
+                            <constraint firstAttribute="width" constant="110" id="YcG-6m-C6B"/>
+                            <constraint firstAttribute="bottom" secondItem="Vy7-gg-Eak" secondAttribute="bottom" id="bAA-ch-ecl"/>
+                            <constraint firstAttribute="bottom" secondItem="bjU-tw-aVB" secondAttribute="bottom" id="gAj-gD-2if"/>
+                            <constraint firstItem="Vy7-gg-Eak" firstAttribute="leading" secondItem="bjU-tw-aVB" secondAttribute="trailing" id="lTc-iw-pSs"/>
+                            <constraint firstItem="bjU-tw-aVB" firstAttribute="leading" secondItem="dcH-u0-RKO" secondAttribute="trailing" id="reO-14-wS4"/>
+                            <constraint firstItem="Vy7-gg-Eak" firstAttribute="top" secondItem="Czm-TV-45i" secondAttribute="top" id="waP-Pc-v0u"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nE3-Up-6Mo">
+                        <rect key="frame" x="285" y="10" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="VcR-KC-Fb5"/>
+                            <constraint firstAttribute="width" constant="25" id="zxe-af-nNt"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="del"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="nE3-Up-6Mo" secondAttribute="trailing" constant="10" id="9MB-bp-djh"/>
+                    <constraint firstItem="nE3-Up-6Mo" firstAttribute="leading" secondItem="Czm-TV-45i" secondAttribute="trailing" constant="15" id="QFQ-KF-7yQ"/>
+                    <constraint firstItem="nE3-Up-6Mo" firstAttribute="top" secondItem="xzW-4g-1vE" secondAttribute="top" constant="10" id="TWH-6o-oot"/>
+                    <constraint firstItem="bmJ-Hw-KrQ" firstAttribute="centerY" secondItem="Czm-TV-45i" secondAttribute="centerY" id="XtV-fn-aAI"/>
+                    <constraint firstItem="bmJ-Hw-KrQ" firstAttribute="leading" secondItem="xzW-4g-1vE" secondAttribute="leading" constant="15" id="kwT-Ic-pH2"/>
+                    <constraint firstItem="Czm-TV-45i" firstAttribute="top" secondItem="xzW-4g-1vE" secondAttribute="top" constant="7.6699999999999999" id="mXY-zv-18E"/>
+                    <constraint firstAttribute="trailing" secondItem="bmJ-Hw-KrQ" secondAttribute="trailing" constant="15" id="sT4-P8-1yE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="7ar-Cr-1Lx"/>
+            <color key="backgroundColor" red="0.97254901959999995" green="0.96078431369999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="dealViiew" destination="Czm-TV-45i" id="8X2-2j-Vil"/>
+                <outlet property="delBtn" destination="nE3-Up-6Mo" id="ZXS-83-p7G"/>
+                <outlet property="drugname" destination="bmJ-Hw-KrQ" id="Qgz-DX-51U"/>
+                <outlet property="leftBtn" destination="dcH-u0-RKO" id="Cbh-4Z-r6L"/>
+                <outlet property="numtextF" destination="bjU-tw-aVB" id="3FR-gV-gUr"/>
+                <outlet property="rightBtn" destination="Vy7-gg-Eak" id="ljR-PU-aQO"/>
+            </connections>
+            <point key="canvasLocation" x="74.809160305343511" y="673.59154929577471"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AccessoryTableViewCellSecondId" rowHeight="55" id="34M-57-pKK" customClass="AccessoryTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="34M-57-pKK" id="XMV-pR-7bT">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfP-2H-XCD">
+                        <rect key="frame" x="10" y="10" width="300" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="llp-Wo-QnP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="添加辅料">
+                            <color key="titleColor" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                <color key="value" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jfP-2H-XCD" firstAttribute="leading" secondItem="XMV-pR-7bT" secondAttribute="leading" constant="10" id="fr4-43-Wre"/>
+                    <constraint firstAttribute="trailing" secondItem="jfP-2H-XCD" secondAttribute="trailing" constant="10" id="t5J-pp-Ea4"/>
+                    <constraint firstItem="jfP-2H-XCD" firstAttribute="top" secondItem="XMV-pR-7bT" secondAttribute="top" constant="10" id="tmv-Vf-peY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="oya-63-SaZ"/>
+            <color key="backgroundColor" red="0.97254901959999995" green="0.96078431369999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="addMedchineBtn" destination="jfP-2H-XCD" id="9Iw-D9-DoA"/>
+            </connections>
+            <point key="canvasLocation" x="74.809160305343511" y="814.78873239436621"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AccessoryTableViewCellThridId" id="JV4-Ve-cuV" customClass="AccessoryTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JV4-Ve-cuV" id="r7i-6m-kcC">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_drug" translatesAutoresizingMaskIntoConstraints="NO" id="PXb-B8-KTe">
+                        <rect key="frame" x="140" y="37.666666666666664" width="40" height="39.999999999999993"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Yyv-OJ-om9"/>
+                            <constraint firstAttribute="width" constant="40" id="sVu-Pz-lND"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PXb-B8-KTe" firstAttribute="centerX" secondItem="r7i-6m-kcC" secondAttribute="centerX" id="KbP-E3-XQU"/>
+                    <constraint firstItem="PXb-B8-KTe" firstAttribute="centerY" secondItem="r7i-6m-kcC" secondAttribute="centerY" id="gQd-Eu-Ffg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="A24-NH-0dh"/>
+            <color key="backgroundColor" red="0.97254901959999995" green="0.96078431369999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+            <point key="canvasLocation" x="74.809160305343511" y="947.53521126760563"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="del" width="16" height="16"/>
+        <image name="icon_drug" width="29" height="29"/>
+    </resources>
+</document>

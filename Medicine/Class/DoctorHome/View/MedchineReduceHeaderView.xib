@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="0wc-OT-6fO" customClass="MedchineReduceHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNJ-Fa-md6">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="药品信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVF-cW-cdi">
+                            <rect key="frame" x="24.000000000000004" y="13.666666666666664" width="61.333333333333343" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSP-2O-B4D">
+                            <rect key="frame" x="10" y="15.666666666666668" width="4" height="13.666666666666668"/>
+                            <color key="backgroundColor" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="4" id="uBC-tr-T5l"/>
+                                <constraint firstAttribute="height" constant="13.67" id="wpq-5g-6cj"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSz-77-QEe">
+                            <rect key="frame" x="235" y="0.0" width="75" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="75" id="NVH-yk-a6w"/>
+                                <constraint firstAttribute="height" constant="45" id="NgY-27-KrD"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="处方模板">
+                                <color key="titleColor" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUj-p6-nRh">
+                            <rect key="frame" x="150" y="0.0" width="75" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="75" id="mTa-sy-YhI"/>
+                                <constraint firstAttribute="height" constant="45" id="tFk-bM-T25"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="历史处方">
+                                <color key="titleColor" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示：药房的药品库已升级为国、省标，请医生开方时根据需要执行减量" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXz-Qf-54b">
+                            <rect key="frame" x="15" y="41.666666666666671" width="295" height="33.666666666666671"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否执行减量" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qal-ct-BYU">
+                            <rect key="frame" x="15" y="85.333333333333329" width="86" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="aOQ-Sg-hUL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3a-EY-9mJ">
+                            <rect key="frame" x="121" y="85.333333333333329" width="55" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="JWb-9f-MQo"/>
+                                <constraint firstAttribute="width" constant="55" id="QuX-tn-0Rz"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="是" image="gloden_select">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected" title="是" image="gloden_selected"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yK4-2n-IaJ">
+                            <rect key="frame" x="196" y="85.333333333333329" width="55" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="55" id="Nef-jL-b1C"/>
+                                <constraint firstAttribute="height" constant="30" id="vqS-Yj-rc1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="否" image="gloden_select">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected" title="否" image="gloden_selected">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.96078431369999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="pVF-cW-cdi" firstAttribute="leading" secondItem="gSP-2O-B4D" secondAttribute="trailing" constant="10" id="4I6-Pv-Tmf"/>
+                        <constraint firstItem="pVF-cW-cdi" firstAttribute="top" secondItem="tNJ-Fa-md6" secondAttribute="top" constant="13.67" id="BR3-oW-FiG"/>
+                        <constraint firstItem="p3a-EY-9mJ" firstAttribute="centerY" secondItem="Qal-ct-BYU" secondAttribute="centerY" id="HxF-eb-iNE"/>
+                        <constraint firstItem="yK4-2n-IaJ" firstAttribute="leading" secondItem="p3a-EY-9mJ" secondAttribute="trailing" constant="20" id="JOL-MI-LnR"/>
+                        <constraint firstItem="uSz-77-QEe" firstAttribute="leading" secondItem="fUj-p6-nRh" secondAttribute="trailing" constant="10" id="ODY-sY-G5j"/>
+                        <constraint firstItem="Qal-ct-BYU" firstAttribute="leading" secondItem="tNJ-Fa-md6" secondAttribute="leading" constant="15" id="PKp-aw-1Lg"/>
+                        <constraint firstItem="aXz-Qf-54b" firstAttribute="leading" secondItem="tNJ-Fa-md6" secondAttribute="leading" constant="15" id="QsG-tt-FNQ"/>
+                        <constraint firstItem="gSP-2O-B4D" firstAttribute="top" secondItem="tNJ-Fa-md6" secondAttribute="top" constant="15.67" id="XWQ-KL-dbP"/>
+                        <constraint firstItem="fUj-p6-nRh" firstAttribute="top" secondItem="tNJ-Fa-md6" secondAttribute="top" id="aLa-fh-KLr"/>
+                        <constraint firstItem="Qal-ct-BYU" firstAttribute="top" secondItem="aXz-Qf-54b" secondAttribute="bottom" constant="10" id="cLq-8L-bVa"/>
+                        <constraint firstAttribute="trailing" secondItem="uSz-77-QEe" secondAttribute="trailing" constant="10" id="fzX-XO-bdB"/>
+                        <constraint firstAttribute="trailing" secondItem="aXz-Qf-54b" secondAttribute="trailing" constant="10" id="hZr-NC-DlX"/>
+                        <constraint firstItem="p3a-EY-9mJ" firstAttribute="leading" secondItem="Qal-ct-BYU" secondAttribute="trailing" constant="20" id="pA9-vw-qL4"/>
+                        <constraint firstItem="gSP-2O-B4D" firstAttribute="leading" secondItem="tNJ-Fa-md6" secondAttribute="leading" constant="10" id="r49-yu-m1e"/>
+                        <constraint firstItem="uSz-77-QEe" firstAttribute="top" secondItem="tNJ-Fa-md6" secondAttribute="top" id="u4a-7G-Jgl"/>
+                        <constraint firstItem="yK4-2n-IaJ" firstAttribute="centerY" secondItem="p3a-EY-9mJ" secondAttribute="centerY" id="uqA-8A-gTg"/>
+                        <constraint firstItem="aXz-Qf-54b" firstAttribute="top" secondItem="pVF-cW-cdi" secondAttribute="bottom" constant="10" id="yXU-qk-oQ7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="JfF-yU-7r2"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tNJ-Fa-md6" secondAttribute="bottom" id="A6G-eO-oC3"/>
+                <constraint firstItem="tNJ-Fa-md6" firstAttribute="leading" secondItem="0wc-OT-6fO" secondAttribute="leading" id="cqg-8N-CMi"/>
+                <constraint firstItem="tNJ-Fa-md6" firstAttribute="trailing" secondItem="JfF-yU-7r2" secondAttribute="trailing" id="hKQ-tx-o7X"/>
+                <constraint firstItem="tNJ-Fa-md6" firstAttribute="top" secondItem="0wc-OT-6fO" secondAttribute="top" id="i6A-K9-tcs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="falseBtn" destination="yK4-2n-IaJ" id="X2X-UL-7zL"/>
+                <outlet property="falseHeight" destination="vqS-Yj-rc1" id="1Kz-ci-sHg"/>
+                <outlet property="historyBtn" destination="fUj-p6-nRh" id="2CZ-v2-bte"/>
+                <outlet property="labelHight" destination="aOQ-Sg-hUL" id="Bjv-qG-lHV"/>
+                <outlet property="rightBtn" destination="uSz-77-QEe" id="VUP-u6-RnH"/>
+                <outlet property="topLab" destination="Qal-ct-BYU" id="glH-fj-UVC"/>
+                <outlet property="trueBtn" destination="p3a-EY-9mJ" id="dYO-Hw-NNu"/>
+                <outlet property="trueBtnHeight" destination="JWb-9f-MQo" id="DMW-mw-uFe"/>
+            </connections>
+            <point key="canvasLocation" x="-206.10687022900763" y="61.619718309859159"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="gloden_select" width="12" height="12"/>
+        <image name="gloden_selected" width="12" height="12"/>
+    </resources>
+</document>

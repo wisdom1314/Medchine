@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateRecipeTemplateListVC">
+            <connections>
+                <outlet property="textF" destination="jDF-qr-wA1" id="9Yp-aY-hhR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Lq-c3-q6s">
+                    <rect key="frame" x="15" y="74" width="363" height="35"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_search" translatesAutoresizingMaskIntoConstraints="NO" id="xuC-my-gDn">
+                            <rect key="frame" x="15" y="8.6666666666666714" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="iXB-ud-mcY"/>
+                                <constraint firstAttribute="width" constant="18" id="vaO-VJ-opp"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入处方名称、拼音码或者项目名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jDF-qr-wA1">
+                            <rect key="frame" x="43" y="0.0" width="310" height="35"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="DFV-Uv-CDX"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="jDF-qr-wA1" firstAttribute="leading" secondItem="xuC-my-gDn" secondAttribute="trailing" constant="10" id="8KW-Bd-Lwv"/>
+                        <constraint firstItem="jDF-qr-wA1" firstAttribute="top" secondItem="3Lq-c3-q6s" secondAttribute="top" id="8eX-Ps-two"/>
+                        <constraint firstAttribute="bottom" secondItem="jDF-qr-wA1" secondAttribute="bottom" id="H4x-A9-wLy"/>
+                        <constraint firstItem="xuC-my-gDn" firstAttribute="centerY" secondItem="3Lq-c3-q6s" secondAttribute="centerY" id="b0F-oQ-jIs"/>
+                        <constraint firstAttribute="trailing" secondItem="jDF-qr-wA1" secondAttribute="trailing" constant="10" id="c7c-yi-aYv"/>
+                        <constraint firstAttribute="height" constant="35" id="hzq-gr-y1h"/>
+                        <constraint firstItem="xuC-my-gDn" firstAttribute="leading" secondItem="3Lq-c3-q6s" secondAttribute="leading" constant="15" id="mAz-a1-ARS"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" red="0.97647058819999999" green="0.96078431369999995" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3Lq-c3-q6s" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="15" id="KJQ-Bb-IPe"/>
+                <constraint firstItem="3Lq-c3-q6s" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="M5s-2p-vhB"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="3Lq-c3-q6s" secondAttribute="trailing" constant="15" id="o4L-98-pbS"/>
+            </constraints>
+            <point key="canvasLocation" x="31" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_search" width="15" height="15"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

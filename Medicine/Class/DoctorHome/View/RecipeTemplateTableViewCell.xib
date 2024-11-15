@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipeTemplateTableViewCellId" rowHeight="67" id="KGk-i7-Jjw" customClass="RecipeTemplateTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBF-If-n9m">
+                        <rect key="frame" x="15" y="15" width="290" height="52"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INo-Ow-vZH">
+                                <rect key="frame" x="15" y="26" width="185" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.33725490200000002" green="0.13725490200000001" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vk9-tz-KJB">
+                                <rect key="frame" x="210" y="0.0" width="30" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="2M1-vB-c0L"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="cell_edit"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLP-9n-wfj">
+                                <rect key="frame" x="245" y="0.0" width="30" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="lOA-UN-pep"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="cell_del"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VLP-9n-wfj" firstAttribute="leading" secondItem="vk9-tz-KJB" secondAttribute="trailing" constant="5" id="6yM-s0-s5P"/>
+                            <constraint firstAttribute="bottom" secondItem="vk9-tz-KJB" secondAttribute="bottom" id="H7m-L0-rn6"/>
+                            <constraint firstItem="vk9-tz-KJB" firstAttribute="top" secondItem="bBF-If-n9m" secondAttribute="top" id="J8V-Gj-Ozh"/>
+                            <constraint firstItem="VLP-9n-wfj" firstAttribute="top" secondItem="bBF-If-n9m" secondAttribute="top" id="RVe-To-WO1"/>
+                            <constraint firstItem="INo-Ow-vZH" firstAttribute="centerY" secondItem="bBF-If-n9m" secondAttribute="centerY" id="SOW-YQ-OYV"/>
+                            <constraint firstAttribute="trailing" secondItem="VLP-9n-wfj" secondAttribute="trailing" constant="15" id="diw-wb-4Ye"/>
+                            <constraint firstItem="INo-Ow-vZH" firstAttribute="leading" secondItem="bBF-If-n9m" secondAttribute="leading" constant="15" id="gjM-Gi-sG6"/>
+                            <constraint firstItem="vk9-tz-KJB" firstAttribute="leading" secondItem="INo-Ow-vZH" secondAttribute="trailing" constant="10" id="rtL-FJ-kc0"/>
+                            <constraint firstAttribute="bottom" secondItem="VLP-9n-wfj" secondAttribute="bottom" id="y8d-D1-ITJ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                <color key="value" red="0.8862745098" green="0.7843137255" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bBF-If-n9m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="1Pr-cV-iLr"/>
+                    <constraint firstAttribute="bottom" secondItem="bBF-If-n9m" secondAttribute="bottom" id="WoW-wx-zO3"/>
+                    <constraint firstItem="bBF-If-n9m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Wtd-My-xxL"/>
+                    <constraint firstAttribute="trailing" secondItem="bBF-If-n9m" secondAttribute="trailing" constant="15" id="j5K-Vg-0Iy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <color key="backgroundColor" red="0.97254901959999995" green="0.96078431369999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="delBtn" destination="VLP-9n-wfj" id="ych-nR-rdF"/>
+                <outlet property="editBtn" destination="vk9-tz-KJB" id="xbD-Gr-DIC"/>
+                <outlet property="nameLab" destination="INo-Ow-vZH" id="q4O-dn-cHR"/>
+            </connections>
+            <point key="canvasLocation" x="45.801526717557252" y="27.816901408450704"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cell_del" width="16" height="16"/>
+        <image name="cell_edit" width="16.333333969116211" height="16.666666030883789"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
