@@ -109,6 +109,11 @@ FOUNDATION_EXTERN NSString *const HospitalsListURL;
 FOUNDATION_EXTERN NSString *const PromoteAgentDetail;
 FOUNDATION_EXTERN NSString *const HospotalDetailURL;
 FOUNDATION_EXTERN NSString *const PharmacyListURL;
+FOUNDATION_EXTERN NSString *const AgentReviewURL;
+/// 初审核
+FOUNDATION_EXTERN NSString *const HospitalReviewURL;
+/// 复审
+FOUNDATION_EXTERN NSString *const HospitalNextReviewURL;
 @end
 
 NS_ASSUME_NONNULL_END

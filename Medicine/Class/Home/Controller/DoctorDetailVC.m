@@ -11,6 +11,8 @@
 #import "UIAreaPickView.h"
 #import "StatementPickView.h"
 #import "DoctorTableViewCell.h"
+#import "RefuseView.h"
+#import "AgreeView.h"
 @interface DoctorDetailVC ()
 <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,6 +23,7 @@
 @property (nonatomic, strong) StatementPickView *pickView;
 @property (nonatomic, strong) StatementPickView *pharmacyPickView;
 @property (nonatomic, strong) NSMutableArray *pharmacyArr;
+@property (nonatomic, copy) NSString *refuseStr;
 @end
 
 @implementation DoctorDetailVC
@@ -147,6 +150,17 @@
     }];
 
     if([self.model.status integerValue] == 10) {
+        [[[cell.cardTextF rac_textSignal]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(NSString * _Nullable x) {
+            @strongify(self);
+             self.model.certNo = x;
+            
+        }];
+        
+        [[[cell.hosNameTextF rac_textSignal]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(NSString * _Nullable x) {
+            @strongify(self);
+             self.model.hospitalname = x;
+            
+        }];
         [[[cell.chooseAreaBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
             @strongify(self);
             TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:self.areaView preferredStyle:TYAlertControllerStyleActionSheet];
@@ -225,6 +239,85 @@
     return 0.01;
 }
 
+- (IBAction)refuseClick:(id)sender {
+    RefuseView *refuseView = [RefuseView createViewFromNib];
+    TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:refuseView preferredStyle:TYAlertControllerStyleAlert];
+    alertVC.backgoundTapDismissEnable = YES;
+    /// 选择日期
+    @weakify(self);
+    [refuseView.subject subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        if(x) {
+            self.refuseStr = x;
+            for (NSLayoutConstraint *constraint in refuseView.constraints) {
+                if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+                    [refuseView removeConstraint:constraint];
+                }
+            }
+            CGFloat newHeight =  [ClassMethod sizeText:x font:[UIFont systemFontOfSize:14] limitWidth:280].height< 28? 164: 136+ [ClassMethod sizeText:x font:[UIFont systemFontOfSize:14] limitWidth:280].height;
+            
+            
+            NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:refuseView
+                                                                                attribute:NSLayoutAttributeHeight
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:nil
+                                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                                               multiplier:1.0
+                                                                                 constant:newHeight];
+            [refuseView addConstraint:heightConstraint];
+            
+            // 强制刷新布局
+            [refuseView layoutIfNeeded];
+        }
+    }];
+    
+    [[refuseView.cancelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [alertVC dismissViewControllerAnimated:YES];
+    }];
+    [[refuseView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [alertVC dismissViewControllerAnimated:YES];
+        @strongify(self);
+        [self summitDataWith: @"2"];
+        
+    }];
+    
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+- (IBAction)saveClick:(id)sender {
+    AgreeView *agreeView =  [AgreeView createViewFromNib];
+    agreeView.commitLab.text = @"是否确定保存并提交审核？";
+    TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:agreeView preferredStyle:TYAlertControllerStyleAlert];
+    alertVC.backgoundTapDismissEnable = YES;
+    @weakify(self);
+    [[agreeView.cancelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [alertVC dismissViewControllerAnimated:YES];
+    }];
+    [[agreeView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [alertVC dismissViewControllerAnimated:YES];
+        @strongify(self);
+        [self summitDataWith: @"1"];
+        
+    }];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
+
+- (void)summitDataWith:(NSString *)reviewStatus  {
+    if([reviewStatus integerValue] == 2 &&  self.refuseStr.length == 0) {
+        [ZZProgress showErrorWithStatus:@"请填写拒绝原因"];
+        return;
+    }
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:reviewStatus forKey:@"reviewStatus"];
+    [dic setValue:self.refuseStr forKey:@"reviewRemark"];
+    [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",HospitalReviewURL, self.model.hospitalId];
+    [[RequestManager shareInstance]requestWithMethod:BodyPOST url:url dict:dic hasHeader:YES finished:^(id request) {
+        [self requestDetail];
+    } failed:^(NSError *error) {
+        
+    }];
+}
 
 - (UIAreaPickView *)areaView {
     if(!_areaView) {

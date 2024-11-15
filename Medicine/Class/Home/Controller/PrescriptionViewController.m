@@ -35,8 +35,16 @@
     @weakify(self);
     [self.alertView.commitSubject subscribeNext:^(id  _Nullable x) {
         @strongify(self);
+        
         self.dateStart = [x valueForKey:@"date1"];
         self.dateEnd = [x valueForKey:@"date2"];
+        if(self.dateStart.length == 0) {
+            self.dateStart = [DateTimeTool stringFromDate:[NSDate date] DateFormat:@"yyyy-MM-dd"];
+           
+        }
+        if(self.dateEnd.length == 0) {
+            self.dateEnd = [DateTimeTool stringFromDate:[NSDate date] DateFormat:@"yyyy-MM-dd"];
+        }
         [self.headerView.chooseBtn setTitle:[NSString stringWithFormat:@"%@~%@",self.dateStart, self.dateEnd] forState:UIControlStateNormal];
         [self requestData];
     }];

@@ -163,8 +163,12 @@
             if([model.status integerValue] == 20) {
                 [[UIViewController currentViewController] pushVC:@"AssistantPassedVC" param:@{@"userId":model.user_id} animated:YES];
             }else {
-                [[UIViewController currentViewController] pushVC:@"AssistantDetailVC" param:@{@"userId":model.user_id, @"nickName": model.promoteUser.nickName} animated:YES];
+        
+                [[UIViewController currentViewController] pushVC:@"AssistantDetailVC" param:@{@"userId":model.user_id, @"nickName": model.promoteUser.nickName} backBlock:^(NSDictionary * _Nonnull dic) {
+                    [self refresh];
+                } animated:YES];
             }
+            
         }
         
     }];
@@ -196,7 +200,9 @@
         if([model.status integerValue] == 20) {
             [[UIViewController currentViewController] pushVC:@"AssistantPassedVC" param:@{@"userId":model.user_id} animated:YES];
         }else {
-            [[UIViewController currentViewController] pushVC:@"AssistantDetailVC" param:@{@"userId":model.user_id, @"nickName": model.promoteUser.nickName} animated:YES];
+            [[UIViewController currentViewController] pushVC:@"AssistantDetailVC" param:@{@"userId":model.user_id, @"nickName": model.promoteUser.nickName} backBlock:^(NSDictionary * _Nonnull dic) {
+                [self refresh];
+            } animated:YES];
         }
     }
 }

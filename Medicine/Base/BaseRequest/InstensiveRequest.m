@@ -338,13 +338,27 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramsDic options:0 error:&error];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:[self urlWithPath:self.url] parameters:nil error:nil];
+    
+    NSString *urlString = [self urlWithPath:self.url];
+
+    // 新建 URL 可变对象，准备添加查询参数
+    NSMutableString *urlWithQuery = [NSMutableString stringWithString:urlString];
+    // 如果 token 存在，添加到查询字符串
+    NSString *token = [MedicineManager sharedInfo].token;
+    if (token.length > 0) {
+        // 如果 URL 已经有查询参数，使用 '&' 连接；否则，使用 '?' 作为分隔符
+        NSString *delimiter = [urlWithQuery containsString:@"?"] ? @"&" : @"?";
+        [urlWithQuery appendFormat:@"%@APP_TOKEN=%@", delimiter, token];
+        [urlWithQuery appendFormat:@"&sign=%@", @"12345678909876543212345678909876"];
+    }
+    
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlWithQuery parameters:nil error:nil];
     request.timeoutInterval = 20;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     /// 新增
     if([MedicineManager sharedInfo].token.length!=0) {
-        [request setValue:[MedicineManager sharedInfo].token forHTTPHeaderField:@"token"];
+        [request setValue:[MedicineManager sharedInfo].token forHTTPHeaderField:@"APP_TOKEN"];
     }
     
     if(self.hasHeader) {
@@ -363,7 +377,6 @@
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if(!error) {
             if([responseObject isKindOfClass:[NSDictionary class]]) {
-            
                 if([responseObject[@"state"] isEqualToString:@"succ"]) {
                     if (self.isAutoMask) {
                         [ZZProgress dismiss];
@@ -372,7 +385,11 @@
                         self.finished(responseObject);
                     }
                 }else {
-                    [ZZProgress showErrorWithStatus:responseObject[@"msg"]];
+                    if([responseObject[@"msg"] isKindOfClass:[NSString class]]) {
+                        [ZZProgress showErrorWithStatus:responseObject[@"msg"]];
+                    }else {
+                        [ZZProgress showErrorWithStatus:@"未知错误"];
+                    }
                 }
             }
         }

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *chooseAreaBtn;
 @property (weak, nonatomic) IBOutlet UIButton *chooseMedBtn;
 @property (weak, nonatomic) IBOutlet UITextField *cardTextF;
+@property (weak, nonatomic) IBOutlet UITextField *hosNameTextF;
 
 @property (weak, nonatomic) IBOutlet UIButton *qmBtn;
 @property (weak, nonatomic) IBOutlet UIButton *yyzzBtn;

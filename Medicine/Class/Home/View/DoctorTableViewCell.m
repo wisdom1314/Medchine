@@ -19,7 +19,7 @@ UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *statusImgView;
 @property (weak, nonatomic) IBOutlet UILabel *statusLab;
 @property (weak, nonatomic) IBOutlet UILabel *detailLab;
-@property (weak, nonatomic) IBOutlet UITextField *hosNameTextF;
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImgView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *arrowRightWidth1;

@@ -84,4 +84,9 @@ NSString *const HospitalsListURL  = @"/app/v3.0/promote/hospitals/list";
 NSString *const PromoteAgentDetail = @"/app/v3.0/promote/agents/detail";
 NSString *const HospotalDetailURL = @"/app/v3.0/hospitals/detail";
 NSString *const PharmacyListURL = @"/app/v3.0/pharmacy/list";
+NSString *const AgentReviewURL = @"/app/v3.0/agents/review1";
+/// 初审核
+NSString *const HospitalReviewURL = @"/app/v3.0/hospitals/review1";
+/// 复审
+NSString *const HospitalNextReviewURL = @"/app/v3.0/hospitals/review2";
 @end

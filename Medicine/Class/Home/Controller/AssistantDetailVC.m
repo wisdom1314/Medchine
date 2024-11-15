@@ -11,6 +11,8 @@
 #import "ZZBigView.h"
 #import "UIAreaPickView.h"
 #import "StatementPickView.h"
+#import "RefuseView.h"
+#import "AgreeView.h"
 @interface AssistantDetailVC ()
 <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -19,6 +21,7 @@
 @property (nonatomic, strong)  PromoteUserModel *model;
 @property (nonatomic, strong) UIAreaPickView *areaView;
 @property (nonatomic, strong) StatementPickView *pickView;
+@property (nonatomic, copy) NSString *refuseStr;
 @end
 
 @implementation AssistantDetailVC
@@ -101,7 +104,7 @@
         ZZBigView *bigView=[[ZZBigView alloc]initWithFrame:CGRectMake(0, 0, WIDE, HIGHT) withURLs:@[self.model.idcardImageModel2.url] with:0];
         [bigView show];
     }];
-  
+    
     
     if([self.model.status integerValue] == 10) {
         [[[cell.chosseAreaBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
@@ -154,7 +157,94 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.01;
 }
+- (IBAction)refuseClick:(id)sender {
+    RefuseView *refuseView = [RefuseView createViewFromNib];
+    TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:refuseView preferredStyle:TYAlertControllerStyleAlert];
+    alertVC.backgoundTapDismissEnable = YES;
+    /// 选择日期
+    @weakify(self);
+    [refuseView.subject subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        if(x) {
+            self.refuseStr = x;
+            for (NSLayoutConstraint *constraint in refuseView.constraints) {
+                if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+                    [refuseView removeConstraint:constraint];
+                }
+            }
+            CGFloat newHeight =  [ClassMethod sizeText:x font:[UIFont systemFontOfSize:14] limitWidth:280].height< 28? 164: 136+ [ClassMethod sizeText:x font:[UIFont systemFontOfSize:14] limitWidth:280].height;
+            
+            
+            NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:refuseView
+                                                                                attribute:NSLayoutAttributeHeight
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:nil
+                                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                                               multiplier:1.0
+                                                                                 constant:newHeight];
+            [refuseView addConstraint:heightConstraint];
+            
+            // 强制刷新布局
+            [refuseView layoutIfNeeded];
+        }
+    }];
+    
+    [[refuseView.cancelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [alertVC dismissViewControllerAnimated:YES];
+    }];
+    [[refuseView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [alertVC dismissViewControllerAnimated:YES];
+        @strongify(self);
+        [self summitDataWith: @"2"];
+        
+    }];
+    
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
 
+- (void)summitDataWith:(NSString *)reviewStatus  {
+    if(self.model.agentLevel.length == 0 && [reviewStatus integerValue] == 1) {
+        [ZZProgress showErrorWithStatus:@"请选择医助等级"];
+        return;
+    }
+    if([reviewStatus integerValue] == 2 &&  self.refuseStr.length == 0) {
+        [ZZProgress showErrorWithStatus:@"请填写拒绝原因"];
+        return;
+    }
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:reviewStatus forKey:@"reviewStatus"];
+    [dic setValue:self.refuseStr forKey:@"reviewRemark"];
+    [dic setValue:self.model.agentLevel forKey:@"agentLevel"];
+    [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",AgentReviewURL, self.model.user_id];
+    [[RequestManager shareInstance]requestWithMethod:BodyPOST url:url dict:dic hasHeader:YES finished:^(id request) {
+        
+        [self requestDetail];
+//        if(self.backBlockWithParam) {
+//            self.backBlockWithParam(@{});
+//        }
+//        [self.navigationController popViewControllerAnimated:YES];
+    } failed:^(NSError *error) {
+        
+    }];
+}
+
+- (IBAction)agreeClick:(id)sender {
+    AgreeView *agreeView =  [AgreeView createViewFromNib];
+    TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:agreeView preferredStyle:TYAlertControllerStyleAlert];
+    alertVC.backgoundTapDismissEnable = YES;
+    @weakify(self);
+    [[agreeView.cancelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [alertVC dismissViewControllerAnimated:YES];
+    }];
+    [[agreeView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [alertVC dismissViewControllerAnimated:YES];
+        @strongify(self);
+        [self summitDataWith: @"1"];
+        
+    }];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
 
 - (UIAreaPickView *)areaView {
     if(!_areaView) {
@@ -172,13 +262,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

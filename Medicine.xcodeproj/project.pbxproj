@@ -35,6 +35,10 @@
 		0909D6C52CE73A5300D6DA86 /* PrescriptionTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909D6C42CE73A5300D6DA86 /* PrescriptionTableHeaderView.xib */; };
 		0909D6C92CE73B0C00D6DA86 /* PrescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0909D6C72CE73B0C00D6DA86 /* PrescriptionTableViewCell.m */; };
 		0909D6CA2CE73B0C00D6DA86 /* PrescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909D6C82CE73B0C00D6DA86 /* PrescriptionTableViewCell.xib */; };
+		0909D6CD2CE7823700D6DA86 /* RefuseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0909D6CC2CE7823700D6DA86 /* RefuseView.m */; };
+		0909D6CF2CE7826500D6DA86 /* RefuseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909D6CE2CE7826500D6DA86 /* RefuseView.xib */; };
+		0909D6D22CE7937A00D6DA86 /* AgreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0909D6D12CE7937A00D6DA86 /* AgreeView.m */; };
+		0909D6D42CE7938300D6DA86 /* AgreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909D6D32CE7938300D6DA86 /* AgreeView.xib */; };
 		090D91D42CA65DA8005AE0F4 /* TradingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 090D91D22CA65DA8005AE0F4 /* TradingTableViewCell.m */; };
 		090D91D52CA65DA8005AE0F4 /* TradingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090D91D32CA65DA8005AE0F4 /* TradingTableViewCell.xib */; };
 		0910CFE22CB4DBC1000EBA58 /* RecipeButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0910CFE12CB4DBC1000EBA58 /* RecipeButtonView.m */; };
@@ -337,6 +341,12 @@
 		0909D6C62CE73B0C00D6DA86 /* PrescriptionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrescriptionTableViewCell.h; sourceTree = "<group>"; };
 		0909D6C72CE73B0C00D6DA86 /* PrescriptionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrescriptionTableViewCell.m; sourceTree = "<group>"; };
 		0909D6C82CE73B0C00D6DA86 /* PrescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		0909D6CB2CE7823700D6DA86 /* RefuseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefuseView.h; sourceTree = "<group>"; };
+		0909D6CC2CE7823700D6DA86 /* RefuseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefuseView.m; sourceTree = "<group>"; };
+		0909D6CE2CE7826500D6DA86 /* RefuseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefuseView.xib; sourceTree = "<group>"; };
+		0909D6D02CE7937A00D6DA86 /* AgreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgreeView.h; sourceTree = "<group>"; };
+		0909D6D12CE7937A00D6DA86 /* AgreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgreeView.m; sourceTree = "<group>"; };
+		0909D6D32CE7938300D6DA86 /* AgreeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreeView.xib; sourceTree = "<group>"; };
 		090D91D12CA65DA8005AE0F4 /* TradingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TradingTableViewCell.h; sourceTree = "<group>"; };
 		090D91D22CA65DA8005AE0F4 /* TradingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TradingTableViewCell.m; sourceTree = "<group>"; };
 		090D91D32CA65DA8005AE0F4 /* TradingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradingTableViewCell.xib; sourceTree = "<group>"; };
@@ -1278,6 +1288,12 @@
 				0909D6C62CE73B0C00D6DA86 /* PrescriptionTableViewCell.h */,
 				0909D6C72CE73B0C00D6DA86 /* PrescriptionTableViewCell.m */,
 				0909D6C82CE73B0C00D6DA86 /* PrescriptionTableViewCell.xib */,
+				0909D6CB2CE7823700D6DA86 /* RefuseView.h */,
+				0909D6CC2CE7823700D6DA86 /* RefuseView.m */,
+				0909D6CE2CE7826500D6DA86 /* RefuseView.xib */,
+				0909D6D02CE7937A00D6DA86 /* AgreeView.h */,
+				0909D6D12CE7937A00D6DA86 /* AgreeView.m */,
+				0909D6D32CE7938300D6DA86 /* AgreeView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1922,6 +1938,8 @@
 				090743362CB664DE00E967D1 /* RecipeTemplateTableViewCell.xib in Resources */,
 				09D3CCA62CB7BF6A00039C33 /* AddRecipeTemplateView.xib in Resources */,
 				091F060D2CAA871E009CD4AF /* StatementTableViewCell.xib in Resources */,
+				0909D6D42CE7938300D6DA86 /* AgreeView.xib in Resources */,
+				0909D6CF2CE7826500D6DA86 /* RefuseView.xib in Resources */,
 				09A804982CC9E86600BCE085 /* LeftTableViewCell.xib in Resources */,
 				091224082C9BF7EA008C6D74 /* PatientTableViewCell.xib in Resources */,
 				0943A0C12CCA4D1A00269A31 /* DrugCollectionViewCell.xib in Resources */,
@@ -2110,6 +2128,7 @@
 				09F18E762CA9259600E379EB /* SettingViewController.m in Sources */,
 				09C542A62C8EACA600C709DB /* UIButton+ImageTitleSpacing.m in Sources */,
 				09EE379E2C918FA400C8E1BD /* TYTabPagerBarLayout+FixFontSize.m in Sources */,
+				0909D6CD2CE7823700D6DA86 /* RefuseView.m in Sources */,
 				09280C3A2CA686D3009898F5 /* TimeRangeView.m in Sources */,
 				09A972802CC8A1FF009CF827 /* MSSAutoresizeLabelFlowLayout.m in Sources */,
 				092EAF762C9A83F100F8717A /* DoctorWelcomeCell.m in Sources */,
@@ -2149,6 +2168,7 @@
 				096B98812CE4793A00D72364 /* AssistantDetailVC.m in Sources */,
 				0907433F2CB6692A00E967D1 /* AddRecipeTemplateTableViewCell.m in Sources */,
 				09F18E672CA904DE00E379EB /* DownQrcodeViewController.m in Sources */,
+				0909D6D22CE7937A00D6DA86 /* AgreeView.m in Sources */,
 				09C542AB2C8EACA600C709DB /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				096E2D992CCB96F000AE687B /* AccessoryTableViewCell.m in Sources */,
 				0962104D2CE1B03E00CE1B7A /* ZZSubBigView.m in Sources */,
