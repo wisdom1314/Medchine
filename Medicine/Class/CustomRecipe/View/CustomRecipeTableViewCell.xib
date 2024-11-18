@@ -186,6 +186,23 @@
                                 <color key="textColor" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjS-XI-g2I">
+                                <rect key="frame" x="220" y="87.666666666666671" width="60" height="27"/>
+                                <color key="backgroundColor" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="3HS-pi-Eyo"/>
+                                    <constraint firstAttribute="height" constant="27" id="BJP-nU-0WM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="已取消"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -210,10 +227,12 @@
                             <constraint firstItem="Yqp-2i-jwl" firstAttribute="leading" secondItem="FlM-2Q-Nyf" secondAttribute="leading" constant="45" id="WUZ-sU-2wJ"/>
                             <constraint firstItem="b9u-DW-hHa" firstAttribute="top" secondItem="FlM-2Q-Nyf" secondAttribute="top" constant="15" id="Wpn-jU-v9S"/>
                             <constraint firstAttribute="trailing" secondItem="Yqp-2i-jwl" secondAttribute="trailing" constant="10" id="X0H-At-SLF"/>
+                            <constraint firstAttribute="trailing" secondItem="yjS-XI-g2I" secondAttribute="trailing" constant="10" id="axy-E0-5VZ"/>
                             <constraint firstAttribute="trailing" secondItem="b9u-DW-hHa" secondAttribute="trailing" constant="10" id="clM-Aw-AIc"/>
                             <constraint firstItem="T6I-Bg-4eA" firstAttribute="leading" secondItem="iga-Kr-gMA" secondAttribute="trailing" id="dKA-eS-2kR"/>
                             <constraint firstItem="Tvw-6v-j18" firstAttribute="leading" secondItem="S01-hX-1mL" secondAttribute="trailing" id="f1a-zh-QAY"/>
                             <constraint firstItem="5Ni-6Z-GUz" firstAttribute="centerY" secondItem="T6I-Bg-4eA" secondAttribute="centerY" id="lwt-Lu-bqU"/>
+                            <constraint firstItem="YHw-CY-fgQ" firstAttribute="top" secondItem="yjS-XI-g2I" secondAttribute="bottom" constant="10" id="nct-jr-caB"/>
                             <constraint firstItem="lHJ-e5-iD5" firstAttribute="top" secondItem="FlM-2Q-Nyf" secondAttribute="top" constant="15" id="ngI-ih-mUs"/>
                             <constraint firstItem="RHn-8s-zrd" firstAttribute="top" secondItem="Jdz-xK-UCx" secondAttribute="bottom" constant="5" id="o4N-Yk-nHs"/>
                             <constraint firstAttribute="bottom" secondItem="YHw-CY-fgQ" secondAttribute="bottom" constant="45" id="pBe-rF-IZQ"/>
@@ -248,6 +267,7 @@
                 <outlet property="doctorNameLab" destination="5Ni-6Z-GUz" id="Hd1-2Q-Euz"/>
                 <outlet property="granule_total_noLab" destination="Tvw-6v-j18" id="cab-ax-zRe"/>
                 <outlet property="nameLab" destination="INF-4O-cms" id="r0n-qG-Gvm"/>
+                <outlet property="payStatusBtn" destination="yjS-XI-g2I" id="Ggq-Im-yYg"/>
                 <outlet property="phoneLab" destination="15c-PX-sFh" id="iGH-gC-Lyb"/>
                 <outlet property="recipeNameLab" destination="Jdz-xK-UCx" id="uxL-yp-crE"/>
                 <outlet property="recipe_noLab" destination="7Dg-Hu-qWJ" id="c0Z-oy-dOy"/>

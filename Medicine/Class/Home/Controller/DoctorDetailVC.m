@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitle = @"医生详情";
+    self.refuseStr = @"";
     if([[self.param allKeys]containsObject:@"userId"]) {
         [self requestDetail];
     }
@@ -45,7 +46,10 @@
     [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
     [[RequestManager shareInstance]requestWithMethod:GET url:[NSString stringWithFormat:@"%@/%@",HospotalDetailURL, self.param[@"userId"]] dict:dic hasHeader:YES finished:^(id request) {
         self.model = [PromoteUserModel mj_objectWithKeyValues:request[@"data"]];
-        if([self.model.status integerValue] == 10) {
+        if([self.model.status integerValue] == 10 && [self.model.reviewable boolValue] == YES) {
+            self.bottomHeight.constant = 65;
+            self.bottomView.hidden = NO;
+        }else if([self.model.status integerValue] == 11 && [self.model.review2able boolValue] == YES) {
             self.bottomHeight.constant = 65;
             self.bottomView.hidden = NO;
         }else {
@@ -303,22 +307,94 @@
 
 
 - (void)summitDataWith:(NSString *)reviewStatus  {
+    if([reviewStatus integerValue] == 1 && [self.model.status integerValue] == 10) { /// 同意
+        if(self.model.certType.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请选择证件类型"];
+            return;
+        }
+        if(self.model.certNo.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请输入证件号"];
+            return;
+        }
+        if(self.model.pharmacyModel.pharmacy_id.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请选择药房"];
+            return;
+        }
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setValue:self.model.certNo forKey:@"certNo"];
+        [dic setValue:self.model.pharmacyModel.pharmacy_id forKey:@"pharmacyId"];
+        [dic setValue:self.model.certType forKey:@"certType"];
+        [dic setValue:self.model.hospitalname forKey:@"hospitalname"];
+        [dic setValue:self.model.province forKey:@"province"];
+        [dic setValue:self.model.city forKey:@"city"];
+        [dic setValue:self.model.area forKey:@"area"];
+        NSMutableArray  *arr = [NSMutableArray array];
+        for (idCardImgModel *subModel in self.model.attachFiles) {
+            [arr addObject:subModel.file_id];
+        }
+        [dic setValue:[arr componentsJoinedByString:@"," ]forKey:@"attachFileIds"];
+        [dic setValue:self.model.businessLicenseFileModel.file_id forKey:@"businessLicenseFileId"];
+        [dic setValue:self.model.hospitalLicenseFileModel.file_id forKey:@"hospitalLicenseFileId"];
+        [dic setValue:self.model.area forKey:@"area"];
+        [dic setValue:self.model.managerName forKey:@"managerName"];
+        [dic setValue:self.model.managerSex forKey:@"managerSex"];
+        [dic setValue:self.model.phonenumber     forKey:@"phonenumber"];
+        [dic setValue:@"123456"     forKey:@"smsCode"];
+        [dic setValue:self.model.managerSignType     forKey:@"managerSignType"];
+        [dic setValue:self.model.managerSignUrl     forKey:@"managerSignUrl"];
+        [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+        [dic setValue:self.model.pharmacyModel.pharmacy_id forKey:@"pharmacyId"];
+        
+        NSString *url = [NSString stringWithFormat:@"%@/%@",HospitalEditURL, self.model.hospitalId];
+        [[RequestManager shareInstance]requestWithMethod:BodyPOST url:url dict:dic hasHeader:YES finished:^(id request) {
+            [self summitLastDataWith:reviewStatus];
+        } failed:^(NSError *error) {
+            
+        }];
+    }else {
+        [self summitLastDataWith:reviewStatus];
+    }
+    
+}
+
+- (void)summitLastDataWith:(NSString *)reviewStatus  {
     if([reviewStatus integerValue] == 2 &&  self.refuseStr.length == 0) {
         [ZZProgress showErrorWithStatus:@"请填写拒绝原因"];
         return;
     }
+    if([reviewStatus integerValue] == 1) {
+        if(self.model.certType.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请选择证件类型"];
+            return;
+        }
+        if(self.model.certNo.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请输入证件号"];
+            return;
+        }
+        if(self.model.pharmacyModel.pharmacy_id.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请选择药房"];
+            return;
+        }
+    }
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:reviewStatus forKey:@"reviewStatus"];
     [dic setValue:self.refuseStr forKey:@"reviewRemark"];
+    [dic setValue:self.model.province forKey:@"province"];
+    [dic setValue:self.model.city forKey:@"city"];
+    [dic setValue:self.model.area forKey:@"area"];
+    [dic setValue:self.model.hospitalname forKey:@"hospitalname"];
+    [dic setValue:self.model.hospitaladdress forKey:@"hospitaladdress"];
+    [dic setValue:self.model.certNo forKey:@"certNo"];
+    [dic setValue:self.model.certType forKey:@"certType"];
     [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
-    NSString *url = [NSString stringWithFormat:@"%@/%@",HospitalReviewURL, self.model.hospitalId];
+    [dic setValue:self.model.pharmacyModel.pharmacy_id forKey:@"pharmacyId"];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",[self.model.status integerValue] == 11 ? HospitalNextReviewURL: HospitalReviewURL, self.model.hospitalId];
     [[RequestManager shareInstance]requestWithMethod:BodyPOST url:url dict:dic hasHeader:YES finished:^(id request) {
         [self requestDetail];
     } failed:^(NSError *error) {
         
     }];
 }
-
 - (UIAreaPickView *)areaView {
     if(!_areaView) {
         _areaView = [[UIAreaPickView alloc]initWithFrame:CGRectMake(0, 0, WIDE, 260)];

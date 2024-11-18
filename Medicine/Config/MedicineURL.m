@@ -17,8 +17,8 @@ NSString *const BaseURL = @"https://zhyf-test.jingpai.com";
 #else
 
 //NSString *const BaseURL = @"http://zhyf.sfrog.cn/prod-api";
-//NSString *const BaseURL = @"https://zhyf-test.jingpai.com";
-NSString *const BaseURL = @"https://zhyf.jingpai.com";
+NSString *const BaseURL = @"https://zhyf-test.jingpai.com";
+//NSString *const BaseURL = @"https://zhyf.jingpai.com";
 
 #endif
 
@@ -89,4 +89,6 @@ NSString *const AgentReviewURL = @"/app/v3.0/agents/review1";
 NSString *const HospitalReviewURL = @"/app/v3.0/hospitals/review1";
 /// 复审
 NSString *const HospitalNextReviewURL = @"/app/v3.0/hospitals/review2";
+
+NSString *const HospitalEditURL = @"/app/v3.0/hospitals/edit";
 @end

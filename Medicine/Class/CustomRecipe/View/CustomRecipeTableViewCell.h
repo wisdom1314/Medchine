@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CustomRecipeTableViewCell : UITableViewCell
 + (CGFloat)getCellHeight;
 @property (nonatomic, strong) RecipeOrderItemModel *model;
+@property (weak, nonatomic) IBOutlet UIButton *payStatusBtn;
 @end
 
 NS_ASSUME_NONNULL_END

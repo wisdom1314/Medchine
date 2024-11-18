@@ -114,6 +114,8 @@ FOUNDATION_EXTERN NSString *const AgentReviewURL;
 FOUNDATION_EXTERN NSString *const HospitalReviewURL;
 /// 复审
 FOUNDATION_EXTERN NSString *const HospitalNextReviewURL;
+
+FOUNDATION_EXTERN NSString *const HospitalEditURL;
 @end
 
 NS_ASSUME_NONNULL_END

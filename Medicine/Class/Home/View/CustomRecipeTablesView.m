@@ -155,7 +155,8 @@
     [[[cell.rightBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
         if(self.isHos) {
             if([model.status integerValue] == 20) {
-                
+                 /// 处方订单
+                [[UIViewController currentViewController] pushVC:@"CustomRecipeViewController"  animated:YES];
             }else {
                 [[UIViewController currentViewController] pushVC:@"DoctorDetailVC" param:@{@"userId":model.hospitalId} animated:YES];
             }
@@ -192,7 +193,7 @@
     PromoteUserBaseModel *model = self.dataArray[indexPath.row];
     if(self.isHos) {
         if([model.status integerValue] == 20) {
-            
+            [[UIViewController currentViewController] pushVC:@"CustomRecipeViewController"  animated:YES];
         }else {
             [[UIViewController currentViewController] pushVC:@"DoctorDetailVC" param:@{@"userId":model.hospitalId} animated:YES];
         }

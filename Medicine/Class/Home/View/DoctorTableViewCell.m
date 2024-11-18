@@ -126,7 +126,7 @@ UITableViewDataSource>
     self.nameLab.text = model.managerName;
     self.ksLLab.text = model.managerDeptName;
     self.levelLab.text = model.managerTitleName.length>0? model.managerTitleName: @"暂无";
-    if([model.status integerValue] == 10) {
+    if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES) || ([model.status integerValue] == 11 && [model.review2able boolValue] == YES)) {
         self.arrowRightWidth1.constant = 20;
         self.arrowRightWidth2.constant = 20;
         self.arrowRightWidth3.constant = 20;
@@ -175,7 +175,7 @@ UITableViewDataSource>
         [self.chooseAreaBtn setTitle:[NSString stringWithFormat:@"%@,%@,%@", model.province, model.city, model.area] forState:UIControlStateNormal];
     }else {
         [self.chooseAreaBtn setTitleColor:COLOR_DFDFDF forState:UIControlStateNormal];
-        if([model.status integerValue] == 10) {
+        if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES) || ([model.status integerValue] == 11 && [model.review2able boolValue] == YES)) {
             [self.chooseAreaBtn setTitle:@"请选择所属地区" forState:UIControlStateNormal];
         }else {
             [self.chooseAreaBtn setTitle:@"" forState:UIControlStateNormal];
@@ -187,7 +187,7 @@ UITableViewDataSource>
         [self.chooseCardBtn setTitle:model.certTypeName forState:UIControlStateNormal];
     }else {
         [self.chooseCardBtn setTitleColor:COLOR_DFDFDF forState:UIControlStateNormal];
-        if([model.status integerValue] == 10) {
+        if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES) || ([model.status integerValue] == 11 && [model.review2able boolValue] == YES)) {
             [self.chooseCardBtn setTitle:@"请选择证件类型" forState:UIControlStateNormal];
         }else {
             [self.chooseCardBtn setTitle:@"" forState:UIControlStateNormal];
@@ -200,7 +200,7 @@ UITableViewDataSource>
         [self.chooseMedBtn setTitle:model.pharmacyModel.simpleName forState:UIControlStateNormal];
     }else {
         [self.chooseMedBtn setTitleColor:COLOR_DFDFDF forState:UIControlStateNormal];
-        if([model.status integerValue] == 10) {
+        if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES) || ([model.status integerValue] == 11 && [model.review2able boolValue] == YES)) {
             [self.chooseMedBtn setTitle:@"请选择所属药房" forState:UIControlStateNormal];
         }else {
             [self.chooseMedBtn setTitle:@"" forState:UIControlStateNormal];
@@ -208,8 +208,6 @@ UITableViewDataSource>
     }
     
     self.yearLab.text = [NSString stringWithFormat:@"%@年",model.managerDoctorYears];
-    
-    
     [self.managerSignImgView sd_setImageWithURL:[NSURL URLWithString:model.managerSignUrl]];
     [self.hospitalImgView sd_setImageWithURL:[NSURL URLWithString:model.hospitalLicenseFileModel.url]];
     [self.businessImgView sd_setImageWithURL:[NSURL URLWithString:model.businessLicenseFileModel.url]];

@@ -207,6 +207,10 @@
         [ZZProgress showErrorWithStatus:@"请选择医助等级"];
         return;
     }
+    if((self.model.manageAreaNames.length == 0 || self.model.addressDetail.length == 0) && [reviewStatus integerValue] == 1) {
+        [ZZProgress showErrorWithStatus:@"请选择所属地区"];
+        return;
+    }
     if([reviewStatus integerValue] == 2 &&  self.refuseStr.length == 0) {
         [ZZProgress showErrorWithStatus:@"请填写拒绝原因"];
         return;
@@ -215,15 +219,15 @@
     [dic setValue:reviewStatus forKey:@"reviewStatus"];
     [dic setValue:self.refuseStr forKey:@"reviewRemark"];
     [dic setValue:self.model.agentLevel forKey:@"agentLevel"];
+    [dic setValue:self.model.manageAreaNames forKey:@"manageAreaNames"];
+    [dic setValue:self.model.addressDetail forKey:@"addressDetail"];
     [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
     NSString *url = [NSString stringWithFormat:@"%@/%@",AgentReviewURL, self.model.user_id];
     [[RequestManager shareInstance]requestWithMethod:BodyPOST url:url dict:dic hasHeader:YES finished:^(id request) {
-        
-        [self requestDetail];
-//        if(self.backBlockWithParam) {
-//            self.backBlockWithParam(@{});
-//        }
-//        [self.navigationController popViewControllerAnimated:YES];
+        if(self.backBlockWithParam) {
+            self.backBlockWithParam(@{});
+        }
+        [self.navigationController popViewControllerAnimated:YES];
     } failed:^(NSError *error) {
         
     }];

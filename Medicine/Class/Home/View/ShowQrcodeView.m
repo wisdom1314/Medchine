@@ -56,13 +56,13 @@
     if(self.isSubTG) {
         [self.changeBtn setTitle:@"切换邀请码" forState:UIControlStateNormal];
         self.userNameLab.text = [NSString stringWithFormat:@"%@推广码",[MedicineManager sharedInfo].customModel.nickName];
-        self.qrcodeImgView.image = [SGCreateCode createQRCodeWithData:[MedicineManager sharedInfo].customModel.promoteUrl size:200];
+        self.qrcodeImgView.image = [SGCreateCode createQRCodeWithData:[MedicineManager sharedInfo].customModel.inviteUrl size:200];
         self.infoLab.text = @"医疗机构注册扫码";
         
     }else {
         [self.changeBtn setTitle:@"切换推广码" forState:UIControlStateNormal];
         self.userNameLab.text = [NSString stringWithFormat:@"%@邀请码",[MedicineManager sharedInfo].customModel.nickName];
-        self.qrcodeImgView.image = [SGCreateCode createQRCodeWithData:[MedicineManager sharedInfo].customModel.inviteUrl size:200];
+        self.qrcodeImgView.image = [SGCreateCode createQRCodeWithData:[MedicineManager sharedInfo].customModel.promoteUrl size:200];
         self.infoLab.text = @"医助注册扫码";
     }
 }

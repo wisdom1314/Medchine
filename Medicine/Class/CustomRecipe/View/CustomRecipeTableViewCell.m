@@ -73,6 +73,15 @@
   
     self.doctorNameLab.text = [NSString stringWithFormat:@"医生：%@", model.doctor];
   
+    if([model.payment_status isEqualToString:@"WAIT"]) {
+        [self.payStatusBtn setTitle:@"待缴费" forState:UIControlStateNormal];
+    }else if([model.payment_status isEqualToString:@"PAYED"]) {
+        [self.payStatusBtn setTitle:@"已缴费" forState:UIControlStateNormal];
+    }else if([model.payment_status isEqualToString:@"REFUND"]) {
+        [self.payStatusBtn setTitle:@"已退单" forState:UIControlStateNormal];
+    }else if([model.payment_status isEqualToString:@"CANCEL"]) {
+        [self.payStatusBtn setTitle:@"已取消" forState:UIControlStateNormal];
+    }
     
 }
 

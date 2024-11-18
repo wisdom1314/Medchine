@@ -38,6 +38,12 @@
 
 + (CGFloat)getCellHeightWith:(PromoteUserBaseModel *)model {
     if([model.status integerValue] ==30 || [model.status integerValue] == 90 || [model.status integerValue] == 11) {
+        if([model.status integerValue] == 11 && [model.review2able boolValue] == YES) {
+            return 195;
+        }
+        return 170;
+    }
+    if(model.isHos && [model.status integerValue] ==10 && [model.reviewable boolValue] == NO) {
         return 170;
     }
     return 195;
@@ -59,21 +65,33 @@
     }
    
     self.phoneLab.text = model.phonenumber;
-    self.contactParentLab.text= [NSString stringWithFormat:@"关联上级：%@", model.promoteUser.nickName];
+    self.contactParentLab.text = [NSString stringWithFormat:@"关联上级：%@",
+        ([model.promoteUser respondsToSelector:@selector(nickName)] ?
+        model.promoteUser.nickName : @"")];
    
     
     if([model.status integerValue] ==10) {
-        
         self.statusLab.text = model.isHos?@"待初审": @"待审核";
         self.statusLab.textColor = [UIColor colorWithHexString:@"#FF784D"];
         self.rightBtn.hidden = NO;
         if(model.isHos) {
-            [self.rightBtn setTitle:@"审核" forState:UIControlStateNormal];
+            if([model.reviewable boolValue] == YES) {
+                self.rightBtn.hidden = NO;
+                [self.rightBtn setTitle:@"审核" forState:UIControlStateNormal];
+            }else {
+                self.rightBtn.hidden = YES;
+            }
         }
     }else if([model.status integerValue] ==11) {
         self.statusLab.text = @"待复核";
         self.statusLab.textColor = [UIColor colorWithHexString:@"#FF784D"];
-        self.rightBtn.hidden = YES;
+        if([model.review2able boolValue] == YES) {
+            self.rightBtn.hidden = NO;
+            [self.rightBtn setTitle:@"审核" forState:UIControlStateNormal];
+        }else {
+            self.rightBtn.hidden = YES;
+        }
+       
     } else if([model.status integerValue] ==20) {
         self.statusLab.text = @"已通过";
         self.statusLab.textColor = COLOR_B72E26;
@@ -105,21 +123,29 @@
             self.roleWidth.constant = 28;
         }
     }
-    if(model.promoteUser.agentLevel.length == 0) {
+    
+    if (![model.promoteUser isKindOfClass:[PromoteUserModel class]]) {
         self.proleLab.hidden = YES;
+        
     }else {
-        self.proleLab.hidden = NO;
-        if([model.promoteUser.agentLevel integerValue] == 1) {
-            self.proleLab.text = @"服务商";
-            self.proleWidth.constant = 38;
-        }else if([model.promoteUser.agentLevel integerValue] == 2) {
-            self.proleLab.text = @"地级";
-            self.proleWidth.constant = 28;
-        }else if([model.promoteUser.agentLevel integerValue] == 3) {
-            self.proleLab.text = @"县级";
-            self.proleWidth.constant = 28;
+        if(model.promoteUser.agentLevel.length == 0) {
+            self.proleLab.hidden = YES;
+        }else {
+            self.proleLab.hidden = NO;
+            if([model.promoteUser.agentLevel integerValue] == 1) {
+                self.proleLab.text = @"服务商";
+                self.proleWidth.constant = 38;
+            }else if([model.promoteUser.agentLevel integerValue] == 2) {
+                self.proleLab.text = @"地级";
+                self.proleWidth.constant = 28;
+            }else if([model.promoteUser.agentLevel integerValue] == 3) {
+                self.proleLab.text = @"县级";
+                self.proleWidth.constant = 28;
+            }
         }
     }
+
+    
     
     
 }

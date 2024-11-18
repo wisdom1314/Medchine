@@ -125,11 +125,11 @@
     if(indexPath.section == 0) {
         WelcomeTableViewCell *cell = [WelcomeTableViewCell getTableView:tableView indexPathWith:indexPath];
         if(self.isTG) {
-            UIImage *qrcodeImage = [SGCreateCode createQRCodeWithData:[MedicineManager sharedInfo].customModel.promoteUrl size:40 color:MainColor backgroundColor:COLOR_FFFFFF];
+            UIImage *qrcodeImage = [SGCreateCode createQRCodeWithData:[MedicineManager sharedInfo].customModel.inviteUrl size:40 color:MainColor backgroundColor:COLOR_FFFFFF];
             [cell.recommandBtn setImage:qrcodeImage forState:UIControlStateNormal];
             [cell.changeBtn setTitle:@"推广码" forState:UIControlStateNormal];
         }else {
-            UIImage *qrcodeImage = [SGCreateCode createQRCodeWithData:[MedicineManager sharedInfo].customModel.inviteUrl size:40 color:MainColor backgroundColor:COLOR_FFFFFF];
+            UIImage *qrcodeImage = [SGCreateCode createQRCodeWithData:[MedicineManager sharedInfo].customModel.promoteUrl size:40 color:MainColor backgroundColor:COLOR_FFFFFF];
             [cell.recommandBtn setImage:qrcodeImage forState:UIControlStateNormal];
             [cell.changeBtn setTitle:@"邀请码" forState:UIControlStateNormal];
         }
