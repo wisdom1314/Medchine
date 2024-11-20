@@ -279,9 +279,16 @@
         [alertVC dismissViewControllerAnimated:YES];
     }];
     [[refuseView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
-        [alertVC dismissViewControllerAnimated:YES];
+       
         @strongify(self);
-        [self summitDataWith: @"2"];
+        if(self.refuseStr.length == 0 ) {
+            [ZZProgress showErrorWithStatus:@"请填写拒绝原因"];
+            return;
+        }else {
+            [alertVC dismissViewControllerAnimated:YES];
+            [self summitDataWith: @"2"];
+        }
+       
         
     }];
     

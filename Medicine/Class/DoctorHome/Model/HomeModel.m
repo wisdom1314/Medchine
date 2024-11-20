@@ -308,3 +308,8 @@
 @implementation RecipeDailyItemModel
 
 @end
+
+
+@implementation SecrectRecipeModel
+
+@end

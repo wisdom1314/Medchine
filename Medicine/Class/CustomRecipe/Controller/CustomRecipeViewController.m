@@ -123,7 +123,11 @@
     [dic setValue:self.doctorName forKey:@"doctorName"];
     [dic setValue:@(self.currentPage) forKey:@"pageNum"];
     [dic setValue:@"10" forKey:@"pageSize"];
-    [dic setValue:@"" forKey:@"hospitalId"];
+    if([[self.param allKeys]containsObject:@"userId"]) {
+        [dic setValue:self.param[@"userId"] forKey:@"hospitalId"];
+    }else {
+        [dic setValue:@"" forKey:@"hospitalId"];
+    }
     [dic setValue:self.recipe_status forKey:@"recipeStatus"];
     [dic setValue:self.keyWord forKey:@"symptoms"];
     [dic setValue:self.date1 forKey:@"date1"];

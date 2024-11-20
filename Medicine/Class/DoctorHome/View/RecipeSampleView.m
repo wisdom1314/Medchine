@@ -73,7 +73,11 @@ UICollectionViewDelegateFlowLayout
     DrugCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DrugCollectionViewCellId" forIndexPath:indexPath];
     DrugItemModel *model = self.drugArr[indexPath.item];
     cell.nameLab.text = model.granule_name;
-    cell.hosLab.text = [NSString stringWithFormat:@"%@g",model.herb_dose];
+    if([model.isSecret integerValue] == 0) {
+        cell.hosLab.text = [NSString stringWithFormat:@"%@g",model.herb_dose];
+    }else {
+        cell.hosLab.text = @"";
+    }
     return cell;
 }
 
@@ -82,16 +86,22 @@ UICollectionViewDelegateFlowLayout
     self.recipesampleNameLab.text = model.recipesampleSymptoms;
     self.dateLab.text = model.addtime;
     self.nameLab.text = model.recipesampleName;
-    [self requestDetail];
+    [self requestDetailWith:model.isSecret idWith: model.recipesampleId nameWith:model.recipesampleName];
 }
 
-- (void)requestDetail {
+- (void)requestDetailWith: (NSString *)isSecret idWith:(NSString *)recipesampleId nameWith:(NSString *)recipesample {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:self.model.recipesampleId forKey:@"recipesample_id"];
     [dic setValue:[MedicineManager sharedInfo].doctorModel.doctor_id forKey:@"doctor_id"];
     [[RequestManager shareInstance]requestWithMethod:POST  url:GetRecipeSampleURL dict:dic hasHeader:YES finished:^(id request) {
+        [self.drugArr removeAllObjects];
         DrugListModel *model = [DrugListModel mj_objectWithKeyValues:request];
-        self.drugArr = [model.list mutableCopy];
+        for (DrugItemModel *subModel in model.list) {
+            subModel.isSecret = isSecret;
+            subModel.recipe_sample_id = recipesampleId;
+            subModel.recipe_sample  = recipesample;
+            [self.drugArr addObject:subModel];
+        }
         self.height = 220 + 40* ceil(self.drugArr.count/3.0);
         self.collectionViewHeight.constant = self.drugArr.count==0?0: 40* ceil(self.drugArr.count/3.0) + 20;
         self.numLab.text = [NSString stringWithFormat:@"共%ld味药材",self.drugArr.count];

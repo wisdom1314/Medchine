@@ -154,7 +154,7 @@
         CategoryTemplateItemModel *subModel = self.dataArray[indexPath.section];
         if(subModel.recipeList.count>0) {
             RightTableViewCell *cell = [RightTableViewCell getTableView:tableView indexPathWith:indexPath];
-            RecipesampleSymptomsModel  *symModel = subModel.recipeList[indexPath.row];
+            RecipesampleSymptomsModel *symModel = subModel.recipeList[indexPath.row];
             cell.model = symModel;
             @weakify(self)
             [[[cell.openBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
@@ -163,7 +163,6 @@
                 symModel.parentName = subModel.categoryName;
                 sheetView.model = symModel;
                 [sheetView.subject subscribeNext:^(id  _Nullable x) {
-                
                     if([x isKindOfClass:[NSString class]]) {
                         self.alertVC = [TYAlertController alertControllerWithAlertView:sheetView preferredStyle:TYAlertControllerStyleActionSheet];
                         self.alertVC.backgoundTapDismissEnable = YES;

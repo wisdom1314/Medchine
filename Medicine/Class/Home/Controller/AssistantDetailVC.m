@@ -42,16 +42,20 @@
     [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
     [[RequestManager shareInstance]requestWithMethod:GET url:[NSString stringWithFormat:@"%@/%@",PromoteAgentDetail, self.param[@"userId"]] dict:dic hasHeader:YES finished:^(id request) {
         self.model = [PromoteUserModel mj_objectWithKeyValues:request[@"data"]];
-        if([self.model.status integerValue] == 10) {
+        
+        self.model.idcardImageModel1 = [idCardImgModel mj_objectWithKeyValues:self.model.idcardImage1];
+        self.model.idcardImageModel2 = [idCardImgModel mj_objectWithKeyValues:self.model.idcardImage2];
+        self.model.nickName = self.param[@"nickName"];
+        self.model.parentAgentLevel = self.param[@"parentAgentLevel"];
+        self.model.reviewable = self.param[@"reviewable"];
+        if([self.model.status integerValue] == 10 && [self.model.reviewable boolValue] == YES) {
             self.bottomHeight.constant = 65;
             self.bottomView.hidden = NO;
         }else {
             self.bottomHeight.constant = 0;
             self.bottomView.hidden = YES;
         }
-        self.model.idcardImageModel1 = [idCardImgModel mj_objectWithKeyValues:self.model.idcardImage1];
-        self.model.idcardImageModel2 = [idCardImgModel mj_objectWithKeyValues:self.model.idcardImage2];
-        self.model.nickName = self.param[@"nickName"];
+        NSLog(@"sdsdsd %@", self.model.agentLevel);
         [self.tableView reloadData];
     } failed:^(NSError *error) {
         
@@ -106,7 +110,7 @@
     }];
     
     
-    if([self.model.status integerValue] == 10) {
+    if([self.model.status integerValue] == 10 && [self.model.reviewable boolValue] == YES) {
         [[[cell.chosseAreaBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
             @strongify(self);
             TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:self.areaView preferredStyle:TYAlertControllerStyleActionSheet];
@@ -139,6 +143,23 @@
                 [alertVC dismissViewControllerAnimated:YES];
             }];
             [[UIViewController currentViewController] presentViewController:alertVC animated:YES completion:nil];
+        }];
+        
+        
+        [[[cell.addressTextView rac_textSignal]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(NSString * _Nullable x) {
+            @strongify(self);
+            if(![x isEqualToString:@"请输入详细地址"]) {
+                self.model.addressDetail = x;
+            }
+        }];
+        
+        [[cell rac_signalForSelector:@selector(textViewDidEndEditing:) fromProtocol:@protocol(UITextViewDelegate)]subscribeNext:^(RACTuple * _Nullable x) {
+            RACTupleUnpack(UITextView *textView) = x;
+            if(![textView.text isEqualToString:@"请输入详细地址"]) {
+                self.model.addressDetail = textView.text;
+                [self.tableView reloadData];
+            }
+            
         }];
     }
     
@@ -193,10 +214,16 @@
         [alertVC dismissViewControllerAnimated:YES];
     }];
     [[refuseView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
-        [alertVC dismissViewControllerAnimated:YES];
-        @strongify(self);
-        [self summitDataWith: @"2"];
         
+        @strongify(self);
+       if (self.refuseStr.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请填写拒绝原因"];
+            return;
+       }else {
+           [alertVC dismissViewControllerAnimated:YES];
+           [self summitDataWith: @"2"];
+       }
+    
     }];
     
     [self presentViewController:alertVC animated:YES completion:nil];

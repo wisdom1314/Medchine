@@ -91,4 +91,6 @@ NSString *const HospitalReviewURL = @"/app/v3.0/hospitals/review1";
 NSString *const HospitalNextReviewURL = @"/app/v3.0/hospitals/review2";
 
 NSString *const HospitalEditURL = @"/app/v3.0/hospitals/edit";
+
+NSString *const QueryPriceBySampleURL = @"/app/recipesample/queryPriceBySample";
 @end

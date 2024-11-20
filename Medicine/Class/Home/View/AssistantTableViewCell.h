@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PromoteUserModel *model;
 @property (weak, nonatomic) IBOutlet UIButton *idcardImgBtn1;
 @property (weak, nonatomic) IBOutlet UIButton *idcardImgBtn2;
+@property (weak, nonatomic) IBOutlet UITextView *addressTextView;
 
 @end
 

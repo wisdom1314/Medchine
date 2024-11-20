@@ -168,7 +168,13 @@ UITableViewDataSource>
             self.top.constant = 34;
         }
     }
+    if((([model.status integerValue] == 10 && [model.reviewable boolValue] == NO) || ([model.status integerValue] == 11 && [model.review2able boolValue] == NO)) && model.certNo.length == 0) {
+        self.cardTextF.placeholder = @"";
+    }else {
+        self.cardTextF.placeholder = @"请输入证件号";
+    }
     self.cardTextF.text = model.certNo;
+   
     self.hosNameTextF.text = model.hospitalname;
     if(model.area.length >0) {
         [self.chooseAreaBtn setTitleColor:COLOR_562306 forState:UIControlStateNormal];

@@ -43,7 +43,7 @@
         }
         return 170;
     }
-    if(model.isHos && [model.status integerValue] ==10 && [model.reviewable boolValue] == NO) {
+    if([model.status integerValue] ==10 && [model.reviewable boolValue] == NO) {
         return 170;
     }
     return 195;
@@ -74,13 +74,10 @@
         self.statusLab.text = model.isHos?@"待初审": @"待审核";
         self.statusLab.textColor = [UIColor colorWithHexString:@"#FF784D"];
         self.rightBtn.hidden = NO;
-        if(model.isHos) {
-            if([model.reviewable boolValue] == YES) {
-                self.rightBtn.hidden = NO;
-                [self.rightBtn setTitle:@"审核" forState:UIControlStateNormal];
-            }else {
-                self.rightBtn.hidden = YES;
-            }
+        if([model.reviewable boolValue] == YES) {
+            [self.rightBtn setTitle:@"审核" forState:UIControlStateNormal];
+        }else {
+            self.rightBtn.hidden = YES;
         }
     }else if([model.status integerValue] ==11) {
         self.statusLab.text = @"待复核";

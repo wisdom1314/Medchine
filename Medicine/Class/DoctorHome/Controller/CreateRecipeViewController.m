@@ -210,8 +210,8 @@
     self.model.fileIds = [imgArr componentsJoinedByString:@","];
     
     /// 再说
-    self.model.recipe_sample_id = @"";
-    self.model.recipe_sample = @"";
+//    self.model.recipe_sample_id = @"";
+//    self.model.recipe_sample = @"";
     self.model.recipdetailListJSON =@"";
     
     [dic setValue:[MedicineManager sharedInfo].doctorModel.doctorname forKey:@"doctor"];
@@ -446,10 +446,18 @@
         [[[headerView.trueBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:headerView.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
             self.model.need_factor = @"1";
             [self.tableView reloadData];
+            
+            if([self.model.is_secret integerValue] == 1) {
+                [self requestQueryPrice];
+            }
         }];
         [[[headerView.falseBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:headerView.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
             self.model.need_factor = @"0";
             [self.tableView reloadData];
+            
+            if([self.model.is_secret integerValue] == 1) {
+                [self requestQueryPrice];
+            }
         }];
         [[[headerView.historyBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:headerView.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
             @strongify(self);
@@ -467,6 +475,11 @@
                 NSMutableArray *outArr = [NSMutableArray array];
                 for (DrugItemModel *itemModel in drugArr) {
                     if([itemModel.drug_status integerValue] == 1) {
+                        /// 模板
+                        self.model.is_secret = itemModel.isSecret;
+                        self.model.recipe_sample_id = itemModel.recipe_sample_id;
+                        self.model.recipe_sample = itemModel.recipe_sample;
+                        ///
                         itemModel.useful_value = itemModel.equivalent;
                         itemModel.drugname = itemModel.granule_name;
                         itemModel.origin_herb_factor = itemModel.herb_factor;
@@ -490,6 +503,9 @@
                     [alertView addAction:[TYAlertAction actionWithTitle:@"确定" style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
                     }]];
                     [alertView showInWindow];
+                }
+                if([self.model.is_secret integerValue] == 1) {
+                    [self requestQueryPrice];
                 }
             } animated:YES];
         }];
@@ -663,6 +679,10 @@
             self.model.drugArr = self.drugArr;
             self.model.excipentArr = self.excipentArr;
             [self.tableView reloadData];
+            
+            if([self.model.is_secret integerValue] == 1) {
+                [self requestQueryPrice];
+            }
         }];
         [[[cell.doctorOrderBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
             @strongify(self);
@@ -712,6 +732,10 @@
                 NSInteger current = [self.model.recipe_no integerValue] + 1;
                 self.model.recipe_no = [NSString stringWithFormat:@"%ld", current];
                 [self.tableView reloadData];
+                if([self.model.is_secret integerValue] == 1) {
+                    [self requestQueryPrice];
+                }
+
             }
             
         }];
@@ -742,6 +766,10 @@
             @strongify(self);
             self.model.isCustom = NO;
             [self.tableView reloadData];
+            
+            if([self.model.is_secret integerValue] == 1) {
+                [self requestQueryPrice];
+            }
         }];
         
         
@@ -764,6 +792,11 @@
                     [self.tableView reloadData];
                 }else {
                     [ZZProgress showErrorWithStatus:@"最小为1"];
+                }
+                
+                
+                if([self.model.is_secret integerValue] == 1) {
+                    [self requestQueryPrice];
                 }
                 
             }
@@ -955,6 +988,24 @@
        
     }
    
+}
+
+- (void)requestQueryPrice {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.model.recipe_sample_id forKey:@"recipesampleId"];
+    [dic setValue:self.model.recipe_no forKey:@"recipeNo"];
+    [dic setValue:self.model.need_factor forKey:@"needFactor"];
+    [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+    [[RequestManager shareInstance]requestWithMethod:GET url:QueryPriceBySampleURL dict:dic hasHeader:YES finished:^(id request) {
+        SecrectRecipeModel *recipeModel = [SecrectRecipeModel mj_objectWithKeyValues:request[@"data"]];
+        self.model.recipeGranuleDose = recipeModel.recipeGranuleDose;
+        self.model.totalSellPrice = recipeModel.totalSellPrice;
+        self.model.totalSupplePrice = recipeModel.totalSupplePrice;
+        NSLog(@"sdsdsd %@", [self.model mj_keyValues]);
+        [self.tableView reloadData];
+    } failed:^(NSError *error) {
+        
+    }];
 }
 
 - (UIAreaPickView *)areaView {

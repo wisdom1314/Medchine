@@ -106,6 +106,9 @@
     }];
     
 }
+- (IBAction)closeClick:(id)sender {
+    [self tapClick];
+}
 
 - (void)show {
     self.hidden = NO;

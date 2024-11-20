@@ -234,14 +234,25 @@
                         <constraint firstAttribute="trailing" secondItem="RA1-OS-Ovs" secondAttribute="trailing" id="qu1-eL-eyD"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84c-uc-q9n">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="852"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <connections>
+                        <action selector="closeClick:" destination="oEU-8b-O4u" eventType="touchUpInside" id="EpL-qc-MfV"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Kqe-oy-Uio"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="62S-ds-o3H" firstAttribute="top" secondItem="Kqe-oy-Uio" secondAttribute="top" id="0rp-yN-NFT"/>
                 <constraint firstItem="62S-ds-o3H" firstAttribute="leading" secondItem="Kqe-oy-Uio" secondAttribute="leading" constant="80" id="5Nq-j4-AGZ"/>
+                <constraint firstItem="84c-uc-q9n" firstAttribute="top" secondItem="oEU-8b-O4u" secondAttribute="top" id="KGR-iy-pkn"/>
+                <constraint firstItem="84c-uc-q9n" firstAttribute="leading" secondItem="Kqe-oy-Uio" secondAttribute="leading" id="ZfD-M6-Mhw"/>
                 <constraint firstItem="Kqe-oy-Uio" firstAttribute="bottom" secondItem="62S-ds-o3H" secondAttribute="bottom" id="g8P-hc-CnL"/>
                 <constraint firstItem="Kqe-oy-Uio" firstAttribute="trailing" secondItem="62S-ds-o3H" secondAttribute="trailing" id="kKr-Rm-SWR"/>
+                <constraint firstAttribute="bottom" secondItem="84c-uc-q9n" secondAttribute="bottom" id="nRb-wh-UPY"/>
+                <constraint firstItem="62S-ds-o3H" firstAttribute="leading" secondItem="84c-uc-q9n" secondAttribute="trailing" id="r03-na-rdj"/>
             </constraints>
             <connections>
                 <outlet property="doctorNameTextF" destination="xvj-rw-J8Y" id="qep-1b-6Fe"/>

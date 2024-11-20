@@ -156,7 +156,7 @@
         if(self.isHos) {
             if([model.status integerValue] == 20) {
                  /// 处方订单
-                [[UIViewController currentViewController] pushVC:@"CustomRecipeViewController"  animated:YES];
+                [[UIViewController currentViewController] pushVC:@"CustomRecipeViewController" param:@{@"userId":model.hospitalId} animated:YES];
             }else {
                 [[UIViewController currentViewController] pushVC:@"DoctorDetailVC" param:@{@"userId":model.hospitalId} animated:YES];
             }
@@ -165,7 +165,7 @@
                 [[UIViewController currentViewController] pushVC:@"AssistantPassedVC" param:@{@"userId":model.user_id} animated:YES];
             }else {
         
-                [[UIViewController currentViewController] pushVC:@"AssistantDetailVC" param:@{@"userId":model.user_id, @"nickName": model.promoteUser.nickName} backBlock:^(NSDictionary * _Nonnull dic) {
+                [[UIViewController currentViewController] pushVC:@"AssistantDetailVC" param:@{@"userId":model.user_id, @"nickName": model.promoteUser.nickName, @"parentAgentLevel": model.promoteUser.agentLevel, @"reviewable": model.reviewable} backBlock:^(NSDictionary * _Nonnull dic) {
                     [self refresh];
                 } animated:YES];
             }
@@ -193,7 +193,7 @@
     PromoteUserBaseModel *model = self.dataArray[indexPath.row];
     if(self.isHos) {
         if([model.status integerValue] == 20) {
-            [[UIViewController currentViewController] pushVC:@"CustomRecipeViewController"  animated:YES];
+            [[UIViewController currentViewController] pushVC:@"CustomRecipeViewController"  param:@{@"userId":model.hospitalId} animated:YES];
         }else {
             [[UIViewController currentViewController] pushVC:@"DoctorDetailVC" param:@{@"userId":model.hospitalId} animated:YES];
         }
@@ -201,7 +201,7 @@
         if([model.status integerValue] == 20) {
             [[UIViewController currentViewController] pushVC:@"AssistantPassedVC" param:@{@"userId":model.user_id} animated:YES];
         }else {
-            [[UIViewController currentViewController] pushVC:@"AssistantDetailVC" param:@{@"userId":model.user_id, @"nickName": model.promoteUser.nickName} backBlock:^(NSDictionary * _Nonnull dic) {
+            [[UIViewController currentViewController] pushVC:@"AssistantDetailVC" param:@{@"userId":model.user_id, @"nickName": model.promoteUser.nickName, @"parentAgentLevel": model.promoteUser.agentLevel, @"reviewable": model.reviewable} backBlock:^(NSDictionary * _Nonnull dic) {
                 [self refresh];
             } animated:YES];
         }

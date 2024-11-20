@@ -58,9 +58,12 @@
             model.sell_price = [formatter stringFromNumber:@(totalPrice)]; ///单副
             totalPrice = totalPrice*[model.recipe_no  integerValue];
             self.valueLab.text = [formatter stringFromNumber:@(totalPrice)];
-
-            model.sell_price_total = self.valueLab.text;
             
+            if([model.is_secret integerValue] == 1) { /// 加密药方
+                self.valueLab.text = model.totalSellPrice;
+            }
+            
+            model.sell_price_total = self.valueLab.text;
             
             
             /// 计算供货价格
@@ -184,6 +187,9 @@
             model.total_granule_dose = [formatter stringFromNumber:@(totalKeliNum)];
             self.valueLab.text = [formatter stringFromNumber:@(totalKeliNum*[model.recipe_no integerValue])];
             
+            if([model.is_secret integerValue] == 1) { /// 加密药方
+                self.valueLab.text = model.recipeGranuleDose;
+            }
             model.totalKeli = self.valueLab.text;
             
         }else if(indexPath.row == 2) {
@@ -206,6 +212,9 @@
             totalPrice = totalPrice*[model.recipe_no  integerValue];
             self.valueLab.text = [formatter stringFromNumber:@(totalPrice)];
             
+            if([model.is_secret integerValue] == 1) { /// 加密药方
+                self.valueLab.text = model.totalSellPrice;
+            }
             model.sell_price_total = self.valueLab.text;
             
             

@@ -89,6 +89,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL isMy;
 @property (nonatomic, copy) NSString *is_secret;
+@property (nonatomic, copy) NSString *recipeGranuleDose;
+@property (nonatomic, copy) NSString *totalSellPrice;
+@property (nonatomic, copy) NSString *totalSupplePrice;
 
 @end
 
@@ -212,6 +215,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isEx;
 
 @property (nonatomic, copy) NSString *need_factor;
+
+@property (nonatomic, copy) NSString *isSecret;
+@property (nonatomic, copy) NSString *recipe_sample_id;
+@property (nonatomic, copy) NSString *recipe_sample;
 
 @end
 
@@ -355,7 +362,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *sort;
 @property (nonatomic, copy) NSString *isSecret;
 @property (nonatomic, copy) NSString *addtime;
-
 @property (nonatomic, copy) NSString *parentName;
 @end
 
@@ -438,6 +444,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PromoteUserModel : BaseModel
 @property (nonatomic, copy) NSString *userId;
 @property (nonatomic, copy) NSString *nickName;
+@property (nonatomic, copy) NSString *parentAgentLevel;
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, copy) NSString *userType;
 @property (nonatomic, copy) NSString *phonenumber;
@@ -531,5 +538,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RecipeDailyItemModel : BaseModel
 @property (nonatomic, copy) NSString *date;
 @property (nonatomic, copy) NSString *amount;
+@end
+
+
+@interface SecrectRecipeModel : BaseModel
+@property (nonatomic, copy) NSString *recipeGranuleDose;
+@property (nonatomic, copy) NSString *totalSellPrice;
+@property (nonatomic, copy) NSString *totalSupplePrice;
 @end
 NS_ASSUME_NONNULL_END

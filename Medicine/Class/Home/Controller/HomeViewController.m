@@ -154,7 +154,7 @@
         StatisticsTableViewCell *cell = [StatisticsTableViewCell getTableView:tableView indexPathWith:indexPath];
         cell.tgNumLab.text = self.agentCount;
         cell.inviateLab.text = self.inviteCount;
-        cell.priceLab.text = self.recipeAmount;
+        cell.priceLab.text = [ClassMethod stringWithDecimalNumber:[self.recipeAmount doubleValue]];
         
         @weakify(self);
         [[[cell.seeDetailBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
