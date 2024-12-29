@@ -387,6 +387,10 @@
         self.model.cost = model.recipeModel.excipient_cost;
         self.model.isCustom = NO;
         [self.tableView reloadData];
+        
+        if([self.model.is_secret integerValue] == 1) {
+            [self requestQueryPrice];
+        }
     } failed:^(NSError *error) {
         
     }];
@@ -450,6 +454,8 @@
             if([self.model.is_secret integerValue] == 1) {
                 [self requestQueryPrice];
             }
+            
+            [ClassMethod setString:self.model.need_factor key:@"need_factor"];
         }];
         [[[headerView.falseBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:headerView.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
             self.model.need_factor = @"0";
@@ -458,6 +464,8 @@
             if([self.model.is_secret integerValue] == 1) {
                 [self requestQueryPrice];
             }
+            
+            [ClassMethod setString:self.model.need_factor key:@"need_factor"];
         }];
         [[[headerView.historyBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:headerView.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
             @strongify(self);
@@ -1023,7 +1031,12 @@
         _model.recipe_type = @"0";
         _model.times_day = @"1";
         _model.recipe_no = @"1";
-        _model.need_factor = @"1";
+        if([ClassMethod getStringBy:@"need_factor"]) {
+            _model.need_factor = [ClassMethod getStringBy:@"need_factor"];
+        }else {
+            _model.need_factor = @"1";
+        }
+        
     }
     return _model;
 }

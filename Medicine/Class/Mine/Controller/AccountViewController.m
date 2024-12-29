@@ -91,7 +91,22 @@
         [self refresh];
         [self requestAccountInfo];
     }
+    self.rechageBtn.hidden = NO;
+//    [self requestLimit];
 
+}
+
+- (void)requestLimit {
+    [[RequestManager shareInstance]requestWithMethod:GET url:RelatedPharmacyURL dict:nil hasHeader: YES finished:^(id request) {
+        SelfPickModel *model = [SelfPickModel mj_objectWithKeyValues:request[@"data"]];
+        if([model.isSelfSupport integerValue] == 1) {
+            self.rechageBtn.hidden = NO;
+        }else {
+            self.rechageBtn.hidden = YES;
+        }
+    } failed:^(NSError *error) {
+        
+    }];
 }
 
 - (void)requestAccountInfo {

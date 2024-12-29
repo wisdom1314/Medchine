@@ -17,8 +17,8 @@ NSString *const BaseURL = @"https://zhyf-test.jingpai.com";
 #else
 
 //NSString *const BaseURL = @"http://zhyf.sfrog.cn/prod-api";
-NSString *const BaseURL = @"https://zhyf-test.jingpai.com";
-//NSString *const BaseURL = @"https://zhyf.jingpai.com";
+//NSString *const BaseURL = @"https://zhyf-test.jingpai.com";
+NSString *const BaseURL = @"https://zhyf.jingpai.com";
 
 #endif
 
@@ -68,7 +68,7 @@ NSString *const HelpCenterURL = @"/app/version/get_help";
 NSString *const UpdatePasswordURL = @"/app/login/update_password";
 NSString *const CancelAccountURL = @"/app/login/cancelAccount";
 
-
+NSString *const RelatedPharmacyURL= @"/app/recipe/relatedPharmacy";
 
 
 

@@ -261,6 +261,14 @@
 }
 
 - (IBAction)agreeClick:(id)sender {
+    if(self.model.agentLevel.length == 0) {
+        [ZZProgress showErrorWithStatus:@"请选择医助等级"];
+        return;
+    }
+    if((self.model.manageAreaNames.length == 0 || self.model.addressDetail.length == 0)) {
+        [ZZProgress showErrorWithStatus:@"请选择所属地区"];
+        return;
+    }
     AgreeView *agreeView =  [AgreeView createViewFromNib];
     TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:agreeView preferredStyle:TYAlertControllerStyleAlert];
     alertVC.backgoundTapDismissEnable = YES;

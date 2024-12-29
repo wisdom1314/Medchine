@@ -55,33 +55,46 @@ UITableViewDataSource>
     
     NSInteger selectTag = 0;
     NSString *identifier = @"DoctorTableViewCellFristId";
-    if([model.status integerValue] != 10) {
-        if(indexPath.row == 0) {
-            selectTag = 0;
-            identifier = @"DoctorTableViewCellFristId";
-        }else if(indexPath.row == 1) {
-            selectTag = 1;
-            identifier = @"DoctorTableViewCellSecondId";
-        }else if(indexPath.row == 2) {
-            selectTag = 2;
-            identifier = @"DoctorTableViewCellThridId";
-        }else {
-            selectTag = 3;
-            identifier = @"DoctorTableViewCellForthId";
-        }
+//    if([model.status integerValue] != 10) {
+//        if(indexPath.row == 0) {
+//            selectTag = 0;
+//            identifier = @"DoctorTableViewCellFristId";
+//        }else if(indexPath.row == 1) {
+//            selectTag = 1;
+//            identifier = @"DoctorTableViewCellSecondId";
+//        }else if(indexPath.row == 2) {
+//            selectTag = 2;
+//            identifier = @"DoctorTableViewCellThridId";
+//        }else {
+//            selectTag = 3;
+//            identifier = @"DoctorTableViewCellForthId";
+//        }
+//    }else {
+//        if(indexPath.row == 0) {
+//            selectTag = 1;
+//            identifier = @"DoctorTableViewCellSecondId";
+//        }else if(indexPath.row == 1) {
+//            selectTag = 2;
+//            identifier = @"DoctorTableViewCellThridId";
+//        }else {
+//            selectTag = 3;
+//            identifier = @"DoctorTableViewCellForthId";
+//        }
+//    }
+//    
+    if(indexPath.row == 0) {
+        selectTag = 0;
+        identifier = @"DoctorTableViewCellFristId";
+    }else if(indexPath.row == 1) {
+        selectTag = 1;
+        identifier = @"DoctorTableViewCellSecondId";
+    }else if(indexPath.row == 2) {
+        selectTag = 2;
+        identifier = @"DoctorTableViewCellThridId";
     }else {
-        if(indexPath.row == 0) {
-            selectTag = 1;
-            identifier = @"DoctorTableViewCellSecondId";
-        }else if(indexPath.row == 1) {
-            selectTag = 2;
-            identifier = @"DoctorTableViewCellThridId";
-        }else {
-            selectTag = 3;
-            identifier = @"DoctorTableViewCellForthId";
-        }
+        selectTag = 3;
+        identifier = @"DoctorTableViewCellForthId";
     }
-    
     
     DoctorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if(!cell) {
@@ -92,27 +105,39 @@ UITableViewDataSource>
 
 
 + (CGFloat)getCellHeightWith:(NSIndexPath *)indexPath modelWith:(PromoteUserModel *)model {
-    if([model.status integerValue] != 10) {
-        if(indexPath.row == 0) {
-            if([model.status integerValue] == 30) {
-                return [ClassMethod sizeText:model.reviewRemark font:[UIFont systemFontOfSize:13] limitWidth:WIDE - 113].height>16? 74 + [ClassMethod sizeText:model.reviewRemark font:[UIFont systemFontOfSize:13] limitWidth:WIDE - 113].height : 90;
-            }
-            return 90;
-        }else if (indexPath.row == 1) {
-            return 270;
-        }else if (indexPath.row == 2) {
-            return 385;
-        }else {
-            return 950 + 60*model.attachFiles.count;
+//    if([model.status integerValue] != 10) {
+//        if(indexPath.row == 0) {
+//            if([model.status integerValue] == 30) {
+//                return [ClassMethod sizeText:model.reviewRemark font:[UIFont systemFontOfSize:13] limitWidth:WIDE - 113].height>16? 74 + [ClassMethod sizeText:model.reviewRemark font:[UIFont systemFontOfSize:13] limitWidth:WIDE - 113].height : 90;
+//            }
+//            return 90;
+//        }else if (indexPath.row == 1) {
+//            return 270;
+//        }else if (indexPath.row == 2) {
+//            return 385;
+//        }else {
+//            return 950 + 60*model.attachFiles.count;
+//        }
+//    }else {
+//        if(indexPath.row == 0) {
+//            return 270;
+//        }else if (indexPath.row == 1) {
+//            return 385;
+//        }else {
+//            return 950 + 60*model.attachFiles.count;
+//        }
+//    }
+    if(indexPath.row == 0) {
+        if([model.status integerValue] == 30) {
+            return [ClassMethod sizeText:model.reviewRemark font:[UIFont systemFontOfSize:13] limitWidth:WIDE - 113].height>16? 74 + [ClassMethod sizeText:model.reviewRemark font:[UIFont systemFontOfSize:13] limitWidth:WIDE - 113].height : 90;
         }
+        return 90;
+    }else if (indexPath.row == 1) {
+        return 270;
+    }else if (indexPath.row == 2) {
+        return 385;
     }else {
-        if(indexPath.row == 0) {
-            return 270;
-        }else if (indexPath.row == 1) {
-            return 385;
-        }else {
-            return 950 + 60*model.attachFiles.count;
-        }
+        return 950 + 60*model.attachFiles.count;
     }
 }
 
@@ -126,7 +151,7 @@ UITableViewDataSource>
     self.nameLab.text = model.managerName;
     self.ksLLab.text = model.managerDeptName;
     self.levelLab.text = model.managerTitleName.length>0? model.managerTitleName: @"暂无";
-    if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES) || ([model.status integerValue] == 11 && [model.review2able boolValue] == YES)) {
+    if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES)) {
         self.arrowRightWidth1.constant = 20;
         self.arrowRightWidth2.constant = 20;
         self.arrowRightWidth3.constant = 20;
@@ -168,10 +193,11 @@ UITableViewDataSource>
             self.top.constant = 34;
         }
     }
-    if((([model.status integerValue] == 10 && [model.reviewable boolValue] == NO) || ([model.status integerValue] == 11 && [model.review2able boolValue] == NO)) && model.certNo.length == 0) {
-        self.cardTextF.placeholder = @"";
-    }else {
+    if((([model.status integerValue] == 10 && [model.reviewable boolValue] == YES)) && model.certNo.length == 0) {
         self.cardTextF.placeholder = @"请输入证件号";
+        
+    }else {
+        self.cardTextF.placeholder = @"";
     }
     self.cardTextF.text = model.certNo;
    
@@ -181,7 +207,7 @@ UITableViewDataSource>
         [self.chooseAreaBtn setTitle:[NSString stringWithFormat:@"%@,%@,%@", model.province, model.city, model.area] forState:UIControlStateNormal];
     }else {
         [self.chooseAreaBtn setTitleColor:COLOR_DFDFDF forState:UIControlStateNormal];
-        if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES) || ([model.status integerValue] == 11 && [model.review2able boolValue] == YES)) {
+        if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES)) {
             [self.chooseAreaBtn setTitle:@"请选择所属地区" forState:UIControlStateNormal];
         }else {
             [self.chooseAreaBtn setTitle:@"" forState:UIControlStateNormal];
@@ -193,7 +219,7 @@ UITableViewDataSource>
         [self.chooseCardBtn setTitle:model.certTypeName forState:UIControlStateNormal];
     }else {
         [self.chooseCardBtn setTitleColor:COLOR_DFDFDF forState:UIControlStateNormal];
-        if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES) || ([model.status integerValue] == 11 && [model.review2able boolValue] == YES)) {
+        if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES)) {
             [self.chooseCardBtn setTitle:@"请选择证件类型" forState:UIControlStateNormal];
         }else {
             [self.chooseCardBtn setTitle:@"" forState:UIControlStateNormal];
@@ -206,7 +232,7 @@ UITableViewDataSource>
         [self.chooseMedBtn setTitle:model.pharmacyModel.simpleName forState:UIControlStateNormal];
     }else {
         [self.chooseMedBtn setTitleColor:COLOR_DFDFDF forState:UIControlStateNormal];
-        if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES) || ([model.status integerValue] == 11 && [model.review2able boolValue] == YES)) {
+        if(([model.status integerValue] == 10 && [model.reviewable boolValue] == YES)) {
             [self.chooseMedBtn setTitle:@"请选择所属药房" forState:UIControlStateNormal];
         }else {
             [self.chooseMedBtn setTitle:@"" forState:UIControlStateNormal];

@@ -94,7 +94,7 @@ FOUNDATION_EXTERN NSString *const HelpCenterURL;
 FOUNDATION_EXTERN NSString *const UpdatePasswordURL;
 FOUNDATION_EXTERN NSString *const CancelAccountURL;
 
-
+FOUNDATION_EXTERN NSString *const RelatedPharmacyURL;
 
 
 

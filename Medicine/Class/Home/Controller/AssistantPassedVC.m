@@ -130,6 +130,7 @@ TYPagerControllerDelegate>
         return assistantVC;
     }else {
         DoctorViewController *doctorVC = [[DoctorViewController alloc]init];
+        doctorVC.param = @{@"promoteUserId": self.userModel.userId};
         return doctorVC;
     }
     

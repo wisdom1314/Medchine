@@ -57,9 +57,19 @@
     for (DrugItemModel *subModel in model.drugArr) {
         subModel.herb_dose = [model.need_factor integerValue] ==1?  [ClassMethod formatNumberWithCustomRounding:subModel.num*[subModel.herb_factor floatValue]]: [NSString stringWithFormat:@"%ld",subModel.num];
         if([subModel.herb_factor floatValue]<1) {
-            [drugList addObject:[NSString stringWithFormat:@"%@[新标准]%@g",subModel.drugname, subModel.herb_dose]];
+            if([model.is_secret integerValue] == 1) {
+                [drugList addObject:[NSString stringWithFormat:@"%@[新标准]",subModel.drugname]];
+            }else {
+                [drugList addObject:[NSString stringWithFormat:@"%@[新标准]%@g",subModel.drugname, subModel.herb_dose]];
+            }
+           
         }else {
-            [drugList addObject:[NSString stringWithFormat:@"%@%@g",subModel.drugname, subModel.herb_dose]];
+            if([model.is_secret integerValue] == 1) {
+                [drugList addObject:[NSString stringWithFormat:@"%@",subModel.drugname]];
+            }else {
+                [drugList addObject:[NSString stringWithFormat:@"%@%@g",subModel.drugname, subModel.herb_dose]];
+            }
+           
         }
        
     } 

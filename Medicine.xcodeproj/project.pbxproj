@@ -111,6 +111,10 @@
 		0943A0C62CCA5F4700269A31 /* RecipeSampleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0943A0C52CCA5F4600269A31 /* RecipeSampleView.xib */; };
 		0948B7072CBCBE080078398D /* launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0948B7062CBCBE080078398D /* launch.jpg */; };
 		0948B70C2CBCC6370078398D /* XHLaunchAdButton+FixY.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948B70B2CBCC6370078398D /* XHLaunchAdButton+FixY.m */; };
+		094D4D3B2D1D2AFD00285D7D /* PersonalCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 094D4D392D1D2AFD00285D7D /* PersonalCollectionVC.m */; };
+		094D4D3C2D1D2AFD00285D7D /* PersonalCollectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094D4D3A2D1D2AFD00285D7D /* PersonalCollectionVC.xib */; };
+		094D4D402D1D2B9E00285D7D /* PersonalCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 094D4D3E2D1D2B9E00285D7D /* PersonalCollectionTableViewCell.m */; };
+		094D4D412D1D2B9E00285D7D /* PersonalCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094D4D3F2D1D2B9E00285D7D /* PersonalCollectionTableViewCell.xib */; };
 		0962104C2CE1B03E00CE1B7A /* ZZBigView.m in Sources */ = {isa = PBXBuildFile; fileRef = 096210482CE1B03D00CE1B7A /* ZZBigView.m */; };
 		0962104D2CE1B03E00CE1B7A /* ZZSubBigView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0962104B2CE1B03D00CE1B7A /* ZZSubBigView.m */; };
 		096B98812CE4793A00D72364 /* AssistantDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 096B987F2CE4793A00D72364 /* AssistantDetailVC.m */; };
@@ -129,6 +133,8 @@
 		096E2DA42CCBA3FE00AE687B /* AddExciientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 096E2DA22CCBA3FD00AE687B /* AddExciientViewController.xib */; };
 		096E2DA82CCBA59600AE687B /* ExcipentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 096E2DA62CCBA59600AE687B /* ExcipentTableViewCell.m */; };
 		096E2DA92CCBA59600AE687B /* ExcipentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 096E2DA72CCBA59600AE687B /* ExcipentTableViewCell.xib */; };
+		09751EA42CF20B0E004BF07D /* DoctorHomeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09751EA32CF20B0D004BF07D /* DoctorHomeFooterView.m */; };
+		09751EA62CF20B17004BF07D /* DoctorHomeFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09751EA52CF20B17004BF07D /* DoctorHomeFooterView.xib */; };
 		0978A4122CD9BCF5006D7D79 /* MedchineReduceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0978A4112CD9BCF5006D7D79 /* MedchineReduceHeaderView.m */; };
 		0978A4142CD9BD00006D7D79 /* MedchineReduceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0978A4132CD9BD00006D7D79 /* MedchineReduceHeaderView.xib */; };
 		0978A4182CD9C34D006D7D79 /* MedchineReduceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0978A4162CD9C34D006D7D79 /* MedchineReduceTableViewCell.m */; };
@@ -184,6 +190,8 @@
 		09AB54692CD48259003EFE5B /* PwdPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09AB54682CD48259003EFE5B /* PwdPromptView.xib */; };
 		09BF86892CC901CC004C4F41 /* CreateRecipeTemplateListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF86872CC901CC004C4F41 /* CreateRecipeTemplateListVC.m */; };
 		09BF868A2CC901CC004C4F41 /* CreateRecipeTemplateListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09BF86882CC901CC004C4F41 /* CreateRecipeTemplateListVC.xib */; };
+		09C46BAF2D1A642B00D62F49 /* AuthorityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C46BAD2D1A642A00D62F49 /* AuthorityViewController.m */; };
+		09C46BB02D1A642B00D62F49 /* AuthorityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C46BAE2D1A642A00D62F49 /* AuthorityViewController.xib */; };
 		09C542192C8E901100C709DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C542182C8E901100C709DB /* AppDelegate.m */; };
 		09C5421F2C8E901100C709DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C5421E2C8E901100C709DB /* ViewController.m */; };
 		09C542222C8E901100C709DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C542202C8E901100C709DB /* Main.storyboard */; };
@@ -248,6 +256,10 @@
 		09D3CCA42CB7BF6300039C33 /* AddRecipeTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D3CCA32CB7BF6300039C33 /* AddRecipeTemplateView.m */; };
 		09D3CCA62CB7BF6A00039C33 /* AddRecipeTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09D3CCA52CB7BF6A00039C33 /* AddRecipeTemplateView.xib */; };
 		09D5EBEC2C90321B00E827E1 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5EBEA2C90321B00E827E1 /* RecipeViewController.m */; };
+		09DBCCEB2D215FC900938F1D /* PersonalDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DBCCE92D215FC900938F1D /* PersonalDetailVC.m */; };
+		09DBCCEC2D215FC900938F1D /* PersonalDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DBCCEA2D215FC900938F1D /* PersonalDetailVC.xib */; };
+		09DBCCF02D21602200938F1D /* PersonalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DBCCEE2D21602200938F1D /* PersonalDetailCell.m */; };
+		09DBCCF12D21602200938F1D /* PersonalDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DBCCEF2D21602200938F1D /* PersonalDetailCell.xib */; };
 		09EE37872C916BBD00C8E1BD /* WelcomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EE37852C916BBD00C8E1BD /* WelcomeTableViewCell.m */; };
 		09EE37882C916BBD00C8E1BD /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EE37862C916BBD00C8E1BD /* WelcomeTableViewCell.xib */; };
 		09EE378C2C916BF600C8E1BD /* StatisticsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EE378A2C916BF600C8E1BD /* StatisticsTableViewCell.m */; };
@@ -468,6 +480,12 @@
 		0948B7062CBCBE080078398D /* launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launch.jpg; sourceTree = "<group>"; };
 		0948B70A2CBCC6370078398D /* XHLaunchAdButton+FixY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XHLaunchAdButton+FixY.h"; sourceTree = "<group>"; };
 		0948B70B2CBCC6370078398D /* XHLaunchAdButton+FixY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XHLaunchAdButton+FixY.m"; sourceTree = "<group>"; };
+		094D4D382D1D2AFD00285D7D /* PersonalCollectionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalCollectionVC.h; sourceTree = "<group>"; };
+		094D4D392D1D2AFD00285D7D /* PersonalCollectionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalCollectionVC.m; sourceTree = "<group>"; };
+		094D4D3A2D1D2AFD00285D7D /* PersonalCollectionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalCollectionVC.xib; sourceTree = "<group>"; };
+		094D4D3D2D1D2B9E00285D7D /* PersonalCollectionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalCollectionTableViewCell.h; sourceTree = "<group>"; };
+		094D4D3E2D1D2B9E00285D7D /* PersonalCollectionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalCollectionTableViewCell.m; sourceTree = "<group>"; };
+		094D4D3F2D1D2B9E00285D7D /* PersonalCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalCollectionTableViewCell.xib; sourceTree = "<group>"; };
 		096210482CE1B03D00CE1B7A /* ZZBigView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBigView.m; sourceTree = "<group>"; };
 		096210492CE1B03D00CE1B7A /* ZZSubBigView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZSubBigView.h; sourceTree = "<group>"; };
 		0962104A2CE1B03D00CE1B7A /* ZZBigView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBigView.h; sourceTree = "<group>"; };
@@ -496,6 +514,9 @@
 		096E2DA52CCBA59600AE687B /* ExcipentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExcipentTableViewCell.h; sourceTree = "<group>"; };
 		096E2DA62CCBA59600AE687B /* ExcipentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExcipentTableViewCell.m; sourceTree = "<group>"; };
 		096E2DA72CCBA59600AE687B /* ExcipentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExcipentTableViewCell.xib; sourceTree = "<group>"; };
+		09751EA22CF20B0D004BF07D /* DoctorHomeFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoctorHomeFooterView.h; sourceTree = "<group>"; };
+		09751EA32CF20B0D004BF07D /* DoctorHomeFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoctorHomeFooterView.m; sourceTree = "<group>"; };
+		09751EA52CF20B17004BF07D /* DoctorHomeFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorHomeFooterView.xib; sourceTree = "<group>"; };
 		0978A4102CD9BCF5006D7D79 /* MedchineReduceHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MedchineReduceHeaderView.h; sourceTree = "<group>"; };
 		0978A4112CD9BCF5006D7D79 /* MedchineReduceHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MedchineReduceHeaderView.m; sourceTree = "<group>"; };
 		0978A4132CD9BD00006D7D79 /* MedchineReduceHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MedchineReduceHeaderView.xib; sourceTree = "<group>"; };
@@ -584,6 +605,9 @@
 		09BF86862CC901CC004C4F41 /* CreateRecipeTemplateListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateRecipeTemplateListVC.h; sourceTree = "<group>"; };
 		09BF86872CC901CC004C4F41 /* CreateRecipeTemplateListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateRecipeTemplateListVC.m; sourceTree = "<group>"; };
 		09BF86882CC901CC004C4F41 /* CreateRecipeTemplateListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRecipeTemplateListVC.xib; sourceTree = "<group>"; };
+		09C46BAC2D1A642A00D62F49 /* AuthorityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorityViewController.h; sourceTree = "<group>"; };
+		09C46BAD2D1A642A00D62F49 /* AuthorityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorityViewController.m; sourceTree = "<group>"; };
+		09C46BAE2D1A642A00D62F49 /* AuthorityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorityViewController.xib; sourceTree = "<group>"; };
 		09C542142C8E901100C709DB /* Medicine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Medicine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C542172C8E901100C709DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09C542182C8E901100C709DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -700,6 +724,12 @@
 		09D3CCA52CB7BF6A00039C33 /* AddRecipeTemplateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecipeTemplateView.xib; sourceTree = "<group>"; };
 		09D5EBE92C90321A00E827E1 /* RecipeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeViewController.h; sourceTree = "<group>"; };
 		09D5EBEA2C90321B00E827E1 /* RecipeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeViewController.m; sourceTree = "<group>"; };
+		09DBCCE82D215FC900938F1D /* PersonalDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalDetailVC.h; sourceTree = "<group>"; };
+		09DBCCE92D215FC900938F1D /* PersonalDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalDetailVC.m; sourceTree = "<group>"; };
+		09DBCCEA2D215FC900938F1D /* PersonalDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDetailVC.xib; sourceTree = "<group>"; };
+		09DBCCED2D21602200938F1D /* PersonalDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalDetailCell.h; sourceTree = "<group>"; };
+		09DBCCEE2D21602200938F1D /* PersonalDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalDetailCell.m; sourceTree = "<group>"; };
+		09DBCCEF2D21602200938F1D /* PersonalDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDetailCell.xib; sourceTree = "<group>"; };
 		09EE37842C916BBD00C8E1BD /* WelcomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeTableViewCell.h; sourceTree = "<group>"; };
 		09EE37852C916BBD00C8E1BD /* WelcomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeTableViewCell.m; sourceTree = "<group>"; };
 		09EE37862C916BBD00C8E1BD /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -1007,6 +1037,9 @@
 				096E2DA52CCBA59600AE687B /* ExcipentTableViewCell.h */,
 				096E2DA62CCBA59600AE687B /* ExcipentTableViewCell.m */,
 				096E2DA72CCBA59600AE687B /* ExcipentTableViewCell.xib */,
+				09751EA22CF20B0D004BF07D /* DoctorHomeFooterView.h */,
+				09751EA32CF20B0D004BF07D /* DoctorHomeFooterView.m */,
+				09751EA52CF20B17004BF07D /* DoctorHomeFooterView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1175,6 +1208,15 @@
 				09F18E7F2CA951A100E379EB /* ChangePwdViewController.xib */,
 				09F18E822CA95A5600E379EB /* WebViewController.h */,
 				09F18E832CA95A5600E379EB /* WebViewController.m */,
+				094D4D382D1D2AFD00285D7D /* PersonalCollectionVC.h */,
+				094D4D392D1D2AFD00285D7D /* PersonalCollectionVC.m */,
+				094D4D3A2D1D2AFD00285D7D /* PersonalCollectionVC.xib */,
+				09DBCCE82D215FC900938F1D /* PersonalDetailVC.h */,
+				09DBCCE92D215FC900938F1D /* PersonalDetailVC.m */,
+				09DBCCEA2D215FC900938F1D /* PersonalDetailVC.xib */,
+				09C46BAC2D1A642A00D62F49 /* AuthorityViewController.h */,
+				09C46BAD2D1A642A00D62F49 /* AuthorityViewController.m */,
+				09C46BAE2D1A642A00D62F49 /* AuthorityViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1208,6 +1250,12 @@
 				09F18E782CA948A500E379EB /* SettingTableViewCell.h */,
 				09F18E792CA948A600E379EB /* SettingTableViewCell.m */,
 				09F18E7A2CA948A600E379EB /* SettingTableViewCell.xib */,
+				094D4D3D2D1D2B9E00285D7D /* PersonalCollectionTableViewCell.h */,
+				094D4D3E2D1D2B9E00285D7D /* PersonalCollectionTableViewCell.m */,
+				094D4D3F2D1D2B9E00285D7D /* PersonalCollectionTableViewCell.xib */,
+				09DBCCED2D21602200938F1D /* PersonalDetailCell.h */,
+				09DBCCEE2D21602200938F1D /* PersonalDetailCell.m */,
+				09DBCCEF2D21602200938F1D /* PersonalDetailCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1917,10 +1965,12 @@
 				096B988F2CE4A65800D72364 /* PromoteAlertView.xib in Resources */,
 				09AB539E2CC4A72500BEE479 /* RechargeResultVC.xib in Resources */,
 				09F18E812CA951A100E379EB /* ChangePwdViewController.xib in Resources */,
+				094D4D3C2D1D2AFD00285D7D /* PersonalCollectionVC.xib in Resources */,
 				099088852CA3E8B2001A1C39 /* MedchineHeaderView.xib in Resources */,
 				0948B7072CBCBE080078398D /* launch.jpg in Resources */,
 				096B988A2CE47A5300D72364 /* AssistantTableViewCell.xib in Resources */,
 				09A972942CC8E175009CF827 /* RecipeHosTableViewCell.xib in Resources */,
+				09C46BB02D1A642B00D62F49 /* AuthorityViewController.xib in Resources */,
 				09D3CC8E2CB777BA00039C33 /* AddDoctorOrderInfoViewController.xib in Resources */,
 				09229FBD2CD8956C0083AF91 /* RecipeCustomAlertView.xib in Resources */,
 				0909D6BB2CE6E61100D6DA86 /* FileTableViewCell.xib in Resources */,
@@ -1935,11 +1985,13 @@
 				09D3CC7F2CB76C9E00039C33 /* MyCreateRecipeViewController.xib in Resources */,
 				090743542CB6844000E967D1 /* CategoryManagerViewController.xib in Resources */,
 				0907434F2CB67D8800E967D1 /* AddMedichineCell.xib in Resources */,
+				09DBCCEC2D215FC900938F1D /* PersonalDetailVC.xib in Resources */,
 				090743362CB664DE00E967D1 /* RecipeTemplateTableViewCell.xib in Resources */,
 				09D3CCA62CB7BF6A00039C33 /* AddRecipeTemplateView.xib in Resources */,
 				091F060D2CAA871E009CD4AF /* StatementTableViewCell.xib in Resources */,
 				0909D6D42CE7938300D6DA86 /* AgreeView.xib in Resources */,
 				0909D6CF2CE7826500D6DA86 /* RefuseView.xib in Resources */,
+				09751EA62CF20B17004BF07D /* DoctorHomeFooterView.xib in Resources */,
 				09A804982CC9E86600BCE085 /* LeftTableViewCell.xib in Resources */,
 				091224082C9BF7EA008C6D74 /* PatientTableViewCell.xib in Resources */,
 				0943A0C12CCA4D1A00269A31 /* DrugCollectionViewCell.xib in Resources */,
@@ -1985,6 +2037,7 @@
 				09C72DCA2CE5AA2F00B73C06 /* AssistantHeaderView.xib in Resources */,
 				0907434A2CB6796800E967D1 /* AddMedchineViewController.xib in Resources */,
 				09229FD22CD8A6D90083AF91 /* ShowQrcodeView.xib in Resources */,
+				094D4D412D1D2B9E00285D7D /* PersonalCollectionTableViewCell.xib in Resources */,
 				0912240D2C9C149A008C6D74 /* RecipeTableViewCell.xib in Resources */,
 				0909D6C02CE7358E00D6DA86 /* PrescriptionHeaderView.xib in Resources */,
 				092EAF7C2C9A862400F8717A /* DoctorGridCell.xib in Resources */,
@@ -1996,6 +2049,7 @@
 				09F18E6D2CA905B700E379EB /* HelpCenterViewController.xib in Resources */,
 				09A972992CC8EB77009CF827 /* RecipeHosCollectionViewCell.xib in Resources */,
 				090D91D52CA65DA8005AE0F4 /* TradingTableViewCell.xib in Resources */,
+				09DBCCF12D21602200938F1D /* PersonalDetailCell.xib in Resources */,
 				09C542242C8E901500C709DB /* Assets.xcassets in Resources */,
 				09C542222C8E901100C709DB /* Main.storyboard in Resources */,
 				09D3CC9D2CB7A09700039C33 /* ChooseRecipeTemplateListVC.xib in Resources */,
@@ -2107,6 +2161,7 @@
 				09EE37872C916BBD00C8E1BD /* WelcomeTableViewCell.m in Sources */,
 				093A58BD2CBCCFB900DEE50B /* XHLaunchImageView+FixColor.m in Sources */,
 				09C72DCE2CE5E4AD00B73C06 /* DoctorDetailVC.m in Sources */,
+				09DBCCEB2D215FC900938F1D /* PersonalDetailVC.m in Sources */,
 				093D4A052CDC674C00022517 /* GTMBase64.m in Sources */,
 				09C542672C8EAB4800C709DB /* BaseModel.m in Sources */,
 				09A75E3F2CDA173E00BC8838 /* PayQrcodeView.m in Sources */,
@@ -2140,6 +2195,7 @@
 				09D3CCA12CB7AD7600039C33 /* UIAreaPickView.m in Sources */,
 				09C542A92C8EACA600C709DB /* UIAlertController+alertView.m in Sources */,
 				09280C4E2CA6BFE8009898F5 /* TradingRecordViewController.m in Sources */,
+				094D4D402D1D2B9E00285D7D /* PersonalCollectionTableViewCell.m in Sources */,
 				09C542642C8EAB4800C709DB /* BaseViewController.m in Sources */,
 				09C542AA2C8EACA600C709DB /* UIView+Extension.m in Sources */,
 				094363122CC791B200BFFCAC /* RecipeOrderAlertView.m in Sources */,
@@ -2170,6 +2226,7 @@
 				09F18E672CA904DE00E379EB /* DownQrcodeViewController.m in Sources */,
 				0909D6D22CE7937A00D6DA86 /* AgreeView.m in Sources */,
 				09C542AB2C8EACA600C709DB /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				094D4D3B2D1D2AFD00285D7D /* PersonalCollectionVC.m in Sources */,
 				096E2D992CCB96F000AE687B /* AccessoryTableViewCell.m in Sources */,
 				0962104D2CE1B03E00CE1B7A /* ZZSubBigView.m in Sources */,
 				096BC3BA2C9AD39600AFDD7C /* CreateRecipeViewController.m in Sources */,
@@ -2186,6 +2243,7 @@
 				09EE378C2C916BF600C8E1BD /* StatisticsTableViewCell.m in Sources */,
 				091F060C2CAA871E009CD4AF /* StatementTableViewCell.m in Sources */,
 				09C72DC42CE5A6C100B73C06 /* AssistantPassedVC.m in Sources */,
+				09751EA42CF20B0E004BF07D /* DoctorHomeFooterView.m in Sources */,
 				09229FBB2CD8955F0083AF91 /* RecipeCustomAlertView.m in Sources */,
 				091224172C9C178E008C6D74 /* LxGridViewFlowLayout.m in Sources */,
 				09A972812CC8A1FF009CF827 /* MSSAutoresizeLabelFlowCell.m in Sources */,
@@ -2211,11 +2269,13 @@
 				09D3CC7E2CB76C9E00039C33 /* MyCreateRecipeViewController.m in Sources */,
 				09A972892CC8A8DF009CF827 /* ZZGoodsBuyCollectionCell.m in Sources */,
 				0910CFE82CB50033000EBA58 /* RecipeOrderTableViewCell.m in Sources */,
+				09DBCCF02D21602200938F1D /* PersonalDetailCell.m in Sources */,
 				09C542692C8EAB4800C709DB /* InstensiveRequest.m in Sources */,
 				09C542742C8EAC3D00C709DB /* MedicineManager.m in Sources */,
 				096B98892CE47A5300D72364 /* AssistantTableViewCell.m in Sources */,
 				09229FCD2CD89EA00083AF91 /* SGCreateCode.m in Sources */,
 				0978A4122CD9BCF5006D7D79 /* MedchineReduceHeaderView.m in Sources */,
+				09C46BAF2D1A642B00D62F49 /* AuthorityViewController.m in Sources */,
 				09C542BA2C8EC25200C709DB /* HomeViewController.m in Sources */,
 				09C542B12C8EACA600C709DB /* UIViewController+BackAction.m in Sources */,
 				09C5426A2C8EAB4800C709DB /* BaseTabBarController.m in Sources */,
@@ -2420,7 +2480,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3HTJK6257A;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -2442,7 +2502,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.10;
 				PRODUCT_BUNDLE_IDENTIFIER = jinpai.medical.companies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2465,7 +2525,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3HTJK6257A;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -2487,7 +2547,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.10;
 				PRODUCT_BUNDLE_IDENTIFIER = jinpai.medical.companies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

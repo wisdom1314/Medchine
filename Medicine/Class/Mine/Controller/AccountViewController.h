@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AccountViewController : BaseViewController
+@property (weak, nonatomic) IBOutlet UIButton *rechageBtn;
 
 @end
 

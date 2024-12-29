@@ -15,6 +15,7 @@
                 <outlet property="balanceLab" destination="Sil-kx-IgC" id="U56-2u-qQD"/>
                 <outlet property="costMoneyLab" destination="Egl-NM-qn6" id="70S-L0-cGq"/>
                 <outlet property="creditLineLab" destination="uqR-AJ-xx1" id="Zra-Uu-PCa"/>
+                <outlet property="rechageBtn" destination="4on-c1-oHx" id="TzB-LS-ZL1"/>
                 <outlet property="tableView" destination="lol-dW-9xA" id="QTY-8R-R4j"/>
                 <outlet property="timeBtn" destination="GIc-kw-mky" id="V1B-zs-1b7"/>
                 <outlet property="totalMoneylab" destination="7jf-kg-GYZ" id="htE-on-jX3"/>
@@ -42,7 +43,7 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4on-c1-oHx">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4on-c1-oHx">
                             <rect key="frame" x="215" y="30" width="90" height="35"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>

@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *city;
 @property (nonatomic, copy) NSString *area;
 @property (nonatomic, copy) NSString *hospitaladdress;
+@property (nonatomic, copy) NSString *isComplete;
+@property (nonatomic, copy) NSString *qrcodeCompleteUrl;
 @end
 
 @interface RecipeModel : BaseModel
@@ -124,6 +126,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *createTime;
 @property (nonatomic, copy) NSString *selfPick;
 @property (nonatomic, copy) NSString *drugSource;
+@property (nonatomic, copy) NSString *isSelfSupport;
 @property (nonatomic, assign) BOOL isSelect;
 @end
 

@@ -123,9 +123,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if([self.model.status integerValue] == 10) {
-        return 3;
-    }
+//    if([self.model.status integerValue] == 10) {
+//        return 3;
+//    }
     return 4;
 }
 
@@ -153,7 +153,7 @@
         [bigView show];
     }];
 
-    if([self.model.status integerValue] == 10) {
+    if([self.model.status integerValue] == 10 && [self.model.reviewable boolValue] == YES) {
         [[[cell.cardTextF rac_textSignal]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(NSString * _Nullable x) {
             @strongify(self);
              self.model.certNo = x;
@@ -295,6 +295,20 @@
     [self presentViewController:alertVC animated:YES completion:nil];
 }
 - (IBAction)saveClick:(id)sender {
+    if([self.model.status integerValue] == 10) {
+        if(self.model.certType.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请选择证件类型"];
+            return;
+        }
+        if(self.model.certNo.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请输入证件号"];
+            return;
+        }
+        if(self.model.pharmacyModel.pharmacy_id.length == 0) {
+            [ZZProgress showErrorWithStatus:@"请选择药房"];
+            return;
+        }
+    }
     AgreeView *agreeView =  [AgreeView createViewFromNib];
     agreeView.commitLab.text = @"是否确定保存并提交审核？";
     TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:agreeView preferredStyle:TYAlertControllerStyleAlert];
@@ -304,8 +318,8 @@
         [alertVC dismissViewControllerAnimated:YES];
     }];
     [[agreeView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
-        [alertVC dismissViewControllerAnimated:YES];
         @strongify(self);
+        [alertVC dismissViewControllerAnimated:YES];
         [self summitDataWith: @"1"];
         
     }];

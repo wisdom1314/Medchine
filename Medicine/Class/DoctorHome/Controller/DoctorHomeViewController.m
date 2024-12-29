@@ -11,10 +11,13 @@
 #import "DoctorGridCell.h"
 #import "HomeModel.h"
 #import "PwdPromptView.h"
+#import "DoctorHomeFooterView.h"
 @interface DoctorHomeViewController ()
 <UITableViewDelegate, UITableViewDataSource, SDCycleScrollViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SDCycleScrollView *scrollView;
+@property (nonatomic, strong) RegionItemModel *regionModel;
+@property (nonatomic, strong) DoctorHomeFooterView *footerView;
 @end
 
 @implementation DoctorHomeViewController
@@ -28,6 +31,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self requestBannerList];
+    [self requestAddressInfo];
 }
 
 
@@ -58,6 +62,24 @@
             [imgArr addObject:[NSString stringWithFormat:@"%@%@", BaseURL, subModel.picurl]];
         }
         self.scrollView.imageURLStringsGroup = imgArr;
+    } failed:^(NSError *error) {
+        
+    }];
+}
+
+- (void)requestAddressInfo {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:[MedicineManager sharedInfo].doctorModel.doctor_id forKey:@"doctor_id"];
+    [[RequestManager shareInstance]requestWithMethod:GET url:UserInfoURL dict:dic finished:^(id request) {
+        RegionItemModel *regionModel = [RegionItemModel mj_objectWithKeyValues:request];
+        self.regionModel = regionModel;
+        if([self.regionModel.isComplete integerValue] == 1) {
+            self.tableView.tableFooterView = [[UIView alloc]init];
+        }else {
+            self.footerView.model = self.regionModel;
+            self.footerView.frame = CGRectMake(0, 0, WIDE, 100);
+            self.tableView.tableFooterView = self.footerView;
+        }
     } failed:^(NSError *error) {
         
     }];
@@ -156,6 +178,12 @@
     return _scrollView;
 }
 
+- (DoctorHomeFooterView *)footerView {
+    if(!_footerView) {
+        _footerView = [[NSBundle mainBundle]loadNibNamed:@"DoctorHomeFooterView" owner:self options:nil].lastObject;
+    }
+    return _footerView;
+}
 
 /*
  #pragma mark - Navigation
