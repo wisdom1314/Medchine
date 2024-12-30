@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,24 +20,64 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="299-yJ-szP">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="15" y="132.66666666666669" width="363" height="603.33333333333326"/>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.96078431369999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                            <color key="value" red="0.88627450980392153" green="0.78431372549019607" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="IQ7-0b-dwh"/>
+                        <outlet property="delegate" destination="-1" id="PkT-Sj-YZ9"/>
+                    </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为保障产品和功能的使用，持正堂会向你申请手机系统权限，以下常用权限可以在这里操作管理" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn4-az-Cau">
+                    <rect key="frame" x="15" y="74" width="363" height="33.666666666666657"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33725490200000002" green="0.13725490200000001" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持正堂全力保护你的信息安全" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLE-Lc-bJe">
+                    <rect key="frame" x="133.66666666666669" y="771" width="185.66666666666669" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33725490200000002" green="0.13725490200000001" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="PsG-O9-0Rs">
+                    <rect key="frame" x="74.666666666666671" y="761" width="54.000000000000014" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="54" id="oix-cl-0CY"/>
+                        <constraint firstAttribute="height" constant="37" id="yBq-3S-8YT"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.97254901959999995" green="0.96078431369999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="299-yJ-szP" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="3dx-xn-JHW"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="299-yJ-szP" secondAttribute="trailing" id="NKp-OF-PSK"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="299-yJ-szP" secondAttribute="bottom" id="iBg-iz-MNg"/>
-                <constraint firstItem="299-yJ-szP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="yOp-Zz-MlO"/>
+                <constraint firstItem="PsG-O9-0Rs" firstAttribute="top" secondItem="299-yJ-szP" secondAttribute="bottom" constant="25" id="74L-FZ-Hot"/>
+                <constraint firstItem="299-yJ-szP" firstAttribute="top" secondItem="bn4-az-Cau" secondAttribute="bottom" constant="25" id="AZE-ON-EfH"/>
+                <constraint firstItem="bn4-az-Cau" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="15" id="BSy-Ws-fex"/>
+                <constraint firstItem="299-yJ-szP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="CVG-0m-zFC"/>
+                <constraint firstItem="bn4-az-Cau" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="GYO-IF-Emk"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="299-yJ-szP" secondAttribute="trailing" constant="15" id="IJs-td-dvf"/>
+                <constraint firstItem="PsG-O9-0Rs" firstAttribute="centerY" secondItem="SLE-Lc-bJe" secondAttribute="centerY" id="QZU-WL-Dpz"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="SLE-Lc-bJe" secondAttribute="bottom" constant="30" id="cMi-2g-Rj4"/>
+                <constraint firstItem="SLE-Lc-bJe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="30" id="o6o-ma-j9P"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="bn4-az-Cau" secondAttribute="trailing" constant="15" id="rKf-3d-RkX"/>
+                <constraint firstItem="SLE-Lc-bJe" firstAttribute="leading" secondItem="PsG-O9-0Rs" secondAttribute="trailing" constant="5" id="urN-4g-uCg"/>
             </constraints>
-            <point key="canvasLocation" x="30" y="21"/>
+            <point key="canvasLocation" x="29.770992366412212" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="logo" width="668" height="320"/>
     </resources>
 </document>

@@ -260,6 +260,8 @@
 		09DBCCEC2D215FC900938F1D /* PersonalDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DBCCEA2D215FC900938F1D /* PersonalDetailVC.xib */; };
 		09DBCCF02D21602200938F1D /* PersonalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DBCCEE2D21602200938F1D /* PersonalDetailCell.m */; };
 		09DBCCF12D21602200938F1D /* PersonalDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DBCCEF2D21602200938F1D /* PersonalDetailCell.xib */; };
+		09DBCCFA2D217F4600938F1D /* AuthorityViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DBCCF82D217F4600938F1D /* AuthorityViewCell.m */; };
+		09DBCCFB2D217F4600938F1D /* AuthorityViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DBCCF92D217F4600938F1D /* AuthorityViewCell.xib */; };
 		09EE37872C916BBD00C8E1BD /* WelcomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EE37852C916BBD00C8E1BD /* WelcomeTableViewCell.m */; };
 		09EE37882C916BBD00C8E1BD /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EE37862C916BBD00C8E1BD /* WelcomeTableViewCell.xib */; };
 		09EE378C2C916BF600C8E1BD /* StatisticsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EE378A2C916BF600C8E1BD /* StatisticsTableViewCell.m */; };
@@ -290,6 +292,8 @@
 		09F18E852CA95A5600E379EB /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F18E832CA95A5600E379EB /* WebViewController.m */; };
 		09F2C0172CA5482F00E9B317 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F2C0152CA5482F00E9B317 /* AccountViewController.m */; };
 		09F2C0182CA5482F00E9B317 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F2C0162CA5482F00E9B317 /* AccountViewController.xib */; };
+		09F97F5C2D22948400F8638F /* UserPrivacyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F97F5B2D22948400F8638F /* UserPrivacyView.m */; };
+		09F97F5E2D22949300F8638F /* UserPrivacyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F97F5D2D22949300F8638F /* UserPrivacyView.xib */; };
 		E74A34574975DB7DCB2ABF30 /* libPods-Medicine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 216407BFCF4C74042693E18F /* libPods-Medicine.a */; };
 /* End PBXBuildFile section */
 
@@ -730,6 +734,9 @@
 		09DBCCED2D21602200938F1D /* PersonalDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalDetailCell.h; sourceTree = "<group>"; };
 		09DBCCEE2D21602200938F1D /* PersonalDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalDetailCell.m; sourceTree = "<group>"; };
 		09DBCCEF2D21602200938F1D /* PersonalDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDetailCell.xib; sourceTree = "<group>"; };
+		09DBCCF72D217F4600938F1D /* AuthorityViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorityViewCell.h; sourceTree = "<group>"; };
+		09DBCCF82D217F4600938F1D /* AuthorityViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorityViewCell.m; sourceTree = "<group>"; };
+		09DBCCF92D217F4600938F1D /* AuthorityViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorityViewCell.xib; sourceTree = "<group>"; };
 		09EE37842C916BBD00C8E1BD /* WelcomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeTableViewCell.h; sourceTree = "<group>"; };
 		09EE37852C916BBD00C8E1BD /* WelcomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeTableViewCell.m; sourceTree = "<group>"; };
 		09EE37862C916BBD00C8E1BD /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -778,6 +785,9 @@
 		09F2C0142CA5482F00E9B317 /* AccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		09F2C0152CA5482F00E9B317 /* AccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		09F2C0162CA5482F00E9B317 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		09F97F5A2D22948400F8638F /* UserPrivacyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserPrivacyView.h; sourceTree = "<group>"; };
+		09F97F5B2D22948400F8638F /* UserPrivacyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserPrivacyView.m; sourceTree = "<group>"; };
+		09F97F5D2D22949300F8638F /* UserPrivacyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserPrivacyView.xib; sourceTree = "<group>"; };
 		1A57D82144B268F6530892C0 /* Pods-Medicine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicine.release.xcconfig"; path = "Target Support Files/Pods-Medicine/Pods-Medicine.release.xcconfig"; sourceTree = "<group>"; };
 		216407BFCF4C74042693E18F /* libPods-Medicine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Medicine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		750024B38AF8C6BB2D0F6900 /* Pods-Medicine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicine.debug.xcconfig"; path = "Target Support Files/Pods-Medicine/Pods-Medicine.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1256,6 +1266,9 @@
 				09DBCCED2D21602200938F1D /* PersonalDetailCell.h */,
 				09DBCCEE2D21602200938F1D /* PersonalDetailCell.m */,
 				09DBCCEF2D21602200938F1D /* PersonalDetailCell.xib */,
+				09DBCCF72D217F4600938F1D /* AuthorityViewCell.h */,
+				09DBCCF82D217F4600938F1D /* AuthorityViewCell.m */,
+				09DBCCF92D217F4600938F1D /* AuthorityViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1386,6 +1399,9 @@
 				09AB54652CD4824E003EFE5B /* PwdPromptView.h */,
 				09AB54662CD4824E003EFE5B /* PwdPromptView.m */,
 				09AB54682CD48259003EFE5B /* PwdPromptView.xib */,
+				09F97F5A2D22948400F8638F /* UserPrivacyView.h */,
+				09F97F5B2D22948400F8638F /* UserPrivacyView.m */,
+				09F97F5D2D22949300F8638F /* UserPrivacyView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2026,8 +2042,10 @@
 				09A804A22CC9ED2F00BCE085 /* RightTableHeaderView.xib in Resources */,
 				090743592CB685F800E967D1 /* DealCategoryView.xib in Resources */,
 				096B98822CE4793A00D72364 /* AssistantDetailVC.xib in Resources */,
+				09DBCCFB2D217F4600938F1D /* AuthorityViewCell.xib in Resources */,
 				0910CFEE2CB51F65000EBA58 /* RecipeDetailViewController.xib in Resources */,
 				0978A4192CD9C34D006D7D79 /* MedchineReduceTableViewCell.xib in Resources */,
+				09F97F5E2D22949300F8638F /* UserPrivacyView.xib in Resources */,
 				096E2D9F2CCB9E1E00AE687B /* ExcipientHeaderView.xib in Resources */,
 				09C542272C8E901500C709DB /* LaunchScreen.storyboard in Resources */,
 				09C98BCD2CE34D90001677D6 /* MemberInfoTableViewCell.xib in Resources */,
@@ -2139,6 +2157,7 @@
 				09D3CC882CB7757100039C33 /* AddDoctorOrderViewController.m in Sources */,
 				09C542632C8EAB4800C709DB /* BaseNavigationController.m in Sources */,
 				0930B9642CBE3BDF009C0E9E /* StatementModel.m in Sources */,
+				09DBCCFA2D217F4600938F1D /* AuthorityViewCell.m in Sources */,
 				09C542A52C8EACA600C709DB /* UITableViewCell+Configure.m in Sources */,
 				091224162C9C178E008C6D74 /* CycleTakePhotoView.m in Sources */,
 				0993E9232CBFAA7E00386C76 /* ChoosePickupAddressVC.m in Sources */,
@@ -2236,6 +2255,7 @@
 				09D5EBEC2C90321B00E827E1 /* RecipeViewController.m in Sources */,
 				09C542A42C8EACA600C709DB /* UIImage+Bitmap.m in Sources */,
 				090743492CB6796800E967D1 /* AddMedchineViewController.m in Sources */,
+				09F97F5C2D22948400F8638F /* UserPrivacyView.m in Sources */,
 				09C542AF2C8EACA600C709DB /* NSString+Regex.m in Sources */,
 				09A972852CC8A7AD009CF827 /* ZZCollectionViewFlowLayout.m in Sources */,
 				09D3CC9C2CB7A09700039C33 /* ChooseRecipeTemplateListVC.m in Sources */,

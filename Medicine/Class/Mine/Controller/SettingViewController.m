@@ -24,7 +24,7 @@ UITableViewDataSource>
     [super viewDidLoad];
     self.view.backgroundColor = COLOR_FFFFFF;
     self.navTitle = @"设置";
-    self.arr = @[@"修改密码", @"隐私政策",@"个人信息收集清单",@"系统权限管理", @"注销账户"];
+    self.arr = @[@"修改密码", @"隐私政策", @"用户协议",@"个人信息收集清单",@"系统权限管理", @"注销账户"];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.versionLab.text = [NSString stringWithFormat:@"版本号：V%@",version];
     
@@ -99,11 +99,12 @@ UITableViewDataSource>
     if(indexPath.row == 0) {
         [self pushVC:@"ChangePwdViewController" animated:YES];
     }else if(indexPath.row == 1) {
-        [self pushVC:@"WebViewController" param:@{@"url":PrivacyURL, @"title": @"隐私协议"} animated:YES];
+        [self pushVC:@"WebViewController" param:@{@"url":PrivacyURL, @"title": @"隐私政策"} animated:YES];
     }else if(indexPath.row == 2) {
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-        [self pushVC:@"PersonalCollectionVC" animated:YES];
+        [self pushVC:@"WebViewController" param:@{@"url":UserAgreementURL, @"title": @"用户协议"} animated:YES];
     }else if(indexPath.row == 3) {
+        [self pushVC:@"PersonalCollectionVC" animated:YES];
+    }else if(indexPath.row == 4) {
         [self pushVC:@"AuthorityViewController" animated:YES]; /// 系统权限管理
     }else {
         TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"温馨提示" message:@"确定注销该账户吗？"];

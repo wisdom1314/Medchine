@@ -73,6 +73,7 @@
 
 
 #define PrivacyURL @"https://zhyf.jingpai.com/static/resource/app_privacy.html"
+#define UserAgreementURL @"https://zhyf.jingpai.com/static/resource/app_service.html"
 
 #define DESKey @"qbi21kyZQOfwUTl6kSDCEUx25"
 

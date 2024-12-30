@@ -7,6 +7,7 @@
 
 #import "LoginViewController.h"
 #import "AppDelegate+Service.h"
+#import "UserPrivacyView.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
@@ -19,10 +20,45 @@
 
 @implementation LoginViewController
 
+- (void)viewWillAppear:(BOOL)animated  {
+    [super viewWillAppear: animated];
+    if([ClassMethod getStringBy:@"isFrist"].length>0) {
+        
+    }else {
+        UserPrivacyView *privacyView = [UserPrivacyView createViewFromNib];
+        @weakify(self);
+        TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:privacyView preferredStyle:TYAlertControllerStyleAlert];
+        alertVC.backgoundTapDismissEnable = YES;
+        [self presentViewController:alertVC animated:YES completion:nil];
+        [[privacyView.cacelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+            [ClassMethod setString:@"1" key:@"isFrist"];
+            [alertVC dismissViewControllerAnimated:YES];
+            self.agreenBtn.selected = NO;
+        }];
+        [[privacyView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+            @strongify(self);
+            [ClassMethod setString:@"1" key:@"isFrist"];
+            [alertVC dismissViewControllerAnimated:YES];
+            self.agreenBtn.selected = YES;
+        }];
+       
+        [privacyView.subject subscribeNext:^(id  _Nullable x) {
+            @strongify(self);
+            if([x integerValue] == 1) {
+                [self pushVC:@"WebViewController" param:@{@"url":PrivacyURL, @"title": @"隐私政策"} animated:YES];
+            }else {
+                [self pushVC:@"WebViewController" param:@{@"url":UserAgreementURL, @"title": @"用户协议"} animated:YES];
+            }
+            [alertVC dismissViewControllerAnimated:YES];
+        }];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitle = @"登录";
     self.viewHeight.constant = HIGHT - NAV_H - Indicator_H <600? 600: HIGHT - NAV_H - Indicator_H;
+
     
 //    self.userTextF.text = @"0271179";
 //    self.passTextF.text = @"12qw12qw";
@@ -98,7 +134,7 @@
             }];
         }
     }else {
-        [ZZProgress showErrorWithStatus:@"请先阅读并同意隐私协议"];
+        [ZZProgress showErrorWithStatus:@"请先阅读并同意隐私政策和用户协议"];
     }
     
 }
@@ -108,7 +144,10 @@
 }
 
 - (IBAction)privacyClick:(id)sender {
-    [self pushVC:@"WebViewController" param:@{@"url":PrivacyURL, @"title": @"隐私协议"} animated:YES];
+    [self pushVC:@"WebViewController" param:@{@"url":PrivacyURL, @"title": @"隐私政策"} animated:YES];
+}
+- (IBAction)agreenClick:(id)sender {
+    [self pushVC:@"WebViewController" param:@{@"url":UserAgreementURL, @"title": @"用户协议"} animated:YES];
 }
 
 /*

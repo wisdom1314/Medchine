@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="cxd-ed-3iy" customClass="UserPrivacyView">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="283"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FgL-yO-P5R">
+                    <rect key="frame" x="0.0" y="237" width="315" height="1"/>
+                    <color key="backgroundColor" red="0.97647058819999999" green="0.96078431369999995" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="l4q-Ea-7iM"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lST-Dx-Ko8">
+                    <rect key="frame" x="0.0" y="238" width="157" height="45"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="暂不同意">
+                        <color key="titleColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDP-OO-eiL">
+                    <rect key="frame" x="157" y="238" width="1" height="45"/>
+                    <color key="backgroundColor" red="0.97647058819999999" green="0.96078431369999995" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="8RB-aP-Bcp"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oEM-Ei-DRc">
+                    <rect key="frame" x="158" y="238" width="157" height="45"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="同意">
+                        <color key="titleColor" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAl-rp-pCx">
+                    <rect key="frame" x="10" y="20" width="295" height="20.333333333333329"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x52-Ph-2kx">
+                    <rect key="frame" x="15" y="55.333333333333329" width="285" height="166.66666666666669"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="textColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="JPd-mO-b5S"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="oEM-Ei-DRc" firstAttribute="leading" secondItem="jDP-OO-eiL" secondAttribute="trailing" id="1bZ-vq-q1P"/>
+                <constraint firstItem="lST-Dx-Ko8" firstAttribute="leading" secondItem="cxd-ed-3iy" secondAttribute="leading" id="3jx-w9-M2f"/>
+                <constraint firstAttribute="bottom" secondItem="lST-Dx-Ko8" secondAttribute="bottom" id="5iG-9V-g2L"/>
+                <constraint firstItem="uAl-rp-pCx" firstAttribute="leading" secondItem="cxd-ed-3iy" secondAttribute="leading" constant="10" id="B5T-26-6wj"/>
+                <constraint firstItem="jDP-OO-eiL" firstAttribute="centerX" secondItem="cxd-ed-3iy" secondAttribute="centerX" id="Kee-8d-yFx"/>
+                <constraint firstItem="JPd-mO-b5S" firstAttribute="trailing" secondItem="x52-Ph-2kx" secondAttribute="trailing" constant="15" id="SJB-St-pTU"/>
+                <constraint firstItem="x52-Ph-2kx" firstAttribute="leading" secondItem="JPd-mO-b5S" secondAttribute="leading" constant="15" id="U92-MZ-C17"/>
+                <constraint firstItem="lST-Dx-Ko8" firstAttribute="top" secondItem="FgL-yO-P5R" secondAttribute="bottom" id="U9q-0B-4KS"/>
+                <constraint firstItem="x52-Ph-2kx" firstAttribute="top" secondItem="uAl-rp-pCx" secondAttribute="bottom" constant="15" id="URn-4B-db3"/>
+                <constraint firstItem="FgL-yO-P5R" firstAttribute="top" secondItem="x52-Ph-2kx" secondAttribute="bottom" constant="15" id="Xl5-kD-wNG"/>
+                <constraint firstItem="uAl-rp-pCx" firstAttribute="top" secondItem="cxd-ed-3iy" secondAttribute="top" constant="20" id="bVc-iF-PdH"/>
+                <constraint firstAttribute="bottom" secondItem="jDP-OO-eiL" secondAttribute="bottom" id="bc4-cl-3zm"/>
+                <constraint firstAttribute="trailing" secondItem="uAl-rp-pCx" secondAttribute="trailing" constant="10" id="bcq-sr-GO4"/>
+                <constraint firstAttribute="bottom" secondItem="FgL-yO-P5R" secondAttribute="bottom" constant="45" id="cMv-Ss-FDR"/>
+                <constraint firstItem="FgL-yO-P5R" firstAttribute="leading" secondItem="cxd-ed-3iy" secondAttribute="leading" id="ds2-dt-aiN"/>
+                <constraint firstAttribute="bottom" secondItem="oEM-Ei-DRc" secondAttribute="bottom" id="fej-LG-lrd"/>
+                <constraint firstItem="jDP-OO-eiL" firstAttribute="top" secondItem="FgL-yO-P5R" secondAttribute="bottom" id="igv-kC-O4r"/>
+                <constraint firstAttribute="trailing" secondItem="FgL-yO-P5R" secondAttribute="trailing" id="oFJ-df-U2h"/>
+                <constraint firstAttribute="trailing" secondItem="oEM-Ei-DRc" secondAttribute="trailing" id="rg5-t0-O4u"/>
+                <constraint firstItem="jDP-OO-eiL" firstAttribute="leading" secondItem="lST-Dx-Ko8" secondAttribute="trailing" id="umA-IG-miB"/>
+                <constraint firstItem="oEM-Ei-DRc" firstAttribute="top" secondItem="FgL-yO-P5R" secondAttribute="bottom" id="us0-lZ-Yux"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cacelBtn" destination="lST-Dx-Ko8" id="TnM-7p-EhX"/>
+                <outlet property="commitBtn" destination="oEM-Ei-DRc" id="jwM-JF-AZq"/>
+                <outlet property="textView" destination="x52-Ph-2kx" id="thS-Ln-Wh2"/>
+            </connections>
+            <point key="canvasLocation" x="-0.76335877862595414" y="332.04225352112678"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
