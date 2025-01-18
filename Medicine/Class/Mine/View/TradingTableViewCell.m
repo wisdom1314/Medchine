@@ -29,7 +29,7 @@
 
 
 + (instancetype)getTableView:(UITableView *)tableView indexPathWith:(NSIndexPath *)indexPath {
-   
+    
     TradingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TradingTableViewCellId"];
     if(!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"TradingTableViewCell" owner:self options:nil]objectAtIndex:0];
@@ -38,7 +38,13 @@
 }
 
 + (CGFloat)getCellHeightWith:(TransLogModel *)logModel {
-    if(logModel.remark.length == 0 || !logModel.isExpand) {
+    //    if(logModel.remark.length == 0 || !logModel.isExpand) {
+    //        return 88;
+    //    }else {
+    //        return 88 + [ClassMethod sizeText:logModel.remark font:[UIFont systemFontOfSize:10] limitWidth:WIDE-33].height + 20;
+    //    }
+    
+    if(logModel.remark.length == 0 ) {
         return 88;
     }else {
         return 88 + [ClassMethod sizeText:logModel.remark font:[UIFont systemFontOfSize:10] limitWidth:WIDE-33].height + 20;
@@ -75,27 +81,28 @@
     self.orderNoLab.text = model.paymentSn;
     self.timeLab.text = model.operatorTime;
     
-    if(model.remark.length == 0 || !model.isExpand) {
+    //    if(model.remark.length == 0 || !model.isExpand)
+    if(model.remark.length == 0 ){
         self.moreView.hidden = YES;
         self.moreHeight.constant = 0;
     }else {
         self.moreView.hidden = NO;
         self.moreHeight.constant = [ClassMethod sizeText:self.model.remark font:[UIFont systemFontOfSize:10] limitWidth:WIDE-33].height + 20;
-       
+        
     }
     self.moreLab.text = self.model.remark;
     
-    if(model.isExpand) {
-        [self.expandBtn setImage:[UIImage imageNamed:@"arrow_down"] forState:UIControlStateNormal];
-    }else {
-        [self.expandBtn setImage:[UIImage imageNamed:@"mine_arrow_right"] forState:UIControlStateNormal];
-    }
+    //    if(model.isExpand) {
+    //        [self.expandBtn setImage:[UIImage imageNamed:@"arrow_down"] forState:UIControlStateNormal];
+    //    }else {
+    //        [self.expandBtn setImage:[UIImage imageNamed:@"mine_arrow_right"] forState:UIControlStateNormal];
+    //    }
 }
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

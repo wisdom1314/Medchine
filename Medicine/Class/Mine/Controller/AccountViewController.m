@@ -187,13 +187,13 @@
     TransLogModel *model = self.dataArray[indexPath.row];
     cell.model = model;
     @weakify(self);
-    [[[cell.expandBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
-        @strongify(self);
-        if(model.remark.length>0) {
-            model.isExpand = !model.isExpand;
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section],nil] withRowAnimation:UITableViewRowAnimationFade];
-        }
-    }];
+//    [[[cell.expandBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
+//        @strongify(self);
+//        if(model.remark.length>0) {
+//            model.isExpand = !model.isExpand;
+//            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section],nil] withRowAnimation:UITableViewRowAnimationFade];
+//        }
+//    }];
     return cell;
 }
 

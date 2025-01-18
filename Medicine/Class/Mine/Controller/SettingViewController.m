@@ -8,6 +8,7 @@
 #import "SettingViewController.h"
 #import "SettingTableViewCell.h"
 #import "AppDelegate+Service.h"
+#import "HomeModel.h"
 
 @interface SettingViewController ()
 <UITableViewDelegate,
@@ -16,6 +17,7 @@ UITableViewDataSource>
 @property (nonatomic, copy) NSArray *arr;
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLab;
+@property (nonatomic, strong) NSMutableArray *privacyRuleArr;
 @end
 
 @implementation SettingViewController
@@ -24,7 +26,7 @@ UITableViewDataSource>
     [super viewDidLoad];
     self.view.backgroundColor = COLOR_FFFFFF;
     self.navTitle = @"设置";
-    self.arr = @[@"修改密码", @"隐私政策", @"用户协议",@"个人信息收集清单",@"系统权限管理", @"注销账户"];
+    [self getAgreeList];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.versionLab.text = [NSString stringWithFormat:@"版本号：V%@",version];
     
@@ -68,6 +70,34 @@ UITableViewDataSource>
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)getAgreeList {
+    [[RequestManager shareInstance]requestWithMethod:GET url:AgreementListURL dict:nil hasHeader:YES finished:^(id request) {
+        PrivacyRuleModel *model = [PrivacyRuleModel mj_objectWithKeyValues:request];
+        self.privacyRuleArr = [model.data mutableCopy];
+        if(self.privacyRuleArr.count == 2) {
+            PrivacyRuleItemModel *subModel = self.privacyRuleArr[0];
+            if([subModel.type isEqualToString:@"privacy"]) {
+                self.arr = @[@"修改密码", @"隐私政策", @"用户协议",@"个人信息收集清单",@"系统权限管理", @"注销账户"];
+            }else {
+                self.arr = @[@"修改密码", @"用户协议", @"隐私政策",@"个人信息收集清单",@"系统权限管理", @"注销账户"];
+            }
+           
+        }else if(self.privacyRuleArr.count == 1) {
+            PrivacyRuleItemModel *subModel = self.privacyRuleArr[0];
+            if([subModel.type isEqualToString:@"privacy"]) {
+                self.arr = @[@"修改密码", @"隐私政策",@"个人信息收集清单",@"系统权限管理", @"注销账户"];
+            }else if([subModel.type isEqualToString:@"user"]) {
+                self.arr = @[@"修改密码",@"用户协议",@"个人信息收集清单",@"系统权限管理", @"注销账户"];
+            }
+        }else {
+            self.arr = @[@"修改密码",@"个人信息收集清单",@"系统权限管理", @"注销账户"];
+        }
+        [self.tableView reloadData];
+    } failed:^(NSError *error) {
+        
+    }];
+}
+
 #pragma mark -- UITableViewDelegate && DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -96,15 +126,18 @@ UITableViewDataSource>
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
     if(indexPath.row == 0) {
         [self pushVC:@"ChangePwdViewController" animated:YES];
-    }else if(indexPath.row == 1) {
-        [self pushVC:@"WebViewController" param:@{@"url":PrivacyURL, @"title": @"隐私政策"} animated:YES];
-    }else if(indexPath.row == 2) {
-        [self pushVC:@"WebViewController" param:@{@"url":UserAgreementURL, @"title": @"用户协议"} animated:YES];
-    }else if(indexPath.row == 3) {
+    }else if(indexPath.row == 1 && self.privacyRuleArr.count>0) {
+        PrivacyRuleItemModel *subModel = self.privacyRuleArr[0];
+        [self pushVC:@"WebViewController" param:@{@"url":[NSString stringWithFormat:@"%@?i=%@",PrivacyRuleURL, subModel.agreementId], @"title": subModel.title} animated:YES];
+    }else if(indexPath.row == 2 && self.privacyRuleArr.count == 2) {
+        PrivacyRuleItemModel *subModel = self.privacyRuleArr[1];
+        [self pushVC:@"WebViewController" param:@{@"url":[NSString stringWithFormat:@"%@?i=%@",PrivacyRuleURL, subModel.agreementId], @"title": subModel.title} animated:YES];
+    }else if(indexPath.row == self.privacyRuleArr.count+1) {
         [self pushVC:@"PersonalCollectionVC" animated:YES];
-    }else if(indexPath.row == 4) {
+    }else if(indexPath.row == self.privacyRuleArr.count+2) {
         [self pushVC:@"AuthorityViewController" animated:YES]; /// 系统权限管理
     }else {
         TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"温馨提示" message:@"确定注销该账户吗？"];
@@ -142,6 +175,12 @@ UITableViewDataSource>
     }];
 }
 
+- (NSMutableArray *)privacyRuleArr {
+    if(!_privacyRuleArr) {
+        _privacyRuleArr = [NSMutableArray array];
+    }
+    return  _privacyRuleArr;
+}
 /*
 #pragma mark - Navigation
 

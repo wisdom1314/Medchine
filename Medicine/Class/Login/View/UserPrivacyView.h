@@ -13,8 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *cacelBtn;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
+@property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
+@property (weak, nonatomic) IBOutlet UIView *backView;
 
 @property (nonatomic, strong) RACSubject *subject;
+
+@property (nonatomic, copy) NSString *url;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -313,3 +313,18 @@
 @implementation SecrectRecipeModel
 
 @end
+
+
+@implementation PrivacyRuleModel
++ (NSDictionary *)mj_objectClassInArray {
+    return @{
+             @"data" : @"PrivacyRuleItemModel",
+             };
+}
+@end
+
+
+
+@implementation PrivacyRuleItemModel
+
+@end

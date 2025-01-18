@@ -7,12 +7,12 @@
 
 #import "AuthorityViewController.h"
 #import "AuthorityViewCell.h"
-
+#import "HomeModel.h"
 @interface AuthorityViewController ()
 <UITableViewDelegate,
 UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic, strong) NSMutableArray *privacyRuleArr;
 @end
 
 @implementation AuthorityViewController
@@ -25,7 +25,20 @@ UITableViewDataSource>
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitle = @"系统权限管理";
+    [self checkAgreeList];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)checkAgreeList {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+    [[RequestManager shareInstance]requestWithMethod:GET url:CheckLastAgreementURL dict:dic hasHeader:YES finished:^(id request) {
+        PrivacyRuleModel *model = [PrivacyRuleModel mj_objectWithKeyValues:request];
+        self.privacyRuleArr = [model.data mutableCopy];
+        [self.tableView reloadData];
+    } failed:^(NSError *error) {
+        
+    }];
 }
 
 - (NSString *)checkCameraPermission {
@@ -84,7 +97,7 @@ UITableViewDataSource>
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 2+self.privacyRuleArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,12 +106,35 @@ UITableViewDataSource>
     //        cell.headLab.text = @"存储权限";
     //        cell.detaiInfoLab.text = @"用于应用内更新";
     //    }else
-    if(indexPath.row == 0) {
+    cell.permissionLab.hidden = NO;
+    if(self.privacyRuleArr.count>0 && indexPath.row == 0) {
+        PrivacyRuleItemModel *subModel = self.privacyRuleArr[indexPath.row];
+        cell.permissionLab.hidden = YES;
+        cell.headLab.text = [subModel.type isEqualToString:@"privacy"]?@"隐私政策":@"用户协议";
+        if(subModel.acceptTime.length>0) {
+            cell.detaiInfoLab.text = [NSString stringWithFormat:@"授权同意时间：%@", subModel.acceptTime];
+        }else {
+            cell.detaiInfoLab.text = @"协议未同意";
+        }
+        
+        
+    }else if(self.privacyRuleArr.count>1 && indexPath.row == 1) {
+        PrivacyRuleItemModel *subModel = self.privacyRuleArr[indexPath.row];
+        cell.permissionLab.hidden = YES;
+        cell.headLab.text = [subModel.type isEqualToString:@"privacy"]?@"隐私政策":@"用户协议";
+        if(subModel.acceptTime.length>0) {
+            cell.detaiInfoLab.text = [NSString stringWithFormat:@"授权同意时间：%@", subModel.acceptTime];
+        }else {
+            cell.detaiInfoLab.text = @"协议未同意";
+        }
+        
+        
+    }if(indexPath.row == self.privacyRuleArr.count) {
         cell.headLab.text = @"访问相机权限";
         cell.detaiInfoLab.text = @"为方便使用拍摄功能";
         cell.permissionLab.text = [self checkCameraPermission];
         
-    }else if(indexPath.row == 1) {
+    }else if(indexPath.row == self.privacyRuleArr.count+1) {
         cell.headLab.text = @"访问相册权限";
         cell.detaiInfoLab.text = @"为方便使用图片保存、上传功能";
         cell.permissionLab.text = [self checkPhotoLibraryPermission];
@@ -120,12 +156,19 @@ UITableViewDataSource>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) { // 假设第一行是访问相册
-        [self requestCameraAccess];
+    if(self.privacyRuleArr.count>0 && indexPath.row == 0) {
+        PrivacyRuleItemModel *subModel = self.privacyRuleArr[indexPath.row];
+        [self pushVC:@"WebViewController" param:@{@"url":[NSString stringWithFormat:@"%@?i=%@",PrivacyRuleURL, subModel.agreementId], @"title": subModel.title} animated:YES];
         
+    }else if(self.privacyRuleArr.count>1 && indexPath.row == 1)  {
+        PrivacyRuleItemModel *subModel = self.privacyRuleArr[indexPath.row];
+        [self pushVC:@"WebViewController" param:@{@"url":[NSString stringWithFormat:@"%@?i=%@",PrivacyRuleURL, subModel.agreementId], @"title": subModel.title} animated:YES];
+        
+    }else if (indexPath.row == self.privacyRuleArr.count) { // 假设第一行是访问相册
+        [self requestCameraAccess];
     }
     // 判断是否是相机
-    else if (indexPath.row == 1) { // 假设第二行是访问相机
+    else if (indexPath.row == self.privacyRuleArr.count+1) { // 假设第二行是访问相机
         [self requestPhotoLibraryAccess];
     }
 }

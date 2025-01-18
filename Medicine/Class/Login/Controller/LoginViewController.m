@@ -8,6 +8,7 @@
 #import "LoginViewController.h"
 #import "AppDelegate+Service.h"
 #import "UserPrivacyView.h"
+#import "HomeModel.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
@@ -15,7 +16,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *agreenBtn;
 @property (weak, nonatomic) IBOutlet UITextField *userTextF;
 @property (weak, nonatomic) IBOutlet UITextField *passTextF;
+@property (weak, nonatomic) IBOutlet UIButton *privacyBtn;
+@property (weak, nonatomic) IBOutlet UIButton *ruleBtn;
+@property (weak, nonatomic) IBOutlet UILabel *addLab;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *privacyWidth;
+@property (nonatomic, strong) PrivacyRuleItemModel *privayModel;
 
+@property (nonatomic, strong) PrivacyRuleItemModel *ruleModel;
 @end
 
 @implementation LoginViewController
@@ -23,32 +30,38 @@
 - (void)viewWillAppear:(BOOL)animated  {
     [super viewWillAppear: animated];
     if([ClassMethod getStringBy:@"isFrist"].length>0) {
-        
     }else {
         UserPrivacyView *privacyView = [UserPrivacyView createViewFromNib];
+        privacyView.url =  WebURL;
         @weakify(self);
         TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:privacyView preferredStyle:TYAlertControllerStyleAlert];
         alertVC.backgoundTapDismissEnable = YES;
         [self presentViewController:alertVC animated:YES completion:nil];
         [[privacyView.cacelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
-            [ClassMethod setString:@"1" key:@"isFrist"];
-            [alertVC dismissViewControllerAnimated:YES];
-            self.agreenBtn.selected = NO;
+            if([privacyView.agreeBtn isSelected]) {
+                [ClassMethod setString:@"1" key:@"isFrist"];
+                [alertVC dismissViewControllerAnimated:YES];
+                self.agreenBtn.selected = NO;
+            }else {
+                [ZZProgress showErrorWithStatus:@"请先阅读并同意"];
+            }
+            
         }];
         [[privacyView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
             @strongify(self);
-            [ClassMethod setString:@"1" key:@"isFrist"];
-            [alertVC dismissViewControllerAnimated:YES];
-            self.agreenBtn.selected = YES;
+            if([privacyView.agreeBtn isSelected]) {
+                [ClassMethod setString:@"1" key:@"isFrist"];
+                [alertVC dismissViewControllerAnimated:YES];
+                self.agreenBtn.selected = YES;
+            }else {
+                [ZZProgress showErrorWithStatus:@"请先阅读并同意"];
+            }
         }];
        
         [privacyView.subject subscribeNext:^(id  _Nullable x) {
             @strongify(self);
-            if([x integerValue] == 1) {
-                [self pushVC:@"WebViewController" param:@{@"url":PrivacyURL, @"title": @"隐私政策"} animated:YES];
-            }else {
-                [self pushVC:@"WebViewController" param:@{@"url":UserAgreementURL, @"title": @"用户协议"} animated:YES];
-            }
+            NSString *url = (NSString *)x;
+            [self pushVC:@"WebViewController" param:@{@"url":url, @"title": @""} animated:YES];
             [alertVC dismissViewControllerAnimated:YES];
         }];
     }
@@ -58,7 +71,7 @@
     [super viewDidLoad];
     self.navTitle = @"登录";
     self.viewHeight.constant = HIGHT - NAV_H - Indicator_H <600? 600: HIGHT - NAV_H - Indicator_H;
-
+    [self getAgreeList];
     
 //    self.userTextF.text = @"0271179";
 //    self.passTextF.text = @"12qw12qw";
@@ -77,7 +90,35 @@
         @strongify(self);
         self.agreenBtn.selected = !self.agreenBtn.selected;
     }];
+    
+ 
+    self.privacyBtn.hidden = self.ruleBtn.hidden = YES;
+    self.addLab.hidden = YES;
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)getAgreeList {
+    [[RequestManager shareInstance]requestWithMethod:GET url:AgreementListURL dict:nil hasHeader:YES finished:^(id request) {
+        PrivacyRuleModel *model = [PrivacyRuleModel mj_objectWithKeyValues:request];
+        for (PrivacyRuleItemModel *subModel in model.data) {
+            if([subModel.type isEqualToString:@"privacy"]) {
+                self.privacyBtn.hidden = NO;
+                self.privayModel = subModel;
+            }else if([subModel.type isEqualToString:@"user"]) {
+                self.ruleBtn.hidden = NO;
+                self.ruleModel = subModel;
+            }
+        }
+        
+        if(!self.privacyBtn.isHidden && !self.ruleBtn.isHidden) {
+            self.addLab.hidden = NO;
+        }else if(self.privacyBtn.isHidden) {
+            self.privacyWidth.constant = 0;
+        }
+
+    } failed:^(NSError *error) {
+        
+    }];
 }
 
 - (IBAction)loginClick:(id)sender {
@@ -144,10 +185,10 @@
 }
 
 - (IBAction)privacyClick:(id)sender {
-    [self pushVC:@"WebViewController" param:@{@"url":PrivacyURL, @"title": @"隐私政策"} animated:YES];
+    [self pushVC:@"WebViewController" param:@{@"url":[NSString stringWithFormat:@"%@?i=%@",PrivacyRuleURL, self.privayModel.agreementId], @"title": self.privayModel.title} animated:YES];
 }
 - (IBAction)agreenClick:(id)sender {
-    [self pushVC:@"WebViewController" param:@{@"url":UserAgreementURL, @"title": @"用户协议"} animated:YES];
+    [self pushVC:@"WebViewController" param:@{@"url":[NSString stringWithFormat:@"%@?i=%@",PrivacyRuleURL, self.ruleModel.agreementId], @"title": self.ruleModel.title} animated:YES];
 }
 
 /*

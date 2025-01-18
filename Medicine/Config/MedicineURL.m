@@ -93,4 +93,10 @@ NSString *const HospitalNextReviewURL = @"/app/v3.0/hospitals/review2";
 NSString *const HospitalEditURL = @"/app/v3.0/hospitals/edit";
 
 NSString *const QueryPriceBySampleURL = @"/app/recipesample/queryPriceBySample";
+
+NSString *const CheckLastAgreementURL = @"/app/agreement/checkLastAgreement";
+
+NSString *const AgreementListURL = @"/app/agreement/agreementList";
+
+NSString *const AgreeURL = @"/app/agreement/acceptAgreement";
 @end

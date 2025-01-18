@@ -118,6 +118,12 @@ FOUNDATION_EXTERN NSString *const HospitalNextReviewURL;
 FOUNDATION_EXTERN NSString *const HospitalEditURL;
 
 FOUNDATION_EXTERN NSString *const QueryPriceBySampleURL;
+
+FOUNDATION_EXTERN NSString *const CheckLastAgreementURL;
+
+FOUNDATION_EXTERN NSString *const AgreementListURL;
+
+FOUNDATION_EXTERN NSString *const AgreeURL;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -33,7 +33,7 @@
                         <color key="textColor" red="0.33725490200000002" green="0.13725490200000001" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffa-l9-VTF">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffa-l9-VTF">
                         <rect key="frame" x="302" y="12.666666666666664" width="20" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="YjI-sm-pg7"/>

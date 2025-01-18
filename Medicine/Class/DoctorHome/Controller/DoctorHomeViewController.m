@@ -12,6 +12,7 @@
 #import "HomeModel.h"
 #import "PwdPromptView.h"
 #import "DoctorHomeFooterView.h"
+#import "UserPrivacyView.h"
 @interface DoctorHomeViewController ()
 <UITableViewDelegate, UITableViewDataSource, SDCycleScrollViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -25,6 +26,7 @@
     [super viewDidLoad];
     [self setNavTitleImage];
     [self initialize];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -32,6 +34,52 @@
     [super viewWillAppear:animated];
     [self requestBannerList];
     [self requestAddressInfo];
+    [self checkAgreement];
+}
+
+- (void)checkAgreement {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+    [[RequestManager shareInstance]requestWithMethod:GET url:CheckLastAgreementURL dict:dic hasHeader:YES finished:^(id request) {
+        BOOL showPrivacy = NO;
+        PrivacyRuleModel *model = [PrivacyRuleModel mj_objectWithKeyValues:request];
+        for (PrivacyRuleItemModel *subModel in model.data) {
+            if(subModel.acceptTime.length == 0) {
+                showPrivacy = YES;
+            }
+        }
+        if(showPrivacy) {
+            UserPrivacyView *privacyView = [UserPrivacyView createViewFromNib];
+            privacyView.url = [NSString stringWithFormat:@"%@?t=%@",UpdatePrivacyURL, [MedicineManager sharedInfo].token];
+            @weakify(self);
+            TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:privacyView preferredStyle:TYAlertControllerStyleAlert];
+            alertVC.backgoundTapDismissEnable = YES;
+            [self presentViewController:alertVC animated:YES completion:nil];
+            [[privacyView.cacelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+                [alertVC dismissViewControllerAnimated:YES];
+                
+            }];
+            [[privacyView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+                @strongify(self);
+                if([privacyView.agreeBtn isSelected]) {
+                   
+                }else {
+                    [ZZProgress showErrorWithStatus:@"请先阅读并同意"];
+                }
+            }];
+           
+            [privacyView.subject subscribeNext:^(id  _Nullable x) {
+                @strongify(self);
+                NSString *url = (NSString *)x;
+                [self pushVC:@"WebViewController" param:@{@"url":url, @"title": @""} animated:YES];
+                [alertVC dismissViewControllerAnimated:YES];
+            }];
+        }
+       
+        
+    } failed:^(NSError *error) {
+        
+    }];
 }
 
 

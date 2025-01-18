@@ -549,4 +549,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *totalSellPrice;
 @property (nonatomic, copy) NSString *totalSupplePrice;
 @end
+
+@interface PrivacyRuleModel: BaseModel
+@property (nonatomic, copy) NSArray *data;
+@end
+
+
+@interface PrivacyRuleItemModel : BaseModel
+@property (nonatomic, copy) NSString *agreementId;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *acceptTime;
+@end
+
 NS_ASSUME_NONNULL_END

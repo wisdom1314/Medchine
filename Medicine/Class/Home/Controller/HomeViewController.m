@@ -14,6 +14,7 @@
 #import "ShowQrcodeView.h"
 #import "SGCreateCode.h"
 #import "DateTimeTool.h"
+#import "UserPrivacyView.h"
 
 @interface HomeViewController ()
 <UITableViewDelegate, UITableViewDataSource, SDCycleScrollViewDelegate>
@@ -25,6 +26,7 @@
 @property (nonatomic, copy) NSString *agentCount;
 @property (nonatomic, copy) NSString *inviteCount;
 @property (nonatomic, copy) NSString *recipeAmount;
+
 @end
 
 @implementation HomeViewController
@@ -33,6 +35,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self requestBannerList];
+    [self checkAgreement];
 }
 
 
@@ -45,8 +48,53 @@
     self.isTG = [MedicineManager sharedInfo].customModel.promoteUrl.length>0? YES: NO;
     self.agentCount = self.inviteCount = self.recipeAmount = @"0";
     [self requestData];
+   
     // Do any additional setup after loading the view.
 }
+
+- (void)checkAgreement {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+    [[RequestManager shareInstance]requestWithMethod:GET url:CheckLastAgreementURL dict:dic hasHeader:YES finished:^(id request) {
+        BOOL showPrivacy = NO;
+        PrivacyRuleModel *model = [PrivacyRuleModel mj_objectWithKeyValues:request];
+        for (PrivacyRuleItemModel *subModel in model.data) {
+            if(subModel.acceptTime.length == 0) {
+                showPrivacy = YES;
+            }
+        }
+        
+        UserPrivacyView *privacyView = [UserPrivacyView createViewFromNib];
+        privacyView.url = [NSString stringWithFormat:@"%@?t=%@",UpdatePrivacyURL, [MedicineManager sharedInfo].token];
+        @weakify(self);
+        TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:privacyView preferredStyle:TYAlertControllerStyleAlert];
+        alertVC.backgoundTapDismissEnable = YES;
+        [self presentViewController:alertVC animated:YES completion:nil];
+        [[privacyView.cacelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+            [alertVC dismissViewControllerAnimated:YES];
+            
+        }];
+        [[privacyView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+            @strongify(self);
+            if([privacyView.agreeBtn isSelected]) {
+               
+            }else {
+                [ZZProgress showErrorWithStatus:@"请先阅读并同意"];
+            }
+        }];
+       
+        [privacyView.subject subscribeNext:^(id  _Nullable x) {
+            @strongify(self);
+            NSString *url = (NSString *)x;
+            [self pushVC:@"WebViewController" param:@{@"url":url, @"title": @""} animated:YES];
+            [alertVC dismissViewControllerAnimated:YES];
+        }];
+        
+    } failed:^(NSError *error) {
+        
+    }];
+}
+
 
 - (void)initialize {
     if([ClassMethod getStringBy:@"needUpdatePwd"]) { 
