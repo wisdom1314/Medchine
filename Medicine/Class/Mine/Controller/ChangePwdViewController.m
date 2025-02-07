@@ -74,10 +74,11 @@
         [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"token"];
         [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"doctorInfo"];
         [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"password"];
-       
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userId"];
         [MedicineManager sharedInfo].isLogined = NO;
         [MedicineManager sharedInfo].token = nil;
         [MedicineManager sharedInfo].doctorModel = nil;
+        [MedicineManager sharedInfo].userId = nil;
         [[AppDelegate shareAppDelegate]goLogin];
 
     } failed:^(NSError *error) {

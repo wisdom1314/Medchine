@@ -28,6 +28,7 @@ pod 'AlipaySDK-iOS'
 
 pod 'XHLaunchAd'
 
+pod 'Reachability'
 
 
 

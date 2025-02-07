@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIView *moreView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *moreHeight;
 @property (weak, nonatomic) IBOutlet UILabel *moreLab;
+@property (weak, nonatomic) IBOutlet UILabel *recipeNoLab;
+@property (weak, nonatomic) IBOutlet UILabel *balanceLab;
 
 @end
 
@@ -45,9 +47,9 @@
     //    }
     
     if(logModel.remark.length == 0 ) {
-        return 88;
+        return 98;
     }else {
-        return 88 + [ClassMethod sizeText:logModel.remark font:[UIFont systemFontOfSize:10] limitWidth:WIDE-33].height + 20;
+        return 98 + [ClassMethod sizeText:logModel.remark font:[UIFont systemFontOfSize:10] limitWidth:WIDE-33].height + 20;
     }
     
 }
@@ -91,6 +93,14 @@
         
     }
     self.moreLab.text = self.model.remark;
+    
+    if(model.afterBalance.length>0) {
+        self.balanceLab.text = [NSString stringWithFormat:@"余额：%@",model.afterBalance];
+    }else {
+        self.balanceLab.text = @"";
+    }
+    
+    self.recipeNoLab.text = model.recipeName;
     
     //    if(model.isExpand) {
     //        [self.expandBtn setImage:[UIImage imageNamed:@"arrow_down"] forState:UIControlStateNormal];

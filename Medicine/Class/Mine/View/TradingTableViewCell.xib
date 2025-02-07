@@ -55,13 +55,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c95-Ka-1bj">
-                        <rect key="frame" x="297" y="40" width="0.0" height="0.0"/>
+                        <rect key="frame" x="297" y="40" width="0.0" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="ho7-BO-IgK"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.33725490200000002" green="0.13725490200000001" blue="0.023529411760000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dtc-Iu-bQD">
-                        <rect key="frame" x="15" y="50" width="307" height="50"/>
+                        <rect key="frame" x="15" y="67" width="307" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOc-2x-s3J">
                                 <rect key="frame" x="10" y="10" width="287" height="30"/>
@@ -85,6 +88,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHG-P8-Qsw">
+                        <rect key="frame" x="45" y="57" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.33725490200000002" green="0.13725490200000001" blue="0.023529411760000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igk-bY-OE2">
+                        <rect key="frame" x="297" y="57" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.33725490200000002" green="0.13725490200000001" blue="0.023529411760000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="lxF-Wc-7ch" firstAttribute="centerY" secondItem="MHZ-qy-UxW" secondAttribute="centerY" id="36c-hW-8GR"/>
@@ -93,29 +108,35 @@
                     <constraint firstItem="FQ1-wI-hzq" firstAttribute="centerY" secondItem="ffa-l9-VTF" secondAttribute="centerY" id="8C8-f6-QQX"/>
                     <constraint firstItem="Dtc-Iu-bQD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="8fi-X4-WBF"/>
                     <constraint firstItem="MHZ-qy-UxW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Jfv-bk-2cU"/>
-                    <constraint firstItem="Dtc-Iu-bQD" firstAttribute="top" secondItem="joJ-sE-LRp" secondAttribute="bottom" constant="10" id="P7N-pJ-Z6E"/>
+                    <constraint firstItem="igk-bY-OE2" firstAttribute="trailing" secondItem="c95-Ka-1bj" secondAttribute="trailing" id="Od3-Lg-iIe"/>
                     <constraint firstItem="joJ-sE-LRp" firstAttribute="leading" secondItem="lxF-Wc-7ch" secondAttribute="leading" id="PrU-S7-pru"/>
+                    <constraint firstItem="BHG-P8-Qsw" firstAttribute="leading" secondItem="joJ-sE-LRp" secondAttribute="leading" id="Rvg-lc-VKK"/>
                     <constraint firstItem="joJ-sE-LRp" firstAttribute="top" secondItem="lxF-Wc-7ch" secondAttribute="bottom" constant="15" id="SSk-dZ-pcb"/>
                     <constraint firstAttribute="trailing" secondItem="ffa-l9-VTF" secondAttribute="trailing" constant="15" id="VZf-Y9-y3r"/>
+                    <constraint firstItem="BHG-P8-Qsw" firstAttribute="centerY" secondItem="igk-bY-OE2" secondAttribute="centerY" id="XRu-pb-SY4"/>
+                    <constraint firstItem="Dtc-Iu-bQD" firstAttribute="top" secondItem="BHG-P8-Qsw" secondAttribute="bottom" constant="10" id="cEB-NU-hmr"/>
                     <constraint firstItem="FQ1-wI-hzq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lxF-Wc-7ch" secondAttribute="trailing" constant="10" id="cSe-v6-Nv1"/>
                     <constraint firstItem="ffa-l9-VTF" firstAttribute="centerY" secondItem="MHZ-qy-UxW" secondAttribute="centerY" id="e9g-Sg-MHO"/>
                     <constraint firstItem="MHZ-qy-UxW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="fSu-wi-D3W"/>
                     <constraint firstItem="ffa-l9-VTF" firstAttribute="leading" secondItem="FQ1-wI-hzq" secondAttribute="trailing" constant="5" id="st0-Y8-Z8x"/>
                     <constraint firstItem="c95-Ka-1bj" firstAttribute="trailing" secondItem="FQ1-wI-hzq" secondAttribute="trailing" id="u8u-l1-5Oj"/>
+                    <constraint firstItem="igk-bY-OE2" firstAttribute="top" secondItem="c95-Ka-1bj" secondAttribute="bottom" constant="5" id="xW8-7z-o1h"/>
                     <constraint firstItem="lxF-Wc-7ch" firstAttribute="leading" secondItem="MHZ-qy-UxW" secondAttribute="trailing" constant="10" id="za4-2p-7am"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="balanceLab" destination="c95-Ka-1bj" id="e4D-wM-614"/>
                 <outlet property="categorylab" destination="lxF-Wc-7ch" id="wb5-XL-PZ2"/>
                 <outlet property="expandBtn" destination="ffa-l9-VTF" id="Ka6-II-L5g"/>
                 <outlet property="headImgView" destination="MHZ-qy-UxW" id="9YZ-66-cGF"/>
                 <outlet property="moreHeight" destination="x00-bj-K8b" id="hwW-iz-vzu"/>
                 <outlet property="moreLab" destination="dOc-2x-s3J" id="BSQ-wj-c2i"/>
                 <outlet property="moreView" destination="Dtc-Iu-bQD" id="gKU-F0-iPd"/>
-                <outlet property="orderNoLab" destination="joJ-sE-LRp" id="jo6-WR-5GG"/>
+                <outlet property="orderNoLab" destination="BHG-P8-Qsw" id="uuT-qG-f7l"/>
                 <outlet property="priceLab" destination="FQ1-wI-hzq" id="n6c-W7-iP6"/>
-                <outlet property="timeLab" destination="c95-Ka-1bj" id="yne-L5-L4e"/>
+                <outlet property="recipeNoLab" destination="joJ-sE-LRp" id="OOY-l7-6jv"/>
+                <outlet property="timeLab" destination="igk-bY-OE2" id="ELW-ZV-UBY"/>
             </connections>
             <point key="canvasLocation" x="93.89312977099236" y="52.816901408450704"/>
         </tableViewCell>

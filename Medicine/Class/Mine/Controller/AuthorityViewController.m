@@ -32,6 +32,7 @@ UITableViewDataSource>
 - (void)checkAgreeList {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+    [dic setValue:[MedicineManager sharedInfo].userId forKey:@"u"];
     [[RequestManager shareInstance]requestWithMethod:GET url:CheckLastAgreementURL dict:dic hasHeader:YES finished:^(id request) {
         PrivacyRuleModel *model = [PrivacyRuleModel mj_objectWithKeyValues:request];
         self.privacyRuleArr = [model.data mutableCopy];

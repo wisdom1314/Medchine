@@ -9,6 +9,7 @@
 #import "AppDelegate+Service.h"
 #import "UserPrivacyView.h"
 #import "HomeModel.h"
+#import "Reachability.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
@@ -29,23 +30,55 @@
 
 - (void)viewWillAppear:(BOOL)animated  {
     [super viewWillAppear: animated];
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    
+    [reachability startNotifier];
+    
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    if (status == NotReachable) {
+        
+    } else {
+        [self checkAgreement];
+    }
+    
+}
+
+- (void)reachabilityChanged:(NSNotification *)notification {
+    Reachability *reachability = [notification object];
+    NetworkStatus netStatus = [reachability currentReachabilityStatus];
+    // 判断网络是否恢复
+    if (netStatus != NotReachable) {
+        // 如果网络恢复，用户同意了网络连接
+        [self handleNetworkConnection:YES];
+    } else {
+        // 网络不可用
+        [self handleNetworkConnection:NO];
+    }
+}
+
+- (void)handleNetworkConnection:(BOOL)isConnected {
+    if (isConnected) {
+        [self checkAgreement];
+    }
+}
+
+- (void)checkAgreement {
     if([ClassMethod getStringBy:@"isFrist"].length>0) {
     }else {
         UserPrivacyView *privacyView = [UserPrivacyView createViewFromNib];
         privacyView.url =  WebURL;
         @weakify(self);
         TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:privacyView preferredStyle:TYAlertControllerStyleAlert];
-        alertVC.backgoundTapDismissEnable = YES;
+        alertVC.backgoundTapDismissEnable = NO;
         [self presentViewController:alertVC animated:YES completion:nil];
         [[privacyView.cacelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
-            if([privacyView.agreeBtn isSelected]) {
-                [ClassMethod setString:@"1" key:@"isFrist"];
-                [alertVC dismissViewControllerAnimated:YES];
-                self.agreenBtn.selected = NO;
-            }else {
-                [ZZProgress showErrorWithStatus:@"请先阅读并同意"];
-            }
-            
+            [alertVC dismissViewControllerAnimated:YES];
+            self.agreenBtn.selected = NO;
+            exit(0);
         }];
         [[privacyView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
             @strongify(self);
@@ -65,16 +98,19 @@
             [alertVC dismissViewControllerAnimated:YES];
         }];
     }
+    
+    [self getAgreeList];
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitle = @"登录";
     self.viewHeight.constant = HIGHT - NAV_H - Indicator_H <600? 600: HIGHT - NAV_H - Indicator_H;
-    [self getAgreeList];
+    
     
 //    self.userTextF.text = @"0271179";
-//    self.passTextF.text = @"12qw12qw";
+//    self.passTextF.text = @"Zhyf2022v2";
     if([ClassMethod getStringBy:@"username"].length>0) {
         self.userTextF.text = [ClassMethod getStringBy:@"username"];
     }
@@ -150,11 +186,13 @@
                 [MedicineManager sharedInfo].hospitalModel = model.hospitalModel;
                 [ClassMethod setModel:model.infoModel key:@"doctorInfo"];
                 [MedicineManager sharedInfo].doctorModel = model.infoModel;
-                
-                /// 医助
+                /// 医助 & 医生端
                 model.customModel = [UserInfoModel mj_objectWithKeyValues:model.user];
                 [ClassMethod setModel:model.customModel key:@"customInfo"];
                 [MedicineManager sharedInfo].customModel = model.customModel;
+                
+                [ClassMethod setString:model.customModel.userId key:@"userId"];
+                [MedicineManager sharedInfo].userId = model.customModel.userId;
                 
                 if(self.rememberBtn.isSelected) {
                     [ClassMethod setString:self.userTextF.text key:@"username"];

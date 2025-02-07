@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *hospitaladdress;
 @property (nonatomic, copy) NSString *isComplete;
 @property (nonatomic, copy) NSString *qrcodeCompleteUrl;
+@property (nonatomic, copy) NSString *userId;
 @end
 
 @interface RecipeModel : BaseModel

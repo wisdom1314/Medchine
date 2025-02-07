@@ -44,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitle = @"创建处方";
-    self.bottomArr = @[@[@"处方味数", @"味"],@[@"颗粒总价", @"元"],@[@"运费", @"元"],@[@"实收金额", @"元"]];
+    self.bottomArr = @[@[@"处方味数", @"味"],@[@"颗粒总剂量", @"g"],@[@"颗粒总价", @"元"],@[@"运费", @"元"],@[@"实收金额", @"元"]];
     self.gfBottomArr = @[@[@"处方味数", @"味"],@[@"颗粒总剂量", @"g"],@[@"颗粒总价", @"元"],@[@"运费", @"元"],@[@"辅料总价", @"元"],@[@"工本费", @"元"],@[@"实收金额", @"元"]];
     self.column = 1;
     [self.tableView registerNib:[UINib nibWithNibName:@"MedchineReduceHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"MedchineReduceHeaderViewId"];

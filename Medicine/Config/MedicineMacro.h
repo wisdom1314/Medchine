@@ -74,9 +74,9 @@
 
 #define PrivacyURL @"https://zhyf.jingpai.com/static/resource/app_privacy.html"
 #define UserAgreementURL @"https://zhyf.jingpai.com/static/resource/app_service.html"
-#define WebURL @"https://zhyf-test.jingpai.com/agreement/privacy_tip.html"
-#define PrivacyRuleURL @"https://zhyf-test.jingpai.com/agreement/agreement.html"
-#define UpdatePrivacyURL @"https://zhyf-test.jingpai.com/agreement/privacy_update.html"
+#define WebURL @"https://zhyf.jingpai.com/agreement/privacy_tip.html"
+#define PrivacyRuleURL @"https://zhyf.jingpai.com/agreement/agreement.html"
+#define UpdatePrivacyURL @"https://zhyf.jingpai.com/agreement/privacy_update.html"
 
 
 #define DESKey @"qbi21kyZQOfwUTl6kSDCEUx25"

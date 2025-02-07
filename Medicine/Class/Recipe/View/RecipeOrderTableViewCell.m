@@ -91,9 +91,11 @@
     self.topBtnWidth.constant = 60;
     if([model.payment_status isEqualToString:@"WAIT"]) {
         if([model.is_self_support integerValue] == 0) {
-            [self.topBtn setTitle:@"扫码缴费" forState:UIControlStateNormal];
-            self.topBtnWidth.constant = 90;
-            self.centerBtnTop.constant = 10;
+//            [self.topBtn setTitle:@"扫码缴费" forState:UIControlStateNormal];
+//            self.topBtnWidth.constant = 90;
+//            self.centerBtnTop.constant = 10;
+            self.topBtnHeight.constant = 0;
+            self.topBtn.hidden = YES;
         }else {
             self.topBtnHeight.constant = 0;
             self.topBtn.hidden = YES;

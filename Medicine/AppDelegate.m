@@ -51,8 +51,11 @@
             [MedicineManager sharedInfo].doctorModel = [ClassMethod getModelBy:@"doctorInfo"];
             [MedicineManager sharedInfo].isCustom = NO;
         }
-       
         [MedicineManager sharedInfo].hospitalModel = [ClassMethod getModelBy:@"hospitalInfo"];
+        if([ClassMethod getStringBy:@"userId"].length>0) {
+            [MedicineManager sharedInfo].userId = [ClassMethod getStringBy:@"userId"];
+        }
+        
         if([MedicineManager sharedInfo].isCustom) {
             [self goCustomMain];
         }else {

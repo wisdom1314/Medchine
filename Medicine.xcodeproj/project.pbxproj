@@ -142,7 +142,6 @@
 		097919B52C8ECE7200DF98AE /* AppDelegate+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 097919B42C8ECE7200DF98AE /* AppDelegate+Service.m */; };
 		097919BA2C8ECF0A00DF98AE /* ZZProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 097919B92C8ECF0A00DF98AE /* ZZProgress.m */; };
 		097919BE2C8ECF9800DF98AE /* ClassMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 097919BC2C8ECF9800DF98AE /* ClassMethod.m */; };
-		097919D02C8EDF2500DF98AE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 097919CE2C8EDF2500DF98AE /* LoginViewController.m */; };
 		097919D12C8EDF2500DF98AE /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 097919CF2C8EDF2500DF98AE /* LoginViewController.xib */; };
 		097F5AED2CAAA575003D457B /* StatementPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097F5AEC2CAAA575003D457B /* StatementPickView.m */; };
 		0990887B2CA3DF9E001A1C39 /* UIView+Border.m in Sources */ = {isa = PBXBuildFile; fileRef = 0990887A2CA3DF9E001A1C39 /* UIView+Border.m */; };
@@ -190,6 +189,7 @@
 		09AB54692CD48259003EFE5B /* PwdPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09AB54682CD48259003EFE5B /* PwdPromptView.xib */; };
 		09BF86892CC901CC004C4F41 /* CreateRecipeTemplateListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF86872CC901CC004C4F41 /* CreateRecipeTemplateListVC.m */; };
 		09BF868A2CC901CC004C4F41 /* CreateRecipeTemplateListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09BF86882CC901CC004C4F41 /* CreateRecipeTemplateListVC.xib */; };
+		09C2ED042D3E44B60007DDD3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 097919CE2C8EDF2500DF98AE /* LoginViewController.m */; };
 		09C46BAF2D1A642B00D62F49 /* AuthorityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C46BAD2D1A642A00D62F49 /* AuthorityViewController.m */; };
 		09C46BB02D1A642B00D62F49 /* AuthorityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C46BAE2D1A642A00D62F49 /* AuthorityViewController.xib */; };
 		09C542192C8E901100C709DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C542182C8E901100C709DB /* AppDelegate.m */; };
@@ -2139,6 +2139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09C2ED042D3E44B60007DDD3 /* LoginViewController.m in Sources */,
 				09C542BD2C8EC26E00C709DB /* MineViewController.m in Sources */,
 				09F18E852CA95A5600E379EB /* WebViewController.m in Sources */,
 				0910CFED2CB51F65000EBA58 /* RecipeDetailViewController.m in Sources */,
@@ -2163,7 +2164,6 @@
 				0993E9232CBFAA7E00386C76 /* ChoosePickupAddressVC.m in Sources */,
 				09EE37992C9188A600C8E1BD /* PrescriptionViewController.m in Sources */,
 				09A972822CC8A1FF009CF827 /* MSSAutoresizeLabelFlowConfig.m in Sources */,
-				097919D02C8EDF2500DF98AE /* LoginViewController.m in Sources */,
 				09A8049C2CC9ECEA00BCE085 /* RightTableViewCell.m in Sources */,
 				09F18E572CA8EA2400E379EB /* TradingHeaderView.m in Sources */,
 				09C542A72C8EACA600C709DB /* UIButton+Custom.m in Sources */,
@@ -2500,7 +2500,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3HTJK6257A;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -2522,7 +2522,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.12;
+				MARKETING_VERSION = 1.1.14;
 				PRODUCT_BUNDLE_IDENTIFIER = jinpai.medical.companies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2545,7 +2545,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3HTJK6257A;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -2567,7 +2567,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.12;
+				MARKETING_VERSION = 1.1.14;
 				PRODUCT_BUNDLE_IDENTIFIER = jinpai.medical.companies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

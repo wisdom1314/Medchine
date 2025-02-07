@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *paymentSn;
 @property (nonatomic, copy) NSString *channel;
 @property (nonatomic, assign) BOOL isExpand;
+@property (nonatomic, copy) NSString *afterBalance;
 
 @end
 

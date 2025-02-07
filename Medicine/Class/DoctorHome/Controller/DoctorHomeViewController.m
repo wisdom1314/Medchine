@@ -19,6 +19,7 @@
 @property (nonatomic, strong) SDCycleScrollView *scrollView;
 @property (nonatomic, strong) RegionItemModel *regionModel;
 @property (nonatomic, strong) DoctorHomeFooterView *footerView;
+@property (nonatomic, strong) PrivacyRuleModel *agreeModel;
 @end
 
 @implementation DoctorHomeViewController
@@ -34,15 +35,17 @@
     [super viewWillAppear:animated];
     [self requestBannerList];
     [self requestAddressInfo];
-    [self checkAgreement];
+    
 }
 
 - (void)checkAgreement {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+    [dic setValue:[MedicineManager sharedInfo].userId forKey:@"u"];
     [[RequestManager shareInstance]requestWithMethod:GET url:CheckLastAgreementURL dict:dic hasHeader:YES finished:^(id request) {
         BOOL showPrivacy = NO;
         PrivacyRuleModel *model = [PrivacyRuleModel mj_objectWithKeyValues:request];
+        self.agreeModel = model;
         for (PrivacyRuleItemModel *subModel in model.data) {
             if(subModel.acceptTime.length == 0) {
                 showPrivacy = YES;
@@ -50,19 +53,34 @@
         }
         if(showPrivacy) {
             UserPrivacyView *privacyView = [UserPrivacyView createViewFromNib];
-            privacyView.url = [NSString stringWithFormat:@"%@?t=%@",UpdatePrivacyURL, [MedicineManager sharedInfo].token];
+            privacyView.url = [NSString stringWithFormat:@"%@?t=%@&u=%@",UpdatePrivacyURL, [MedicineManager sharedInfo].token, [MedicineManager sharedInfo].userId];
             @weakify(self);
             TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:privacyView preferredStyle:TYAlertControllerStyleAlert];
-            alertVC.backgoundTapDismissEnable = YES;
+            alertVC.backgoundTapDismissEnable = NO;
             [self presentViewController:alertVC animated:YES completion:nil];
             [[privacyView.cacelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
-                [alertVC dismissViewControllerAnimated:YES];
                 
+                [alertVC dismissViewControllerAnimated:YES];
+//                exit(0);  
+              
             }];
             [[privacyView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
                 @strongify(self);
                 if([privacyView.agreeBtn isSelected]) {
-                   
+                    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                    NSMutableArray *arr = [NSMutableArray array];
+                    for (PrivacyRuleItemModel *subModel in self.agreeModel.data) {
+                        if(subModel.acceptTime.length == 0) {
+                            [arr addObject:subModel.agreementId];
+                        }
+                    }
+                    [dic setValue:arr forKey:@"agreementIds"];
+                    [dic setValue:[MedicineManager sharedInfo].userId forKey:@"userId"];
+                    [[RequestManager shareInstance]requestWithMethod:BodyPOST url:AgreeURL dict:dic hasHeader:YES finished:^(id request) {
+                        [alertVC dismissViewControllerAnimated:YES];
+                    } failed:^(NSError *error) {
+                        
+                    }];
                 }else {
                     [ZZProgress showErrorWithStatus:@"请先阅读并同意"];
                 }
@@ -121,6 +139,8 @@
     [[RequestManager shareInstance]requestWithMethod:GET url:UserInfoURL dict:dic finished:^(id request) {
         RegionItemModel *regionModel = [RegionItemModel mj_objectWithKeyValues:request];
         self.regionModel = regionModel;
+        [ClassMethod setString:regionModel.userId key:@"userId"];
+        [MedicineManager sharedInfo].userId = regionModel.userId;
         if([self.regionModel.isComplete integerValue] == 1) {
             self.tableView.tableFooterView = [[UIView alloc]init];
         }else {
@@ -128,6 +148,7 @@
             self.footerView.frame = CGRectMake(0, 0, WIDE, 100);
             self.tableView.tableFooterView = self.footerView;
         }
+        [self checkAgreement];
     } failed:^(NSError *error) {
         
     }];

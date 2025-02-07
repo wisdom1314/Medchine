@@ -41,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *isDefaultPwd;
 @property (nonatomic, copy) NSDictionary *user;
 @property (nonatomic, strong) UserInfoModel *customModel;
+
 @end
 
 @interface HospitalModel : BaseModel<NSCoding>

@@ -43,6 +43,9 @@ typedef enum : NSUInteger {
     [MedicineManager sharedInfo].isLogined = NO;
     [MedicineManager sharedInfo].token = nil;
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"pushId"];
+    
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userId"];
+    [MedicineManager sharedInfo].userId = nil;
 
     BaseNavigationController *nvc = [[BaseNavigationController alloc]initWithRootViewController:[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil]];
     self.window.rootViewController = nvc;

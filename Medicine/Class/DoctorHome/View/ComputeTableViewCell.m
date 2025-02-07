@@ -36,7 +36,30 @@
     if([model.recipe_type integerValue] == 0) {
         if(indexPath.row == 0) {
             self.valueLab.text = [NSString stringWithFormat:@"%.0ld", model.drugArr.count];
-        }else if(indexPath.row == 1) {
+        }else if(indexPath.row  == 1) {
+            /// 颗粒总剂量
+            if(model.drugArr.count == 0) {
+                self.valueLab.text = @"";
+                return;
+            }
+            CGFloat totalKeliNum = 0;
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            formatter.maximumFractionDigits = 4;
+            formatter.minimumFractionDigits = 4;
+            formatter.usesGroupingSeparator = NO; // 禁止千位分隔符
+            for (DrugItemModel *drugModel in model.drugArr) {
+                drugModel.herb_dose = [model.need_factor integerValue] == 1? [ClassMethod formatNumberWithCustomRounding:drugModel.num*[drugModel.herb_factor floatValue]]: [NSString stringWithFormat:@"%ld", drugModel.num]; /// 是否减量
+                CGFloat value = [drugModel.herb_dose floatValue] / [drugModel.useful_value floatValue];
+                CGFloat roundedValue = round(value * 10000) / 10000.0;
+                totalKeliNum += roundedValue;
+            }
+            model.total_granule_dose = [formatter stringFromNumber:@(totalKeliNum)];
+            self.valueLab.text = [formatter stringFromNumber:@(totalKeliNum*[model.recipe_no integerValue])];
+        
+            model.totalKeli = self.valueLab.text;
+            
+        }else if(indexPath.row == 2) {
             if(model.drugArr.count == 0) {
                 self.valueLab.text = @"";
                 return;
@@ -103,7 +126,7 @@
             
             model.totalKeli = [formatter stringFromNumber:@(totalKeliNum*[model.recipe_no integerValue])];
             
-        }else if(indexPath.row == 2) {
+        }else if(indexPath.row == 3) {
             if(model.drugArr.count == 0) {
                 self.valueLab.text = @"";
                 return;
@@ -128,7 +151,7 @@
                 model.fee = @"10";
             }
             self.valueLab.text = model.fee;
-        }else if(indexPath.row == 3) {
+        }else if(indexPath.row == 4) {
             if(model.drugArr.count == 0) {
                 self.valueLab.text = @"";
                 return;

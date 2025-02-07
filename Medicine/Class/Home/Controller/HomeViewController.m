@@ -26,6 +26,7 @@
 @property (nonatomic, copy) NSString *agentCount;
 @property (nonatomic, copy) NSString *inviteCount;
 @property (nonatomic, copy) NSString *recipeAmount;
+@property (nonatomic, strong) PrivacyRuleModel *agreeModel;
 
 @end
 
@@ -53,42 +54,67 @@
 }
 
 - (void)checkAgreement {
+    ///  这里兼容一下之前的
+    if([MedicineManager sharedInfo].userId.length == 0) {
+        [ClassMethod setString:[MedicineManager sharedInfo].customModel.userId key:@"userId"];
+        [MedicineManager sharedInfo].userId = [MedicineManager sharedInfo].customModel.userId;
+    }
+   
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:[MedicineManager sharedInfo].token forKey:@"APP_TOKEN"];
+    [dic setValue:[MedicineManager sharedInfo].userId forKey:@"u"];
     [[RequestManager shareInstance]requestWithMethod:GET url:CheckLastAgreementURL dict:dic hasHeader:YES finished:^(id request) {
         BOOL showPrivacy = NO;
         PrivacyRuleModel *model = [PrivacyRuleModel mj_objectWithKeyValues:request];
+        self.agreeModel = model;
         for (PrivacyRuleItemModel *subModel in model.data) {
             if(subModel.acceptTime.length == 0) {
                 showPrivacy = YES;
             }
         }
-        
-        UserPrivacyView *privacyView = [UserPrivacyView createViewFromNib];
-        privacyView.url = [NSString stringWithFormat:@"%@?t=%@",UpdatePrivacyURL, [MedicineManager sharedInfo].token];
-        @weakify(self);
-        TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:privacyView preferredStyle:TYAlertControllerStyleAlert];
-        alertVC.backgoundTapDismissEnable = YES;
-        [self presentViewController:alertVC animated:YES completion:nil];
-        [[privacyView.cacelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
-            [alertVC dismissViewControllerAnimated:YES];
-            
-        }];
-        [[privacyView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
-            @strongify(self);
-            if([privacyView.agreeBtn isSelected]) {
-               
-            }else {
-                [ZZProgress showErrorWithStatus:@"请先阅读并同意"];
-            }
-        }];
+        if(showPrivacy) {
+            UserPrivacyView *privacyView = [UserPrivacyView createViewFromNib];
+            privacyView.url = [NSString stringWithFormat:@"%@?t=%@&u=%@",UpdatePrivacyURL, [MedicineManager sharedInfo].token, [MedicineManager sharedInfo].userId];
+            @weakify(self);
+            TYAlertController *alertVC = [TYAlertController alertControllerWithAlertView:privacyView preferredStyle:TYAlertControllerStyleAlert];
+            alertVC.backgoundTapDismissEnable = NO;
+            [self presentViewController:alertVC animated:YES completion:nil];
+            [[privacyView.cacelBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+                
+                [alertVC dismissViewControllerAnimated:YES];
+//                exit(0);
+              
+            }];
+            [[privacyView.commitBtn rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(__kindof UIControl * _Nullable x) {
+                @strongify(self);
+                if([privacyView.agreeBtn isSelected]) {
+                    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+                    NSMutableArray *arr = [NSMutableArray array];
+                    for (PrivacyRuleItemModel *subModel in self.agreeModel.data) {
+                        if(subModel.acceptTime.length == 0) {
+                            [arr addObject:subModel.agreementId];
+                        }
+                    }
+                    [dic setValue:arr forKey:@"agreementIds"];
+                    [dic setValue:[MedicineManager sharedInfo].userId forKey:@"userId"];
+                    [[RequestManager shareInstance]requestWithMethod:BodyPOST url:AgreeURL dict:dic hasHeader:YES finished:^(id request) {
+                        [alertVC dismissViewControllerAnimated:YES];
+                    } failed:^(NSError *error) {
+                        
+                    }];
+                }else {
+                    [ZZProgress showErrorWithStatus:@"请先阅读并同意"];
+                }
+            }];
+           
+            [privacyView.subject subscribeNext:^(id  _Nullable x) {
+                @strongify(self);
+                NSString *url = (NSString *)x;
+                [self pushVC:@"WebViewController" param:@{@"url":url, @"title": @""} animated:YES];
+                [alertVC dismissViewControllerAnimated:YES];
+            }];
+        }
        
-        [privacyView.subject subscribeNext:^(id  _Nullable x) {
-            @strongify(self);
-            NSString *url = (NSString *)x;
-            [self pushVC:@"WebViewController" param:@{@"url":url, @"title": @""} animated:YES];
-            [alertVC dismissViewControllerAnimated:YES];
-        }];
         
     } failed:^(NSError *error) {
         

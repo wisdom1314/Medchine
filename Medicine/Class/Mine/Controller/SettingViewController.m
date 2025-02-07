@@ -57,10 +57,12 @@ UITableViewDataSource>
             [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"token"];
             [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"doctorInfo"];
             [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"customInfo"];
+            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userId"];
             [MedicineManager sharedInfo].isLogined = NO;
             [MedicineManager sharedInfo].token = nil;
             [MedicineManager sharedInfo].doctorModel = nil;
             [MedicineManager sharedInfo].customModel = nil;
+            [MedicineManager sharedInfo].userId = nil;
             [[AppDelegate shareAppDelegate]goLogin];
         }]];
         [alertView showInController:self];
@@ -140,7 +142,7 @@ UITableViewDataSource>
     }else if(indexPath.row == self.privacyRuleArr.count+2) {
         [self pushVC:@"AuthorityViewController" animated:YES]; /// 系统权限管理
     }else {
-        TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"温馨提示" message:@"确定注销该账户吗？"];
+        TYAlertView *alertView = [TYAlertView alertViewWithTitle:@"温馨提示" message:@"是否确定注销，注销后，删除后账户将无法登陆，该账户下所有信息都将被删除。  并且注销成功没有注销成功的提示。"];
         alertView.buttonHeight = 40;
         alertView.buttonFont = [UIFont systemFontOfSize:14];
         alertView.layer.masksToBounds = YES;

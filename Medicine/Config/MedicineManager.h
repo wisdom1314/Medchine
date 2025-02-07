@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isLogined;
 
 @property (nonatomic, strong) BaseUserInfoModel *doctorModel; /// 医生端
+@property (nonatomic, copy) NSString *userId;
 @property (nonatomic, strong) HospitalModel *hospitalModel;
 @property (nonatomic, strong) UserInfoModel *customModel; /// 其他角色
 @property (nonatomic, assign) BOOL isCustom;
