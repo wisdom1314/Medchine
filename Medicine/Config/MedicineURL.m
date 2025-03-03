@@ -11,8 +11,8 @@
 
 #ifdef DEBUG
 
-//NSString *const BaseURL = @"https://zhyf-test.jingpai.com";
-NSString *const BaseURL = @"https://zhyf.jingpai.com";
+NSString *const BaseURL = @"https://zhyf-test.jingpai.com";
+//NSString *const BaseURL = @"https://zhyf.jingpai.com";
 
 #else
 
