@@ -184,7 +184,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath  {
-    return  [CustomRecipeTableViewCell getCellHeight];
+    return  [CustomRecipeTableViewCell getCellHeightWith:self.dataArray[indexPath.row]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

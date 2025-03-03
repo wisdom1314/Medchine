@@ -24,6 +24,7 @@ pod 'Masonry'
 pod 'SDCycleScrollView', '~> 1.82'
 pod 'PGDatePicker'
 pod 'AlipaySDK-iOS'
+pod 'LXReorderableCollectionViewFlowLayout'
 #pod 'WebViewJavascriptBridge', '~> 6.0'
 
 pod 'XHLaunchAd'

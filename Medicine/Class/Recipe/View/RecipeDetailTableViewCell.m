@@ -9,6 +9,8 @@
 #import "ZZCollectionViewFlowLayout.h"
 #import "ZZGoodsBuyCollectionCell.h"
 #import "RecipeHeaderReusableView.h"
+#import "RecipePicCollectionViewCell.h"
+#import "ZZBigView.h"
 
 @interface RecipeDetailTableViewCell ()
 <UICollectionViewDelegate,
@@ -46,6 +48,9 @@ ZZCollectionViewFlowLayoutDelegate
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView2;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionHeight2;
+@property (weak, nonatomic) IBOutlet UICollectionView *picCollectionView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *picCollectionHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *picLabHeight;
 @end
 
 @implementation RecipeDetailTableViewCell
@@ -71,6 +76,18 @@ ZZCollectionViewFlowLayoutDelegate
     self.collectionView2.dataSource = self;
     [self.collectionView2 registerNib:[UINib nibWithNibName:@"ZZGoodsBuyCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"buyID"];
     
+    
+    UICollectionViewFlowLayout * picLayout = [[UICollectionViewFlowLayout alloc] init];
+    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    layout.minimumLineSpacing= 10;
+    layout.minimumInteritemSpacing = 10;
+    self.picCollectionView.collectionViewLayout = picLayout;
+    self.picCollectionView.delegate = self;
+    self.picCollectionView.dataSource = self;
+    self.picCollectionView.backgroundColor = COLOR_FFFFFF;
+    [self.picCollectionView registerNib:[UINib nibWithNibName:@"RecipePicCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"RecipePicCollectionViewCellId"];
+    
+    
     // Initialization code
 }
 
@@ -86,15 +103,18 @@ ZZCollectionViewFlowLayoutDelegate
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return collectionView.tag == 0? self.detailModel.recipedetail.count : self.detailModel.recipeExcipientList.count;
+    return collectionView.tag == 100? self.detailModel.recipeModel.fileList.count: collectionView.tag == 0? self.detailModel.recipedetail.count : self.detailModel.recipeExcipientList.count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if(collectionView.tag == 0) {
+    if(collectionView.tag == 100) {
+        return CGSizeMake(floor((WIDE - 140 - 30)/4.0), floor((WIDE - 140 - 30)/4.0));
+    }else if(collectionView.tag == 0) {
         DrugItemModel *model = self.detailModel.recipedetail[indexPath.item];
         double cellWidth = [RecipeDetailTableViewCell boundingRectWithSize:model.granule_name].width + 20.0;
         if([self.detailModel.recipeModel.is_secret integerValue] == 0) {
@@ -120,34 +140,49 @@ ZZCollectionViewFlowLayoutDelegate
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ZZGoodsBuyCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"buyID" forIndexPath:indexPath];
-    if(collectionView.tag == 0) {
-        DrugItemModel *model = self.detailModel.recipedetail[indexPath.item];
-        
-        if([self.detailModel.recipeModel.is_secret integerValue] == 0) {
-            NSString *nameStr = [NSString stringWithFormat:@"%@%@g", model.granule_name, model.herb_dose];
-            NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:nameStr];
-            [attri addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(0, model.granule_name.length)];
-            [attri addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} range:NSMakeRange(model.granule_name.length, model.herb_dose.length+1)];
-            cell.catoryLab.attributedText = attri;
-        }else {
-            cell.catoryLab.text = model.granule_name;
-        }
+    if(collectionView.tag == 100) {
+        RecipePicCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RecipePicCollectionViewCellId" forIndexPath:indexPath];
+        cell.model = self.detailModel.recipeModel.fileList[indexPath.item];
+        return cell;
     }else {
-        RecipeExcipientModel *model = self.detailModel.recipeExcipientList[indexPath.item];
-        if([self.detailModel.recipeModel.is_secret integerValue] == 0) {
-            NSString *nameStr = [NSString stringWithFormat:@"%@%@g", model.name, model.weight];
-            NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:nameStr];
-            [attri addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(0, model.name.length)];
-            [attri addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} range:NSMakeRange(model.name.length, model.weight.length+1)];
-            cell.catoryLab.attributedText = attri;
+        ZZGoodsBuyCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"buyID" forIndexPath:indexPath];
+        if(collectionView.tag == 0) {
+            DrugItemModel *model = self.detailModel.recipedetail[indexPath.item];
+            
+            if([self.detailModel.recipeModel.is_secret integerValue] == 0) {
+                NSString *nameStr = [NSString stringWithFormat:@"%@%@g", model.granule_name, model.herb_dose];
+                NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:nameStr];
+                [attri addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(0, model.granule_name.length)];
+                [attri addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} range:NSMakeRange(model.granule_name.length, model.herb_dose.length+1)];
+                cell.catoryLab.attributedText = attri;
+            }else {
+                cell.catoryLab.text = model.granule_name;
+            }
         }else {
-            cell.catoryLab.text = model.name;
+            RecipeExcipientModel *model = self.detailModel.recipeExcipientList[indexPath.item];
+            if([self.detailModel.recipeModel.is_secret integerValue] == 0) {
+                NSString *nameStr = [NSString stringWithFormat:@"%@%@g", model.name, model.weight];
+                NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:nameStr];
+                [attri addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(0, model.name.length)];
+                [attri addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} range:NSMakeRange(model.name.length, model.weight.length+1)];
+                cell.catoryLab.attributedText = attri;
+            }else {
+                cell.catoryLab.text = model.name;
+            }
         }
+        
+        
+        return cell;
     }
-    
-    
-    return cell;
+   
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if(collectionView.tag == 100) {
+        UploadImgModel *model =  self.detailModel.recipeModel.fileList[indexPath.item];
+        ZZBigView *bigView=[[ZZBigView alloc]initWithFrame:CGRectMake(0, 0, WIDE, HIGHT) withURLs:@[model.url] with:0];
+        [bigView show];
+    }
 }
 
 + (instancetype)getTableView:(UITableView *)tableView indexPathWith:(NSIndexPath *)indexPath {
@@ -186,6 +221,11 @@ ZZCollectionViewFlowLayoutDelegate
 
 - (void)setDetailModel:(RecipeOrderDetailModel *)detailModel {
     _detailModel = detailModel;
+    
+    CGFloat row = detailModel.recipeModel.fileList.count>0?10: 0;
+    self.picCollectionHeight.constant = floor((WIDE - 140 - 30)/4.0)*ceil(detailModel.recipeModel.fileList.count/4.0)+row;
+    
+    self.picLabHeight.constant =detailModel.recipeModel.fileList.count>0? 15: 0;
     
     RecipeOrderItemModel *itemModel = detailModel.recipeModel;
     self.totalLab.text = [NSString stringWithFormat:@"%.4fx%@=%.4f",[itemModel.total_granule_dose floatValue],itemModel.recipe_no,  [itemModel.total_granule_dose floatValue]* [itemModel.recipe_no floatValue]];
@@ -292,7 +332,11 @@ ZZCollectionViewFlowLayoutDelegate
         CGFloat addressHeight = [ClassMethod sizeText:[NSString stringWithFormat:@"%@%@%@%@", model.province,model.city,model.area, model.address] font:[UIFont systemFontOfSize:10] limitWidth:WIDE - 140].height;
         CGFloat symptomsHeight = [ClassMethod sizeText:model.symptoms font:[UIFont systemFontOfSize:10] limitWidth:WIDE - 140].height;
         CGFloat attentionHeight = [ClassMethod sizeText:model.attention font:[UIFont systemFontOfSize:10] limitWidth:WIDE - 140].height;
-        return 180 + addressHeight + symptomsHeight + attentionHeight;
+        CGFloat row = 0;
+        if(detaiModel.recipeModel.fileList.count>0) {
+            row = 10;
+        }
+        return 180 + addressHeight + symptomsHeight + attentionHeight + floor((WIDE - 140 - 30)/4.0)*ceil(detaiModel.recipeModel.fileList.count/4.0)+row ;
         
     }else if(indexPath.row == 1) {  /// 计算collectionView高度
         NSInteger heightNum = 1;

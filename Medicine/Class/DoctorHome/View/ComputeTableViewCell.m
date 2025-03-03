@@ -59,6 +59,8 @@
         
             model.totalKeli = self.valueLab.text;
             
+            NSLog(@"sdsdsaaaaaaaadsd %@", [formatter stringFromNumber:@(totalKeliNum*[model.recipe_no integerValue])]);
+            
         }else if(indexPath.row == 2) {
             if(model.drugArr.count == 0) {
                 self.valueLab.text = @"";
@@ -83,7 +85,7 @@
             self.valueLab.text = [formatter stringFromNumber:@(totalPrice)];
             
             if([model.is_secret integerValue] == 1) { /// 加密药方
-                self.valueLab.text = model.totalSellPrice;
+                self.valueLab.text = [NSString stringWithFormat:@"%.2f",[model.totalSellPrice floatValue]];
             }
             
             model.sell_price_total = self.valueLab.text;
@@ -145,7 +147,7 @@
                 totalPrice += roundedValue;
             }
             totalPrice = totalPrice*[model.recipe_no  integerValue];
-            if([model.delivery_mode integerValue] == 1 || totalPrice>100) {
+            if([model.delivery_mode integerValue] == 1 || totalPrice>150) {
                 model.fee = @"0";
             }else {
                 model.fee = @"10";
@@ -173,7 +175,7 @@
             
           
             CGFloat fee = 0;
-            if([model.delivery_mode integerValue] == 1 || totalPrice>100) {
+            if([model.delivery_mode integerValue] == 1 || totalPrice>150) {
                
                 model.fee = @"0";
                 fee = 0;
@@ -211,9 +213,10 @@
             self.valueLab.text = [formatter stringFromNumber:@(totalKeliNum*[model.recipe_no integerValue])];
             
             if([model.is_secret integerValue] == 1) { /// 加密药方
-                self.valueLab.text = model.recipeGranuleDose;
+                self.valueLab.text = [formatter stringFromNumber:[NSNumber numberWithFloat:[model.recipeGranuleDose floatValue]*[model.recipe_no integerValue]]] ;
             }
             model.totalKeli = self.valueLab.text;
+
             
         }else if(indexPath.row == 2) {
             /// 颗粒总价
@@ -236,7 +239,7 @@
             self.valueLab.text = [formatter stringFromNumber:@(totalPrice)];
             
             if([model.is_secret integerValue] == 1) { /// 加密药方
-                self.valueLab.text = model.totalSellPrice;
+                self.valueLab.text = [NSString stringWithFormat:@"%.2f",[model.totalSellPrice floatValue]];
             }
             model.sell_price_total = self.valueLab.text;
             
@@ -273,7 +276,7 @@
                 totalPrice += roundedValue;
             }
             totalPrice = totalPrice*[model.recipe_no  integerValue];
-            if([model.delivery_mode integerValue] == 1 || totalPrice>100) {
+            if([model.delivery_mode integerValue] == 1 || totalPrice>150) {
                 model.fee = @"0";
             }else {
                 model.fee = @"10";
@@ -327,7 +330,7 @@
             }
             
             CGFloat fee = 0;
-            if([model.delivery_mode integerValue] == 1 || totalPrice>100) {
+            if([model.delivery_mode integerValue] == 1 || totalPrice>150) {
                 fee = 0;
             }else {
                 fee = 10;

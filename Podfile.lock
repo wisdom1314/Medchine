@@ -10,6 +10,7 @@ PODS:
   - FLAnimatedImage (1.0.17)
   - IQKeyboardManager (6.5.11)
   - KVOController (1.2.0)
+  - LXReorderableCollectionViewFlowLayout (0.2.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJExtension (3.4.1)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - AlipaySDK-iOS
   - IQKeyboardManager
   - KVOController
+  - LXReorderableCollectionViewFlowLayout
   - Masonry
   - MBProgressHUD
   - MJExtension
@@ -61,6 +63,7 @@ SPEC REPOS:
     - FLAnimatedImage
     - IQKeyboardManager
     - KVOController
+    - LXReorderableCollectionViewFlowLayout
     - Masonry
     - MBProgressHUD
     - MJExtension
@@ -83,6 +86,7 @@ SPEC CHECKSUMS:
   FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
   IQKeyboardManager: ef43ce1ba1e5aaf4adf222c0a46f39761f246879
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
+  LXReorderableCollectionViewFlowLayout: acd6fe9fd0800efc656266a345130a2f634abf85
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJExtension: 21c5f6f8c4d5d8844b7ae8fbae08fed0b501f961
@@ -99,6 +103,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: a37d7eec87c54436e896a67947033ad2178d498b
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
 
-PODFILE CHECKSUM: 1e84e37f5c6063f22a64f50597149ea8274ffac3
+PODFILE CHECKSUM: 66040b722d7f96d104663875960dcdb5e045002e
 
 COCOAPODS: 1.14.3

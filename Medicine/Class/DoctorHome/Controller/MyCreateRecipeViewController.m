@@ -308,11 +308,14 @@
         
         [[[headerView.rightBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:headerView.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
             @strongify(self);
+            self.param = @{};
             [self pushVC:@"ChooseRecipeTemplateListVC" param:nil backBlock:^(NSDictionary * _Nonnull dic) {
                 NSArray *drugArr = dic[@"drugArr"];
                 self.drugArr=[drugArr mutableCopy];
                 self.model.drugArr = self.drugArr;
                 [self.tableView reloadData];
+                
+                [self reloadDatasWith: self.model];
             } animated:YES];
         }];
         
@@ -592,6 +595,80 @@
     }
     return _model;
 }
+
+
+
+- (void)reloadDatasWith:(RecipeModel *)model {
+    if([model.recipe_type integerValue] == 0) {
+        /// 颗粒总价
+        CGFloat totalPrice = 0;
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        formatter.maximumFractionDigits = 4; // 设置最多四位小数
+        formatter.minimumFractionDigits = 4; // 设置最少四位小数
+        formatter.usesGroupingSeparator = NO; // 禁止千位分隔符
+        for (DrugItemModel *drugModel in model.drugArr) {
+            drugModel.herb_dose = [model.need_factor integerValue] == 1? [ClassMethod formatNumberWithCustomRounding:drugModel.num*[drugModel.herb_factor floatValue]]: [NSString stringWithFormat:@"%ld", drugModel.num]; /// 是否减量
+            CGFloat value = [drugModel.herb_dose floatValue] * [drugModel.sell_price floatValue];
+            CGFloat roundedValue = round(value * 10000) / 10000.0;
+            totalPrice += roundedValue;
+        }
+        
+        CGFloat fee = 0;
+        if([model.delivery_mode integerValue] == 1 || totalPrice>150) {
+            
+            model.fee = @"0";
+            fee = 0;
+        }else {
+            model.fee = @"10";
+            fee = 10;
+        }
+        
+        CGFloat finalPrice = totalPrice  + fee;
+        
+        /// 实收
+        model.recipe_sale_price = [NSString stringWithFormat:@"%.2f",finalPrice];
+        
+    }else {
+        /// 实收金额
+        CGFloat totalPrice = 0;
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        formatter.maximumFractionDigits = 4; // 设置最多四位小数
+        formatter.minimumFractionDigits = 4; // 设置最少四位小数
+        formatter.usesGroupingSeparator = NO; // 禁止千位分隔符
+        for (DrugItemModel *drugModel in model.drugArr) {
+            drugModel.herb_dose = [model.need_factor integerValue] == 1? [ClassMethod formatNumberWithCustomRounding:drugModel.num*[drugModel.herb_factor floatValue]]: [NSString stringWithFormat:@"%ld", drugModel.num]; /// 是否减量
+            CGFloat value = [drugModel.herb_dose floatValue] * [drugModel.sell_price floatValue];
+            CGFloat roundedValue = round(value * 10000) / 10000.0;
+            totalPrice += roundedValue;
+        }
+        totalPrice = totalPrice*[model.recipe_no  integerValue];
+        
+        CGFloat totalPrice1 = 0;
+        NSNumberFormatter *formatter1 = [[NSNumberFormatter alloc] init];
+        formatter1.numberStyle = NSNumberFormatterDecimalStyle;
+        formatter1.maximumFractionDigits = 2;
+        formatter1.minimumFractionDigits = 2;
+        formatter1.usesGroupingSeparator = NO; // 禁止千位分隔符
+        for (ExcipientItemModel *subModel in model.excipentArr) {
+            CGFloat value = subModel.num * [subModel.price floatValue];
+            CGFloat roundedValue = round(value * 100) / 100.0;
+            totalPrice1 += roundedValue;
+        }
+        
+        CGFloat fee = 0;
+        if([model.delivery_mode integerValue] == 1 || totalPrice>150) {
+            fee = 0;
+        }else {
+            fee = 10;
+        }
+        
+        CGFloat finalPrice = totalPrice + totalPrice1 + fee + [model.cost floatValue];
+        model.recipe_sale_price = [NSString stringWithFormat:@"%.2f",finalPrice];
+    }
+}
+
 
 
 

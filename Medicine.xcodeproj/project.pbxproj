@@ -41,6 +41,8 @@
 		0909D6D42CE7938300D6DA86 /* AgreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909D6D32CE7938300D6DA86 /* AgreeView.xib */; };
 		090D91D42CA65DA8005AE0F4 /* TradingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 090D91D22CA65DA8005AE0F4 /* TradingTableViewCell.m */; };
 		090D91D52CA65DA8005AE0F4 /* TradingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090D91D32CA65DA8005AE0F4 /* TradingTableViewCell.xib */; };
+		090EBA712D63921600478E76 /* RecipePicCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 090EBA6F2D63921600478E76 /* RecipePicCollectionViewCell.m */; };
+		090EBA722D63921600478E76 /* RecipePicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090EBA702D63921600478E76 /* RecipePicCollectionViewCell.xib */; };
 		0910CFE22CB4DBC1000EBA58 /* RecipeButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0910CFE12CB4DBC1000EBA58 /* RecipeButtonView.m */; };
 		0910CFE42CB4DBCE000EBA58 /* RecipeButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0910CFE32CB4DBCE000EBA58 /* RecipeButtonView.xib */; };
 		0910CFE82CB50033000EBA58 /* RecipeOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0910CFE62CB50033000EBA58 /* RecipeOrderTableViewCell.m */; };
@@ -229,6 +231,8 @@
 		09C542B32C8EACA600C709DB /* CALayer+ZZXibBorderColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C542A32C8EACA600C709DB /* CALayer+ZZXibBorderColor.m */; };
 		09C542BA2C8EC25200C709DB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C542B92C8EC25200C709DB /* HomeViewController.m */; };
 		09C542BD2C8EC26E00C709DB /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C542BC2C8EC26E00C709DB /* MineViewController.m */; };
+		09C71C6E2D7455F300F80559 /* CreateRecipeSubVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C71C6C2D7455F300F80559 /* CreateRecipeSubVC.m */; };
+		09C71C6F2D7455F300F80559 /* CreateRecipeSubVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C71C6D2D7455F300F80559 /* CreateRecipeSubVC.xib */; };
 		09C72DC42CE5A6C100B73C06 /* AssistantPassedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C72DC22CE5A6C100B73C06 /* AssistantPassedVC.m */; };
 		09C72DC82CE5AA2500B73C06 /* AssistantHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C72DC72CE5AA2500B73C06 /* AssistantHeaderView.m */; };
 		09C72DCA2CE5AA2F00B73C06 /* AssistantHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C72DC92CE5AA2F00B73C06 /* AssistantHeaderView.xib */; };
@@ -366,6 +370,9 @@
 		090D91D12CA65DA8005AE0F4 /* TradingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TradingTableViewCell.h; sourceTree = "<group>"; };
 		090D91D22CA65DA8005AE0F4 /* TradingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TradingTableViewCell.m; sourceTree = "<group>"; };
 		090D91D32CA65DA8005AE0F4 /* TradingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradingTableViewCell.xib; sourceTree = "<group>"; };
+		090EBA6E2D63921600478E76 /* RecipePicCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipePicCollectionViewCell.h; sourceTree = "<group>"; };
+		090EBA6F2D63921600478E76 /* RecipePicCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipePicCollectionViewCell.m; sourceTree = "<group>"; };
+		090EBA702D63921600478E76 /* RecipePicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipePicCollectionViewCell.xib; sourceTree = "<group>"; };
 		0910CFE02CB4DBC1000EBA58 /* RecipeButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeButtonView.h; sourceTree = "<group>"; };
 		0910CFE12CB4DBC1000EBA58 /* RecipeButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeButtonView.m; sourceTree = "<group>"; };
 		0910CFE32CB4DBCE000EBA58 /* RecipeButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeButtonView.xib; sourceTree = "<group>"; };
@@ -686,6 +693,9 @@
 		09C542B92C8EC25200C709DB /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		09C542BB2C8EC26E00C709DB /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		09C542BC2C8EC26E00C709DB /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		09C71C6B2D7455F300F80559 /* CreateRecipeSubVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateRecipeSubVC.h; sourceTree = "<group>"; };
+		09C71C6C2D7455F300F80559 /* CreateRecipeSubVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateRecipeSubVC.m; sourceTree = "<group>"; };
+		09C71C6D2D7455F300F80559 /* CreateRecipeSubVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRecipeSubVC.xib; sourceTree = "<group>"; };
 		09C72DC12CE5A6C100B73C06 /* AssistantPassedVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssistantPassedVC.h; sourceTree = "<group>"; };
 		09C72DC22CE5A6C100B73C06 /* AssistantPassedVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssistantPassedVC.m; sourceTree = "<group>"; };
 		09C72DC62CE5AA2500B73C06 /* AssistantHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssistantHeaderView.h; sourceTree = "<group>"; };
@@ -1101,6 +1111,9 @@
 				091AC0692CCCC7C100381C2D /* RecipeLastView.h */,
 				091AC06A2CCCC7C100381C2D /* RecipeLastView.m */,
 				091AC06C2CCCC7CA00381C2D /* RecipeLastView.xib */,
+				09C71C6B2D7455F300F80559 /* CreateRecipeSubVC.h */,
+				09C71C6C2D7455F300F80559 /* CreateRecipeSubVC.m */,
+				09C71C6D2D7455F300F80559 /* CreateRecipeSubVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1458,6 +1471,9 @@
 				0910CFEF2CB52195000EBA58 /* RecipeDetailTableViewCell.h */,
 				0910CFF02CB52195000EBA58 /* RecipeDetailTableViewCell.m */,
 				0910CFF12CB52195000EBA58 /* RecipeDetailTableViewCell.xib */,
+				090EBA6E2D63921600478E76 /* RecipePicCollectionViewCell.h */,
+				090EBA6F2D63921600478E76 /* RecipePicCollectionViewCell.m */,
+				090EBA702D63921600478E76 /* RecipePicCollectionViewCell.xib */,
 				090743282CB61A7000E967D1 /* RecipeLogTableViewCell.h */,
 				090743292CB61A7000E967D1 /* RecipeLogTableViewCell.m */,
 				0907432A2CB61A7000E967D1 /* RecipeLogTableViewCell.xib */,
@@ -2020,6 +2036,7 @@
 				0910CFF32CB52195000EBA58 /* RecipeDetailTableViewCell.xib in Resources */,
 				0910CFE92CB50033000EBA58 /* RecipeOrderTableViewCell.xib in Resources */,
 				099088942CA41CD6001A1C39 /* InfoHeaderView.xib in Resources */,
+				09C71C6F2D7455F300F80559 /* CreateRecipeSubVC.xib in Resources */,
 				0993E9242CBFAA7E00386C76 /* ChoosePickupAddressVC.xib in Resources */,
 				09F18E772CA9259600E379EB /* SettingViewController.xib in Resources */,
 				096E2D9A2CCB96F000AE687B /* AccessoryTableViewCell.xib in Resources */,
@@ -2059,6 +2076,7 @@
 				0912240D2C9C149A008C6D74 /* RecipeTableViewCell.xib in Resources */,
 				0909D6C02CE7358E00D6DA86 /* PrescriptionHeaderView.xib in Resources */,
 				092EAF7C2C9A862400F8717A /* DoctorGridCell.xib in Resources */,
+				090EBA722D63921600478E76 /* RecipePicCollectionViewCell.xib in Resources */,
 				093249F22CE0A1CC0044C37C /* PayPromptView.xib in Resources */,
 				09A9728A2CC8A8DF009CF827 /* ZZGoodsBuyCollectionCell.xib in Resources */,
 				09280C4F2CA6BFE8009898F5 /* TradingRecordViewController.xib in Resources */,
@@ -2164,6 +2182,7 @@
 				0993E9232CBFAA7E00386C76 /* ChoosePickupAddressVC.m in Sources */,
 				09EE37992C9188A600C8E1BD /* PrescriptionViewController.m in Sources */,
 				09A972822CC8A1FF009CF827 /* MSSAutoresizeLabelFlowConfig.m in Sources */,
+				090EBA712D63921600478E76 /* RecipePicCollectionViewCell.m in Sources */,
 				09A8049C2CC9ECEA00BCE085 /* RightTableViewCell.m in Sources */,
 				09F18E572CA8EA2400E379EB /* TradingHeaderView.m in Sources */,
 				09C542A72C8EACA600C709DB /* UIButton+Custom.m in Sources */,
@@ -2223,6 +2242,7 @@
 				0907432B2CB61A7000E967D1 /* RecipeLogTableViewCell.m in Sources */,
 				09229FB72CD877740083AF91 /* CustomRecipeTableViewCell.m in Sources */,
 				09C542AD2C8EACA600C709DB /* NSData+Special.m in Sources */,
+				09C71C6E2D7455F300F80559 /* CreateRecipeSubVC.m in Sources */,
 				09C72DC82CE5AA2500B73C06 /* AssistantHeaderView.m in Sources */,
 				09A972982CC8EB77009CF827 /* RecipeHosCollectionViewCell.m in Sources */,
 				09C542A82C8EACA600C709DB /* UIColor+ColorChange.m in Sources */,
@@ -2500,7 +2520,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3HTJK6257A;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -2509,6 +2529,7 @@
 				INFOPLIST_FILE = Medicine/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "共享智慧药房";
 				INFOPLIST_KEY_NSCameraUsageDescription = "持正堂需要访问您的相机为您提供上传头像图片等服务";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "持正堂需要访问您的地理位置为您提供推荐服务";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "持正堂需要访问您的相册为您提供上传头像图片等服务";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "持正堂需要访问您的相册为您提供上传头像图片等服务";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2522,7 +2543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.14;
+				MARKETING_VERSION = 1.1.15;
 				PRODUCT_BUNDLE_IDENTIFIER = jinpai.medical.companies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2545,7 +2566,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3HTJK6257A;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -2554,6 +2575,7 @@
 				INFOPLIST_FILE = Medicine/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "共享智慧药房";
 				INFOPLIST_KEY_NSCameraUsageDescription = "持正堂需要访问您的相机为您提供上传头像图片等服务";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "持正堂需要访问您的地理位置为您提供推荐服务";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "持正堂需要访问您的相册为您提供上传头像图片等服务";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "持正堂需要访问您的相册为您提供上传头像图片等服务";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2567,7 +2589,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.14;
+				MARKETING_VERSION = 1.1.15;
 				PRODUCT_BUNDLE_IDENTIFIER = jinpai.medical.companies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

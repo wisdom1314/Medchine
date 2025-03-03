@@ -20,8 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *recipe_noLab;
 @property (weak, nonatomic) IBOutlet UILabel *granule_total_noLab;
 @property (weak, nonatomic) IBOutlet UILabel *recipe_sale_priceLab;
+@property (weak, nonatomic) IBOutlet UILabel *nextNameLAb;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerHeight;
 
 @property (weak, nonatomic) IBOutlet UILabel *doctorNameLab;
 @end
@@ -33,8 +35,9 @@
     // Initialization code
 }
 
-+ (CGFloat)getCellHeight {
-    return 185;
++ (CGFloat)getCellHeightWith: (RecipeOrderItemModel *)model {
+   
+    return 185 - 12  +  [ClassMethod sizeText: [NSString stringWithFormat:@"医生：%@", model.doctor] font:[UIFont systemFontOfSize: 10] limitWidth:WIDE-186].height;
 }
 
 + (instancetype)getTableView:(UITableView *)tableView indexPathWith:(NSIndexPath *)indexPath {
@@ -49,7 +52,9 @@
 - (void)setModel:(RecipeOrderItemModel *)model {
     _model = model;
     self.recipeNameLab.text = model.recipe_name;
-    self.timeLab.text = [NSString stringWithFormat:@"%@ %@",model.doctor, model.recipe_time];
+    self.centerHeight.constant = 45 - 12 + [ClassMethod sizeText: [NSString stringWithFormat:@"医生：%@", model.doctor] font:[UIFont systemFontOfSize: 10] limitWidth:WIDE-186].height;
+//    self.timeLab.text = [NSString stringWithFormat:@"%@ %@",model.doctor, model.recipe_time];
+    self.timeLab.text = model.recipe_time;
     if([model.recipe_status isEqualToString:@"NEW"]) {
         self.stausLab.text = @"新处方";
     }else if([model.recipe_status isEqualToString:@"AUDIT"]) {
@@ -72,6 +77,9 @@
     self.recipe_sale_priceLab.text = [NSString stringWithFormat:@"%.2f", [model.recipe_sale_price doubleValue]];
   
     self.doctorNameLab.text = [NSString stringWithFormat:@"医生：%@", model.doctor];
+    if([ClassMethod sizeText:model.doctor font:[UIFont systemFontOfSize:12] limitHeight:14].width > WIDE-196) {
+        
+    }
   
     if([model.payment_status isEqualToString:@"WAIT"]) {
         [self.payStatusBtn setTitle:@"待缴费" forState:UIControlStateNormal];

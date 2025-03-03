@@ -83,13 +83,14 @@
         // 格式化结果为四位小数
         NSString *formattedValueString = [formatter stringFromNumber:@(value)];
         CGFloat formattedValue = [formattedValueString floatValue];
+        NSLog(@"sdxxxxsdsd %f", formattedValue);
         // 将格式化后的值累加到 totalKeliNum
         totalKeliNum += formattedValue;
     }
 //    辅料总量
     CGFloat totalFlNum =  round(totalKeliNum * [model.excipient_proportion floatValue]) * [model.recipe_no integerValue];
     model.excipentTotal = [NSString stringWithFormat:@"%.0f",totalFlNum];
-    
+    NSLog(@"xxxxxx33333xxx %@",model.excipentTotal);
     
     if(model.excipentArr.count == 1 && indexPath.row == 0) {
         ExcipientItemModel *subModel = model.excipentArr[indexPath.row];

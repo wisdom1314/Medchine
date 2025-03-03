@@ -213,7 +213,7 @@
             }];
         }
     }else {
-        [ZZProgress showErrorWithStatus:@"请先阅读并同意隐私政策和用户协议"];
+        [ZZProgress showErrorWithStatus:@"请阅读并同意隐私政策和用户协议"];
     }
     
 }
