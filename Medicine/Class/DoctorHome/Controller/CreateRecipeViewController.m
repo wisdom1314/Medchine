@@ -964,6 +964,7 @@
                     [ZZProgress showErrorWithStatus:@"最多添加两味辅料"];
                     return;
                 }
+                self.param = @{};
                 [self pushVC:@"AddExciientViewController" param:nil backBlock:^(NSDictionary * _Nonnull dic) {
                     if([dic valueForKey:@"model"]) {
                         ExcipientItemModel *selecModel=[dic valueForKey:@"model"];
