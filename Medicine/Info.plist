@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSLocationWhenlnUseUsageDescription</key>
-	<string></string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -18,12 +14,24 @@
 				<string>alipayMedicine</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>jinpai.medical.companies</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wxa82aac52a781d470</string>
+			</array>
+		</dict>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationWhenlnUseUsageDescription</key>
+	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UISceneConfigurations</key>

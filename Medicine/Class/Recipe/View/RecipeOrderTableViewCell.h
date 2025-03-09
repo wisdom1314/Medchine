@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *topBtn;
 @property (weak, nonatomic) IBOutlet UIButton *bottomBtn;
 @property (weak, nonatomic) IBOutlet UIButton *centerBtn;
+@property (weak, nonatomic) IBOutlet UIButton *payBtn;
 
 @end
 

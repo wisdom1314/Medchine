@@ -22,6 +22,7 @@
 #import "ClassMethod.h"
 #import "RequestManager.h"
 #import "MedicineManager.h"
+#import "WXApiManager.h"
 
 
 #import "NSString+Filter.h"

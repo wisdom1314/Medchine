@@ -100,6 +100,11 @@
 		093249F02CE0A1A80044C37C /* PayPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 093249EF2CE0A1A80044C37C /* PayPromptView.m */; };
 		093249F22CE0A1CC0044C37C /* PayPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093249F12CE0A1CC0044C37C /* PayPromptView.xib */; };
 		093A58BD2CBCCFB900DEE50B /* XHLaunchImageView+FixColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 093A58BC2CBCCFB900DEE50B /* XHLaunchImageView+FixColor.m */; };
+		093B822D2D7DB998006E628F /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 093B822C2D7DB998006E628F /* WXApiManager.m */; };
+		093B82312D7DC9C5006E628F /* RecipeDetailStatusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 093B822F2D7DC9C5006E628F /* RecipeDetailStatusVC.m */; };
+		093B82322D7DC9C5006E628F /* RecipeDetailStatusVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093B82302D7DC9C5006E628F /* RecipeDetailStatusVC.xib */; };
+		093B82352D7DDEAB006E628F /* SendMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 093B82342D7DDEAB006E628F /* SendMessageView.m */; };
+		093B82372D7DDEB4006E628F /* SendMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093B82362D7DDEB4006E628F /* SendMessageView.xib */; };
 		093D4A042CDC674C00022517 /* MD5Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 093D49FF2CDC674C00022517 /* MD5Encryption.m */; };
 		093D4A052CDC674C00022517 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 093D4A012CDC674C00022517 /* GTMBase64.m */; };
 		093D4A062CDC674C00022517 /* Base64Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 093D4A032CDC674C00022517 /* Base64Util.m */; };
@@ -469,6 +474,14 @@
 		093A58BC2CBCCFB900DEE50B /* XHLaunchImageView+FixColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XHLaunchImageView+FixColor.m"; sourceTree = "<group>"; };
 		093A58BE2CBCFAEA00DEE50B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		093A58BF2CBCFAEB00DEE50B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		093B822B2D7DB998006E628F /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		093B822C2D7DB998006E628F /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		093B822E2D7DC9C5006E628F /* RecipeDetailStatusVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeDetailStatusVC.h; sourceTree = "<group>"; };
+		093B822F2D7DC9C5006E628F /* RecipeDetailStatusVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailStatusVC.m; sourceTree = "<group>"; };
+		093B82302D7DC9C5006E628F /* RecipeDetailStatusVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailStatusVC.xib; sourceTree = "<group>"; };
+		093B82332D7DDEAB006E628F /* SendMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendMessageView.h; sourceTree = "<group>"; };
+		093B82342D7DDEAB006E628F /* SendMessageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendMessageView.m; sourceTree = "<group>"; };
+		093B82362D7DDEB4006E628F /* SendMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMessageView.xib; sourceTree = "<group>"; };
 		093D49FD2CDC674C00022517 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		093D49FE2CDC674C00022517 /* Base64Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Util.h; sourceTree = "<group>"; };
 		093D49FF2CDC674C00022517 /* MD5Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5Encryption.m; sourceTree = "<group>"; };
@@ -1127,6 +1140,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		093B822A2D7DB998006E628F /* WXApi */ = {
+			isa = PBXGroup;
+			children = (
+				093B822B2D7DB998006E628F /* WXApiManager.h */,
+				093B822C2D7DB998006E628F /* WXApiManager.m */,
+			);
+			path = WXApi;
+			sourceTree = "<group>";
+		};
 		093D49FC2CDC674C00022517 /* GTMBase64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1166,6 +1188,7 @@
 		097919B62C8ECEFE00DF98AE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				093B822A2D7DB998006E628F /* WXApi */,
 				096210472CE1B03D00CE1B7A /* BigView */,
 				093D49FC2CDC674C00022517 /* GTMBase64 */,
 				09229FBE2CD89E9F0083AF91 /* SGQRCode */,
@@ -1434,6 +1457,9 @@
 			children = (
 				09D5EBE92C90321A00E827E1 /* RecipeViewController.h */,
 				09D5EBEA2C90321B00E827E1 /* RecipeViewController.m */,
+				093B822E2D7DC9C5006E628F /* RecipeDetailStatusVC.h */,
+				093B822F2D7DC9C5006E628F /* RecipeDetailStatusVC.m */,
+				093B82302D7DC9C5006E628F /* RecipeDetailStatusVC.xib */,
 				0910CFEA2CB51F65000EBA58 /* RecipeDetailViewController.h */,
 				0910CFEB2CB51F65000EBA58 /* RecipeDetailViewController.m */,
 				0910CFEC2CB51F65000EBA58 /* RecipeDetailViewController.xib */,
@@ -1492,6 +1518,9 @@
 				09A972952CC8EB77009CF827 /* RecipeHosCollectionViewCell.h */,
 				09A972962CC8EB77009CF827 /* RecipeHosCollectionViewCell.m */,
 				09A972972CC8EB77009CF827 /* RecipeHosCollectionViewCell.xib */,
+				093B82332D7DDEAB006E628F /* SendMessageView.h */,
+				093B82342D7DDEAB006E628F /* SendMessageView.m */,
+				093B82362D7DDEB4006E628F /* SendMessageView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2013,6 +2042,7 @@
 				09A75E412CDA174800BC8838 /* PayQrcodeView.xib in Resources */,
 				094363142CC791BD00BFFCAC /* RecipeOrderAlertView.xib in Resources */,
 				094363192CC7B3D800BFFCAC /* NoDataTableViewCell.xib in Resources */,
+				093B82322D7DC9C5006E628F /* RecipeDetailStatusVC.xib in Resources */,
 				0909D6C52CE73A5300D6DA86 /* PrescriptionTableHeaderView.xib in Resources */,
 				09D3CC7F2CB76C9E00039C33 /* MyCreateRecipeViewController.xib in Resources */,
 				090743542CB6844000E967D1 /* CategoryManagerViewController.xib in Resources */,
@@ -2026,6 +2056,7 @@
 				09751EA62CF20B17004BF07D /* DoctorHomeFooterView.xib in Resources */,
 				09A804982CC9E86600BCE085 /* LeftTableViewCell.xib in Resources */,
 				091224082C9BF7EA008C6D74 /* PatientTableViewCell.xib in Resources */,
+				093B82372D7DDEB4006E628F /* SendMessageView.xib in Resources */,
 				0943A0C12CCA4D1A00269A31 /* DrugCollectionViewCell.xib in Resources */,
 				09C72DCF2CE5E4AD00B73C06 /* DoctorDetailVC.xib in Resources */,
 				09C72DD42CE5EAFB00B73C06 /* DoctorTableViewCell.xib in Resources */,
@@ -2198,6 +2229,7 @@
 				09D3CC8D2CB777BA00039C33 /* AddDoctorOrderInfoViewController.m in Sources */,
 				09EE37872C916BBD00C8E1BD /* WelcomeTableViewCell.m in Sources */,
 				093A58BD2CBCCFB900DEE50B /* XHLaunchImageView+FixColor.m in Sources */,
+				093B82312D7DC9C5006E628F /* RecipeDetailStatusVC.m in Sources */,
 				09C72DCE2CE5E4AD00B73C06 /* DoctorDetailVC.m in Sources */,
 				09DBCCEB2D215FC900938F1D /* PersonalDetailVC.m in Sources */,
 				093D4A052CDC674C00022517 /* GTMBase64.m in Sources */,
@@ -2290,6 +2322,7 @@
 				09229FCC2CD89EA00083AF91 /* SGScanView.m in Sources */,
 				099088922CA41CCD001A1C39 /* InfoHeaderView.m in Sources */,
 				090743572CB685B600E967D1 /* DealCategoryView.m in Sources */,
+				093B822D2D7DB998006E628F /* WXApiManager.m in Sources */,
 				0902C9742CCD307F001046DC /* AddMyRecipeTempateView.m in Sources */,
 				097919BA2C8ECF0A00DF98AE /* ZZProgress.m in Sources */,
 				091F06152CAA9CF9009CD4AF /* UIDatePickView.m in Sources */,
@@ -2314,6 +2347,7 @@
 				09C542742C8EAC3D00C709DB /* MedicineManager.m in Sources */,
 				096B98892CE47A5300D72364 /* AssistantTableViewCell.m in Sources */,
 				09229FCD2CD89EA00083AF91 /* SGCreateCode.m in Sources */,
+				093B82352D7DDEAB006E628F /* SendMessageView.m in Sources */,
 				0978A4122CD9BCF5006D7D79 /* MedchineReduceHeaderView.m in Sources */,
 				09C46BAF2D1A642B00D62F49 /* AuthorityViewController.m in Sources */,
 				09C542BA2C8EC25200C709DB /* HomeViewController.m in Sources */,
@@ -2530,6 +2564,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "共享智慧药房";
 				INFOPLIST_KEY_NSCameraUsageDescription = "持正堂需要访问您的相机为您提供上传头像图片等服务";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "持正堂需要访问您的地理位置为您提供推荐服务";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "持正堂需要访问您的相册为您提供上传头像图片等服务";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "持正堂需要访问您的相册为您提供上传头像图片等服务";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2576,6 +2611,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "共享智慧药房";
 				INFOPLIST_KEY_NSCameraUsageDescription = "持正堂需要访问您的相机为您提供上传头像图片等服务";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "持正堂需要访问您的地理位置为您提供推荐服务";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "持正堂需要访问您的相册为您提供上传头像图片等服务";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "持正堂需要访问您的相册为您提供上传头像图片等服务";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

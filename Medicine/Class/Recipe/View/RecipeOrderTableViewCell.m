@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBtnWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerBtnWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBtnHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *payRightLeading;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomWidth;
 
 @end
 
@@ -46,8 +48,8 @@
 }
 
 + (CGFloat)getCellHeightWith:(NSIndexPath *)indexPath modelWith: (RecipeOrderItemModel* )model{
-    if([model.payment_status isEqualToString:@"WAIT"] && [model.is_self_support integerValue] == 0) {
-        return 230;
+    if([model.payment_status isEqualToString:@"WAIT"] && ([model.is_self_support integerValue] == 0 || [model.isPayAnother integerValue] == 1)) {
+        return 200;
     }
     return 190;
 }
@@ -89,6 +91,8 @@
     self.centerBtnHeight.constant =0;
     self.centerBtnWidth.constant = 60;
     self.topBtnWidth.constant = 60;
+    self.payRightLeading.constant = 10;
+    self.bottomWidth.constant = 60;
     if([model.payment_status isEqualToString:@"WAIT"]) {
         if([model.is_self_support integerValue] == 0) {
 //            [self.topBtn setTitle:@"扫码缴费" forState:UIControlStateNormal];
@@ -105,26 +109,40 @@
         self.centerBtnHeight.constant =27;
         self.centerBtnWidth.constant = 90;
         [self.bottomBtn setTitle:@"删除" forState:UIControlStateNormal];
+        
+        if([model.isPayAnother integerValue] == 1 ) {
+            self.payBtn.hidden = NO;
+        }else {
+            self.payBtn.hidden = YES;
+        }
+        
     }else if([model.payment_status isEqualToString:@"PAYED"]) {
         [self.topBtn setTitle:@"已缴费" forState:UIControlStateNormal];
         if(model.tag == 1) {
             [self.bottomBtn setTitle:@"取消" forState:UIControlStateNormal];
         }else {
             self.bottomBtn.hidden = YES;
+            self.bottomWidth.constant = 0;
+            self.payRightLeading.constant = 0;
         }
         
     }else if([model.payment_status isEqualToString:@"REFUND"]) {
         [self.topBtn setTitle:@"已退单" forState:UIControlStateNormal];
         self.bottomBtn.hidden = YES;
+        self.bottomWidth.constant = 0;
+        self.payRightLeading.constant = 0;
     }else if([model.payment_status isEqualToString:@"CANCEL"]) {
         [self.topBtn setTitle:@"已取消" forState:UIControlStateNormal];
         if(model.tag == 0) {
             [self.bottomBtn setTitle:@"删除" forState:UIControlStateNormal];
         }else {
             self.bottomBtn.hidden = YES;
+            self.bottomWidth.constant = 0;
+            self.payRightLeading.constant = 0;
         }
         
     }
+    
     
 }
 

@@ -234,6 +234,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSArray *recipeLogList;
 @property (nonatomic, copy) NSArray *recipeExcipientList;
 @property (nonatomic, assign) BOOL isExpand;
+@property (nonatomic, assign) BOOL otherPay;
 @end
 
 
@@ -307,6 +308,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger tag;
 @property (nonatomic, copy) NSString *payQrimage;
 @property (nonatomic, copy) NSString *is_self_support;
+@property (nonatomic, copy) NSString *isPayAnother;
 
 @end
 

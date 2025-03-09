@@ -25,6 +25,7 @@ pod 'SDCycleScrollView', '~> 1.82'
 pod 'PGDatePicker'
 pod 'AlipaySDK-iOS'
 pod 'LXReorderableCollectionViewFlowLayout'
+pod 'WechatOpenSDK'
 #pod 'WebViewJavascriptBridge', '~> 6.0'
 
 pod 'XHLaunchAd'

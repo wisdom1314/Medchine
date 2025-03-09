@@ -376,6 +376,13 @@
             }
         }
         
+        
+        
+    }];
+    
+    [[[cell.payBtn rac_signalForControlEvents:UIControlEventTouchUpInside]takeUntil:cell.rac_prepareForReuseSignal]subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        [self pushVC:@"RecipeDetailStatusVC" param:@{@"recipe_name": subModel.recipe_name, @"type": @(self.currentTag)} animated:YES];
     }];
     return cell;
 }

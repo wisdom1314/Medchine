@@ -15,8 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) RecipeOrderItemModel *model;
 @property (weak, nonatomic) IBOutlet UIButton *expandBtn;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIButton *sendWXBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *sendMsgBtn;
 @property (nonatomic, strong) RecipeOrderDetailModel *detailModel;
+
+
++ (RecipeDetailTableViewCell *)getPayTableView:(UITableView *)tableView indexPathWith:(NSIndexPath *)indexPath;
++ (CGFloat)getPayCellHeightWith:(NSIndexPath *)indexPath modelWith: (RecipeOrderItemModel *)model detailModelWith:(RecipeOrderDetailModel *)detaiModel;
 
 @end
 

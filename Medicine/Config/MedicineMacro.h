@@ -87,4 +87,8 @@
 
 #define DESKey @"qbi21kyZQOfwUTl6kSDCEUx25"
 
+
+#define WeixinAppID @"wxa82aac52a781d470"
+//#define WeixinAppSecret @""
+
 #endif /* MedicineMacro_h */

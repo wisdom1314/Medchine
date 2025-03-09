@@ -51,6 +51,9 @@ ZZCollectionViewFlowLayoutDelegate
 @property (weak, nonatomic) IBOutlet UICollectionView *picCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *picCollectionHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *picLabHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *payView;
+@property (weak, nonatomic) IBOutlet UILabel *payTotalPriceLab;
+
 @end
 
 @implementation RecipeDetailTableViewCell
@@ -222,6 +225,12 @@ ZZCollectionViewFlowLayoutDelegate
 - (void)setDetailModel:(RecipeOrderDetailModel *)detailModel {
     _detailModel = detailModel;
     
+    if(detailModel.otherPay) {
+        self.payView.constant = 100;
+    }else {
+        self.payView.constant = 0;
+    }
+    
     CGFloat row = detailModel.recipeModel.fileList.count>0?10: 0;
     self.picCollectionHeight.constant = floor((WIDE - 140 - 30)/4.0)*ceil(detailModel.recipeModel.fileList.count/4.0)+row;
     
@@ -253,6 +262,8 @@ ZZCollectionViewFlowLayoutDelegate
     self.expressLab.text = itemModel.fee; /// 运费
     self.chufactualLab.text = [NSString stringWithFormat:@"%.2f", [itemModel.recipe_sale_price floatValue]]; /// 处方销售应收总价
     self.fuliaoLab.text = itemModel.excipient_price;
+    
+    self.payTotalPriceLab.text = [NSString stringWithFormat:@"¥%.2f", [itemModel.recipe_sale_price floatValue]]; /// 处方销售应收总价
     
     if(detailModel.isExpand) {
         self.saleTotalHeight.constant = 12;
@@ -396,6 +407,112 @@ ZZCollectionViewFlowLayoutDelegate
         }
         if(detaiModel.isExpand) {
             height += 18;
+        }
+        return height;
+    }
+}
+
+
+
+
++ (RecipeDetailTableViewCell *)getPayTableView:(UITableView *)tableView indexPathWith:(NSIndexPath *)indexPath {
+    NSInteger selectTag = 0;
+    NSString *identifier = @"RecipeDetailTableViewCellFristId";
+    if(indexPath.row == 1) {
+        selectTag = 0;
+        identifier = @"RecipeDetailTableViewCellFristId";
+    }else if(indexPath.row == 2) {
+        selectTag = 1;
+        identifier = @"RecipeDetailTableViewCellSecondId";
+    } else if(indexPath.row == 3) {
+        selectTag = 2;
+        identifier = @"RecipeDetailTableViewCellThridId";
+    }else  {
+        selectTag = 3;
+        identifier = @"RecipeDetailTableViewCellForthId";
+    }
+    RecipeDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if(!cell) {
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"RecipeDetailTableViewCell" owner:self options:nil]objectAtIndex:selectTag];
+    }
+    return cell;
+}
+
++ (CGFloat)getPayCellHeightWith:(NSIndexPath *)indexPath modelWith: (RecipeOrderItemModel *)model detailModelWith:(RecipeOrderDetailModel *)detaiModel {
+    if(indexPath.row == 1) {
+        CGFloat addressHeight = [ClassMethod sizeText:[NSString stringWithFormat:@"%@%@%@%@", model.province,model.city,model.area, model.address] font:[UIFont systemFontOfSize:10] limitWidth:WIDE - 140].height;
+        CGFloat symptomsHeight = [ClassMethod sizeText:model.symptoms font:[UIFont systemFontOfSize:10] limitWidth:WIDE - 140].height;
+        CGFloat attentionHeight = [ClassMethod sizeText:model.attention font:[UIFont systemFontOfSize:10] limitWidth:WIDE - 140].height;
+        CGFloat row = 0;
+        if(detaiModel.recipeModel.fileList.count>0) {
+            row = 10;
+        }
+        return 180 + addressHeight + symptomsHeight + attentionHeight + floor((WIDE - 140 - 30)/4.0)*ceil(detaiModel.recipeModel.fileList.count/4.0)+row ;
+        
+    }else if(indexPath.row == 2) {  /// 计算collectionView高度
+        NSInteger heightNum = 1;
+        CGFloat allWidth = 0;
+        if([detaiModel.recipeModel.is_secret integerValue] == 0) {
+            for (DrugItemModel *subModel in detaiModel.recipedetail) {
+                NSString *actualStr = [NSString stringWithFormat:@"%@g",subModel.herb_dose];
+                allWidth += ceil([RecipeDetailTableViewCell boundingRectWithSize:subModel.granule_name].width + 30.0 + [ClassMethod sizeText:actualStr font:[UIFont systemFontOfSize:10] limitHeight:15].width);
+                if(allWidth > WIDE - 50) {
+                    allWidth = ceil([RecipeDetailTableViewCell boundingRectWithSize:subModel.granule_name].width + 30.0 + [ClassMethod sizeText:actualStr font:[UIFont systemFontOfSize:10] limitHeight:15].width);
+                    heightNum = heightNum + 1;
+                }
+            }
+        }else {
+            for (DrugItemModel *subModel in detaiModel.recipedetail) {
+                allWidth += ceil([RecipeDetailTableViewCell boundingRectWithSize:subModel.granule_name].width + 30.0);
+                if(allWidth > WIDE - 50) {
+                    allWidth = ceil([RecipeDetailTableViewCell boundingRectWithSize:subModel.granule_name].width + 30.0);
+                    heightNum = heightNum + 1;
+                }
+            }
+        }
+        
+        /// 膏方
+        NSInteger heightNum1 = 0;
+        CGFloat allWidth1 = 0;
+        if([model.recipe_type integerValue] == 1) {
+            heightNum1 = 1;
+            if([detaiModel.recipeModel.is_secret integerValue] == 0) {
+                for (RecipeExcipientModel  *subModel in detaiModel.recipeExcipientList) {
+                    NSString *actualStr = [NSString stringWithFormat:@"%@g",subModel.weight];
+                    allWidth1 += ceil([RecipeDetailTableViewCell boundingRectWithSize:subModel.name].width + 30.0 + [ClassMethod sizeText:actualStr font:[UIFont systemFontOfSize:10] limitHeight:15].width);
+                    if(allWidth1 > WIDE - 50) {
+                        allWidth1 = ceil([RecipeDetailTableViewCell boundingRectWithSize:subModel.name].width + 30.0 + [ClassMethod sizeText:actualStr font:[UIFont systemFontOfSize:10] limitHeight:15].width);
+                        heightNum1 = heightNum1 + 1;
+                    }
+                }
+            }else {
+                for (RecipeExcipientModel *subModel in detaiModel.recipeExcipientList) {
+                    allWidth1 += ceil([RecipeDetailTableViewCell boundingRectWithSize:subModel.name].width + 30.0);
+                    if(allWidth1 > WIDE - 50) {
+                        allWidth1 = ceil([RecipeDetailTableViewCell boundingRectWithSize:subModel.name].width + 30.0);
+                        heightNum1 = heightNum1 + 1;
+                    }
+                }
+            }
+        }
+        if([detaiModel.recipeModel.recipe_type integerValue] == 1) {
+            return 40*heightNum+10 + 55 + 40*heightNum1 + 10+ 50;
+        }else {
+            return 40*heightNum+10 + 55;
+        }
+    }else  if(indexPath.row == 3){
+        CGFloat height = 126;
+        if([model.recipe_type integerValue] == 1) { /// 膏方
+            height +=18*2;
+        }
+        if(detaiModel.isExpand) {
+            height += 18;
+        }
+        return height;
+    } else {
+        CGFloat height = 215;
+        if(detaiModel.otherPay) {
+            height += 100;
         }
         return height;
     }

@@ -29,6 +29,7 @@ PODS:
   - TYAlertController (1.2.0)
   - TYPagerController (2.1.2)
   - TZImagePickerController (3.6.0)
+  - WechatOpenSDK (1.9.9)
   - XHLaunchAd (3.9.12):
     - FLAnimatedImage (~> 1.0.12)
 
@@ -54,6 +55,7 @@ DEPENDENCIES:
   - TYAlertController
   - TYPagerController
   - TZImagePickerController (= 3.6.0)
+  - WechatOpenSDK
   - XHLaunchAd
 
 SPEC REPOS:
@@ -78,6 +80,7 @@ SPEC REPOS:
     - TYAlertController
     - TYPagerController
     - TZImagePickerController
+    - WechatOpenSDK
     - XHLaunchAd
 
 SPEC CHECKSUMS:
@@ -101,8 +104,9 @@ SPEC CHECKSUMS:
   TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
   TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
   TZImagePickerController: a37d7eec87c54436e896a67947033ad2178d498b
+  WechatOpenSDK: 9bf85605d50000b35e5ea679a76582426a30c595
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
 
-PODFILE CHECKSUM: 66040b722d7f96d104663875960dcdb5e045002e
+PODFILE CHECKSUM: d4626b992881a22e8e4b3157da90e84eace6ea3c
 
 COCOAPODS: 1.14.3

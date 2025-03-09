@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -231,6 +231,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aag-Kz-YEy">
+                                <rect key="frame" x="115" y="139.66666666666666" width="90" height="27"/>
+                                <color key="backgroundColor" red="0.71764705880000002" green="0.18039215689999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="BsZ-vi-JcC"/>
+                                    <constraint firstAttribute="width" constant="90" id="jLd-Wm-pRa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="立即支付"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -242,6 +259,7 @@
                             <constraint firstItem="aIU-oj-grx" firstAttribute="top" secondItem="i5f-aR-iia" secondAttribute="bottom" constant="7.6699999999999999" id="4QV-eg-ih9"/>
                             <constraint firstItem="A6J-r7-OUQ" firstAttribute="top" secondItem="s9n-8z-ZbT" secondAttribute="top" constant="15" id="5Q4-zZ-zJc"/>
                             <constraint firstItem="A6J-r7-OUQ" firstAttribute="leading" secondItem="s9n-8z-ZbT" secondAttribute="leading" constant="10" id="83f-1r-oHO"/>
+                            <constraint firstItem="2Es-0z-faA" firstAttribute="leading" secondItem="aag-Kz-YEy" secondAttribute="trailing" constant="15" id="A3b-6A-1Ln"/>
                             <constraint firstItem="ZBm-SL-wdZ" firstAttribute="top" secondItem="xYt-CS-Zsp" secondAttribute="bottom" constant="5" id="ALC-Te-gaZ"/>
                             <constraint firstItem="yiB-0u-eLQ" firstAttribute="centerY" secondItem="iCl-hD-PtQ" secondAttribute="centerY" id="BFZ-ao-svO"/>
                             <constraint firstItem="xYt-CS-Zsp" firstAttribute="top" secondItem="s9n-8z-ZbT" secondAttribute="top" constant="13" id="Gj6-XS-U72"/>
@@ -261,6 +279,7 @@
                             <constraint firstItem="ZBm-SL-wdZ" firstAttribute="leading" secondItem="A6J-r7-OUQ" secondAttribute="trailing" constant="5" id="lsA-iV-JTv"/>
                             <constraint firstItem="XXg-sr-Tmb" firstAttribute="leading" secondItem="yiB-0u-eLQ" secondAttribute="trailing" constant="10" id="oDT-Au-ZxU"/>
                             <constraint firstAttribute="trailing" secondItem="pl6-1d-xYK" secondAttribute="trailing" constant="10" id="oZ4-2J-dqc"/>
+                            <constraint firstItem="aag-Kz-YEy" firstAttribute="centerY" secondItem="2Es-0z-faA" secondAttribute="centerY" id="rMg-fC-MR1"/>
                             <constraint firstAttribute="trailing" secondItem="i5f-aR-iia" secondAttribute="trailing" constant="10" id="tNy-H8-qas"/>
                             <constraint firstItem="XXg-sr-Tmb" firstAttribute="centerY" secondItem="iCl-hD-PtQ" secondAttribute="centerY" id="xlB-Ch-WTd"/>
                             <constraint firstItem="iCl-hD-PtQ" firstAttribute="top" secondItem="i5f-aR-iia" secondAttribute="bottom" constant="15" id="yLq-FY-Cnq"/>
@@ -291,12 +310,15 @@
             <connections>
                 <outlet property="ageLab" destination="Sv2-Vv-bXq" id="tsF-xR-Sml"/>
                 <outlet property="bottomBtn" destination="2Es-0z-faA" id="Rze-SN-2VZ"/>
+                <outlet property="bottomWidth" destination="4gh-Cu-o2d" id="iar-QE-CAH"/>
                 <outlet property="centerBtn" destination="zai-gD-JPM" id="15h-ML-5nY"/>
                 <outlet property="centerBtnHeight" destination="kOs-rJ-Z4t" id="8L7-4S-cSp"/>
                 <outlet property="centerBtnTop" destination="ld7-QV-fhC" id="xwt-CL-wd4"/>
                 <outlet property="centerBtnWidth" destination="ycN-t9-VlR" id="fql-em-Sbq"/>
                 <outlet property="granule_total_noLab" destination="i7O-j0-fLn" id="wpa-Wh-4G3"/>
                 <outlet property="nameLab" destination="W8f-oz-5mq" id="T5Y-ZP-Jxq"/>
+                <outlet property="payBtn" destination="aag-Kz-YEy" id="VIu-e9-egf"/>
+                <outlet property="payRightLeading" destination="A3b-6A-1Ln" id="hxb-rg-bLG"/>
                 <outlet property="phoneLab" destination="mSx-Bt-06w" id="0RP-zk-cKX"/>
                 <outlet property="recipeNameLab" destination="xYt-CS-Zsp" id="ILY-Yk-g0t"/>
                 <outlet property="recipe_noLab" destination="yiB-0u-eLQ" id="uKX-0r-uOC"/>

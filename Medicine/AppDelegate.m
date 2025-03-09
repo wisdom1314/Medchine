@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "AppDelegate+Service.h"
 #import <XHLaunchAd.h>
+#import <WXApi.h>
 
 @interface AppDelegate ()
 <XHLaunchAdDelegate>
@@ -25,7 +26,7 @@
     } else {
         // Fallback on earlier versions
     }
-    
+    [WXApi registerApp:WeixinAppID universalLink:@"https://zhyf-test.jingpai.com/zhyfapp/"];
     
     XHLaunchImageAdConfiguration *imageAdconfiguration = [XHLaunchImageAdConfiguration defaultConfiguration];
     
@@ -83,7 +84,7 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
         }];
     }
-    return YES;
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
 }
 
 // NOTE: 9.0以后使用新API接口
@@ -92,8 +93,20 @@
     if ([url.host isEqualToString:@"safepay"]) {
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:nil];
     }
-    return YES;
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
 }
+
+
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    return [WXApi handleOpenUniversalLink:userActivity delegate:[WXApiManager sharedManager]];
+}
+
+/// iOS 9之前 （可删除）
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+}
+
 
 
 @end
